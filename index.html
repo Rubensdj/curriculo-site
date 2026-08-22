@@ -20,22 +20,21 @@
             --white: #ffffff;
             --blue: #0071e3;
             --blue-hover: #0077ED;
+            --purple: #5856d6;
+            --pink: #bf5af2;
         }
 
-        html {
-            scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
             background: var(--white);
             color: var(--black);
             overflow-x: hidden;
+            perspective: 1000px;
         }
 
-        /* ===== PROMO BANNER ===== */
+        /* ===== PROMO ===== */
         .promo {
             background: var(--gray-5);
             text-align: center;
@@ -44,14 +43,12 @@
             color: var(--gray-2);
             border-bottom: 1px solid var(--gray-4);
         }
-
         .promo a { color: var(--blue); text-decoration: none; }
 
         /* ===== NAV ===== */
         nav {
             background: rgba(255,255,255,0.82);
             backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
             position: sticky;
             top: 0;
             z-index: 999;
@@ -92,7 +89,6 @@
             padding: 0.4rem 1rem !important;
             border-radius: 980px;
             font-weight: 500 !important;
-            transition: background 0.3s !important;
         }
 
         .nav-cta:hover { background: var(--blue-hover) !important; }
@@ -103,6 +99,8 @@
             padding: 5rem 1.5rem 4rem;
             background: var(--gray-5);
             border-bottom: 1px solid var(--gray-4);
+            position: relative;
+            overflow: hidden;
         }
 
         .hero-eyebrow {
@@ -110,7 +108,6 @@
             font-weight: 600;
             color: var(--gray-3);
             margin-bottom: 0.5rem;
-            letter-spacing: -0.01em;
         }
 
         .hero h1 {
@@ -119,10 +116,11 @@
             letter-spacing: -0.04em;
             line-height: 1.05;
             margin-bottom: 0.8rem;
+            transform: translateZ(60px);
         }
 
         .hero h1 .gradient {
-            background: linear-gradient(90deg, #0071e3, #5856d6, #bf5af2);
+            background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -130,14 +128,15 @@
         .hero-sub {
             font-size: 1.3rem;
             color: var(--gray-2);
-            font-weight: 400;
             margin-bottom: 1rem;
+            transform: translateZ(40px);
         }
 
         .hero-note {
             font-size: 0.95rem;
             color: var(--gray-3);
             margin-bottom: 2rem;
+            transform: translateZ(20px);
         }
 
         .hero-actions {
@@ -157,33 +156,73 @@
             font-weight: 500;
             text-decoration: none;
             transition: all 0.3s;
+            transform: translateZ(30px);
         }
 
-        .hero-btn.primary {
-            background: var(--blue);
-            color: #fff;
+        .hero-btn.primary { background: var(--blue); color: #fff; }
+        .hero-btn.primary:hover { background: var(--blue-hover); transform: translateZ(50px) scale(1.05); }
+        .hero-btn.secondary { color: var(--blue); }
+        .hero-btn.secondary:hover { text-decoration: underline; transform: translateZ(50px); }
+
+        /* ===== 3D FLOATING SHAPES ===== */
+        .float-shapes {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            transform-style: preserve-3d;
         }
 
-        .hero-btn.primary:hover {
-            background: var(--blue-hover);
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: float3d 20s ease-in-out infinite;
+            transform-style: preserve-3d;
         }
 
-        .hero-btn.secondary {
-            color: var(--blue);
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
         }
 
-        .hero-btn.secondary:hover {
-            text-decoration: underline;
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            bottom: -50px;
+            left: -50px;
+            animation-delay: -7s;
         }
 
-        /* ===== CONTENT SECTIONS ===== */
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--pink), var(--blue));
+            top: 50%;
+            left: 10%;
+            animation-delay: -14s;
+        }
+
+        @keyframes float3d {
+            0%, 100% { transform: translateZ(0) rotateX(0deg) rotateY(0deg); }
+            25% { transform: translateZ(40px) rotateX(15deg) rotateY(15deg); }
+            50% { transform: translateZ(20px) rotateX(-10deg) rotateY(-10deg); }
+            75% { transform: translateZ(60px) rotateX(5deg) rotateY(-5deg); }
+        }
+
+        /* ===== CONTENT ===== */
         .content {
             max-width: 980px;
             margin: 0 auto;
             padding: 0 22px;
         }
 
-        /* ===== FEATURE SECTION ===== */
+        /* ===== FEATURE ===== */
         .feature {
             padding: 5rem 0;
             text-align: center;
@@ -215,27 +254,31 @@
             margin-right: auto;
         }
 
-        /* ===== CARD GRID ===== */
+        /* ===== 3D CARD GRID ===== */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
             gap: 12px;
+            perspective: 1000px;
         }
 
-        .card {
+        .card-3d {
             background: var(--gray-5);
             border-radius: 20px;
             padding: 2rem;
             text-align: left;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.4s;
+            transform-style: preserve-3d;
+            transform: rotateX(0) rotateY(0) translateZ(0);
+            will-change: transform;
+            cursor: default;
         }
 
-        .card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        .card-3d:hover {
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.05);
         }
 
-        .card-icon {
+        .card-3d .card-icon {
             width: 48px;
             height: 48px;
             border-radius: 12px;
@@ -244,55 +287,66 @@
             justify-content: center;
             font-size: 1.4rem;
             margin-bottom: 1rem;
+            transform: translateZ(30px);
         }
 
-        .card h3 {
+        .card-3d h3 {
             font-size: 1.1rem;
             font-weight: 700;
             margin-bottom: 0.3rem;
+            transform: translateZ(20px);
         }
 
-        .card p {
+        .card-3d p {
             font-size: 0.9rem;
             color: var(--gray-2);
             line-height: 1.5;
+            transform: translateZ(10px);
         }
 
-        .card-badge {
-            display: inline-block;
-            margin-top: 0.8rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--blue);
-            background: rgba(0,113,227,0.08);
-            padding: 0.2rem 0.6rem;
-            border-radius: 50px;
+        /* ===== 3D SKILL BARS ===== */
+        .skills-container {
+            perspective: 1200px;
         }
 
-        /* ===== SKILL BARS ===== */
-        .skill-row {
+        .skill-row-3d {
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--gray-4);
+            padding: 1.2rem 1.5rem;
+            background: var(--gray-5);
+            border-radius: 16px;
+            margin-bottom: 8px;
+            transition: transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.4s;
+            transform-style: preserve-3d;
+            transform: rotateX(0) rotateY(0);
+            cursor: default;
         }
 
-        .skill-row:last-child { border-bottom: none; }
+        .skill-row-3d:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
 
-        .skill-icon {
-            font-size: 1.3rem;
-            width: 40px;
-            text-align: center;
+        .skill-row-3d .skill-icon {
+            font-size: 1.5rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex-shrink: 0;
+            transform: translateZ(40px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
-        .skill-info { flex: 1; }
+        .skill-row-3d .skill-info { flex: 1; transform: translateZ(20px); }
 
         .skill-name {
             font-size: 0.95rem;
             font-weight: 600;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.4rem;
         }
 
         .skill-bar {
@@ -304,7 +358,7 @@
 
         .skill-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--blue), #5856d6);
+            background: linear-gradient(90deg, var(--blue), var(--purple));
             border-radius: 3px;
             width: 0;
             transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
@@ -316,16 +370,26 @@
             font-weight: 500;
             min-width: 35px;
             text-align: right;
+            transform: translateZ(30px);
         }
 
-        /* ===== TIMELINE ===== */
-        .timeline { text-align: left; }
+        /* ===== 3D TIMELINE ===== */
+        .timeline-3d {
+            perspective: 1000px;
+        }
 
-        .timeline-item {
+        .timeline-item-3d {
             background: var(--gray-5);
             border-radius: 20px;
             padding: 2rem;
             margin-bottom: 12px;
+            transition: transform 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.5s;
+            transform-style: preserve-3d;
+            transform: rotateX(0) rotateY(0);
+        }
+
+        .timeline-item-3d:hover {
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
         }
 
         .timeline-top {
@@ -340,6 +404,7 @@
         .timeline-title {
             font-size: 1.2rem;
             font-weight: 700;
+            transform: translateZ(30px);
         }
 
         .timeline-date {
@@ -349,73 +414,88 @@
             background: rgba(0,113,227,0.08);
             padding: 0.2rem 0.7rem;
             border-radius: 50px;
+            transform: translateZ(40px);
         }
 
         .timeline-company {
             font-size: 0.95rem;
             color: var(--gray-2);
             margin-bottom: 0.8rem;
+            transform: translateZ(15px);
         }
 
         .timeline-desc {
             font-size: 0.95rem;
             color: var(--gray-1);
             line-height: 1.6;
+            transform: translateZ(10px);
         }
 
-        /* ===== CERTS LIST ===== */
-        .cert-list { text-align: left; }
+        /* ===== 3D CERT LIST ===== */
+        .cert-list-3d {
+            perspective: 1000px;
+        }
 
-        .cert-row {
+        .cert-row-3d {
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--gray-4);
+            padding: 1rem 1.5rem;
+            background: var(--gray-5);
+            border-radius: 14px;
+            margin-bottom: 8px;
+            transition: transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.4s;
+            transform-style: preserve-3d;
         }
 
-        .cert-row:last-child { border-bottom: none; }
+        .cert-row-3d:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
 
-        .cert-icon {
+        .cert-icon-3d {
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: var(--gray-5);
+            background: var(--white);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
             flex-shrink: 0;
+            transform: translateZ(30px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
         }
 
-        .cert-name { font-size: 0.95rem; font-weight: 600; }
+        .cert-name { font-size: 0.95rem; font-weight: 600; transform: translateZ(15px); }
         .cert-org { font-size: 0.8rem; color: var(--gray-3); }
 
-        /* ===== CONTACT SECTION ===== */
-        .contact-grid {
+        /* ===== 3D CONTACT ===== */
+        .contact-grid-3d {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 12px;
-            text-align: left;
+            perspective: 1000px;
         }
 
-        .contact-card {
+        .contact-card-3d {
             background: var(--gray-5);
             border-radius: 20px;
             padding: 1.5rem;
             text-decoration: none;
             color: var(--black);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.4s;
+            transform-style: preserve-3d;
         }
 
-        .contact-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        .contact-card-3d:hover {
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
         }
 
-        .contact-icon {
+        .contact-icon-3d {
             font-size: 1.5rem;
             margin-bottom: 0.8rem;
+            transform: translateZ(30px);
+            display: inline-block;
         }
 
         .contact-label {
@@ -426,30 +506,42 @@
             margin-bottom: 0.2rem;
         }
 
-        .contact-value { font-size: 0.9rem; font-weight: 600; }
+        .contact-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            transform: translateZ(15px);
+        }
 
-        /* ===== STAT ROW ===== */
-        .stat-row {
+        /* ===== 3D STATS ===== */
+        .stat-row-3d {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
             margin-bottom: 3rem;
+            perspective: 1200px;
         }
 
-        .stat-card {
+        .stat-card-3d {
             background: var(--gray-5);
             border-radius: 20px;
             padding: 2rem;
             text-align: center;
+            transition: transform 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.5s;
+            transform-style: preserve-3d;
+        }
+
+        .stat-card-3d:hover {
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
         }
 
         .stat-num {
             font-size: 2.5rem;
             font-weight: 900;
             letter-spacing: -0.03em;
-            background: linear-gradient(90deg, var(--blue), #5856d6);
+            background: linear-gradient(90deg, var(--blue), var(--purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            transform: translateZ(40px);
         }
 
         .stat-label {
@@ -458,9 +550,41 @@
             text-transform: uppercase;
             letter-spacing: 0.03em;
             margin-top: 0.3rem;
+            transform: translateZ(20px);
         }
 
-        /* ===== PROMO SECTION ===== */
+        /* ===== 3D FLOATING BADGE ===== */
+        .badge-3d {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--white);
+            border: 1px solid var(--gray-4);
+            padding: 0.4rem 0.8rem;
+            border-radius: 980px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--gray-1);
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transform: translateZ(50px) rotateX(5deg);
+            animation: badge3d 4s ease-in-out infinite;
+        }
+
+        .badge-3d::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #34c759;
+            border-radius: 50%;
+        }
+
+        @keyframes badge3d {
+            0%, 100% { transform: translateZ(50px) rotateX(5deg) rotateY(0deg); }
+            50% { transform: translateZ(70px) rotateX(-3deg) rotateY(5deg); }
+        }
+
+        /* ===== CTA ===== */
         .promo-section {
             background: var(--gray-5);
             padding: 4rem 0;
@@ -487,50 +611,45 @@
             border-top: 1px solid var(--gray-4);
         }
 
-        footer p {
-            font-size: 0.75rem;
-            color: var(--gray-3);
-        }
-
+        footer p { font-size: 0.75rem; color: var(--gray-3); }
         footer a { color: var(--blue); text-decoration: none; }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero { padding: 4rem 1rem 3rem; }
-            .card-grid { grid-template-columns: 1fr; }
-            .stat-row { grid-template-columns: 1fr; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .timeline-top { flex-direction: column; }
-        }
-
-        /* ===== FADE IN ===== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ===== HORIZONTAL RULE ===== */
+        /* ===== HR ===== */
         .section-divider {
             max-width: 980px;
             margin: 0 auto;
             border: none;
             border-top: 1px solid var(--gray-4);
         }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { padding: 4rem 1rem 3rem; }
+            .card-grid { grid-template-columns: 1fr; }
+            .stat-row-3d { grid-template-columns: 1fr; }
+            .contact-grid-3d { grid-template-columns: 1fr; }
+            .timeline-top { flex-direction: column; }
+            .float-shapes { display: none; }
+        }
+
+        /* ===== REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px) translateZ(-20px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0) translateZ(0);
+        }
     </style>
 </head>
 <body>
 
 <!-- Promo -->
-<div class="promo">
-    Disponível para novas oportunidades · <a href="#contato">Entre em contato</a>
-</div>
+<div class="promo">Disponível para novas oportunidades · <a href="#contato">Entre em contato</a></div>
 
 <!-- Nav -->
 <nav>
@@ -548,7 +667,13 @@
 
 <!-- Hero -->
 <section class="hero">
-    <div class="content">
+    <div class="float-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    <div class="content" style="position: relative; z-index: 1;">
+        <div class="badge-3d">● Disponível para oportunidades</div>
         <div class="hero-eyebrow">Currículo Profissional</div>
         <h1><span class="gradient">Rubens</span><br>Pereira Fernandes</h1>
         <div class="hero-sub">Logística & Tecnologia</div>
@@ -560,18 +685,18 @@
     </div>
 </section>
 
-<!-- Stats -->
+<!-- Stats 3D -->
 <div class="content">
-    <div class="stat-row reveal">
-        <div class="stat-card">
+    <div class="stat-row-3d reveal">
+        <div class="stat-card-3d" data-tilt>
             <div class="stat-num">7</div>
             <div class="stat-label">Certificações</div>
         </div>
-        <div class="stat-card">
+        <div class="stat-card-3d" data-tilt>
             <div class="stat-num">1+</div>
             <div class="stat-label">Ano de Experiência</div>
         </div>
-        <div class="stat-card">
+        <div class="stat-card-3d" data-tilt>
             <div class="stat-num">6</div>
             <div class="stat-label">Habilidades</div>
         </div>
@@ -586,21 +711,21 @@
         <div class="feature-eyebrow reveal">Sobre mim</div>
         <h2 class="reveal">Profissional dedicado<br>em constante evolução.</h2>
         <p class="feature-sub reveal">
-            Com experiência em operações de logística e depósito, atuo em empresas de grande porte. Paralelamente, desenvolvo conhecimentos em tecnologia, incluindo programação e análise de dados. Busco sempre evoluir profissionalmente.
+            Com experiência em operações de logística e depósito, atuo em empresas de grande porte. Paralelamente, desenvolvo conhecimentos em tecnologia. Busco sempre evoluir profissionalmente.
         </p>
     </section>
 </div>
 
 <hr class="section-divider">
 
-<!-- Skills -->
+<!-- Skills 3D -->
 <div class="content">
     <section class="feature" id="skills">
         <div class="feature-eyebrow reveal">Habilidades</div>
         <h2 class="reveal">O que sei fazer.</h2>
-        <p class="feature-sub reveal">Habilidades técnicas desenvolvidas ao longo da carreira e em cursos complementares.</p>
-        <div class="reveal">
-            <div class="skill-row">
+        <p class="feature-sub reveal">Habilidades técnicas desenvolvidas ao longo da carreira.</p>
+        <div class="skills-container reveal">
+            <div class="skill-row-3d" data-tilt>
                 <div class="skill-icon">🏗️</div>
                 <div class="skill-info">
                     <div class="skill-name">Operação de Empilhadeira</div>
@@ -608,7 +733,7 @@
                 </div>
                 <div class="skill-pct">90%</div>
             </div>
-            <div class="skill-row">
+            <div class="skill-row-3d" data-tilt>
                 <div class="skill-icon">📦</div>
                 <div class="skill-info">
                     <div class="skill-name">Logística de Depósito</div>
@@ -616,7 +741,7 @@
                 </div>
                 <div class="skill-pct">85%</div>
             </div>
-            <div class="skill-row">
+            <div class="skill-row-3d" data-tilt>
                 <div class="skill-icon">📊</div>
                 <div class="skill-info">
                     <div class="skill-name">Power BI</div>
@@ -624,7 +749,7 @@
                 </div>
                 <div class="skill-pct">70%</div>
             </div>
-            <div class="skill-row">
+            <div class="skill-row-3d" data-tilt>
                 <div class="skill-icon">💻</div>
                 <div class="skill-info">
                     <div class="skill-name">Informática</div>
@@ -632,7 +757,7 @@
                 </div>
                 <div class="skill-pct">75%</div>
             </div>
-            <div class="skill-row">
+            <div class="skill-row-3d" data-tilt>
                 <div class="skill-icon">🌐</div>
                 <div class="skill-info">
                     <div class="skill-name">HTML / CSS</div>
@@ -640,7 +765,7 @@
                 </div>
                 <div class="skill-pct">60%</div>
             </div>
-            <div class="skill-row">
+            <div class="skill-row-3d" data-tilt>
                 <div class="skill-icon">☕</div>
                 <div class="skill-info">
                     <div class="skill-name">Java</div>
@@ -654,38 +779,38 @@
 
 <hr class="section-divider">
 
-<!-- Soft Skills -->
+<!-- Soft Skills 3D -->
 <div class="content">
     <section class="feature">
         <div class="feature-eyebrow reveal">Competências</div>
         <h2 class="reveal">Qualidades que me<br>definem como profissional.</h2>
         <div class="card-grid" style="margin-top: 2rem;">
-            <div class="card reveal">
+            <div class="card-3d reveal" data-tilt>
                 <div class="card-icon" style="background: rgba(0,113,227,0.08);">🎯</div>
                 <h3>Foco em Resultados</h3>
                 <p>Comprometido com a superação de expectativas e metas da organização.</p>
             </div>
-            <div class="card reveal">
+            <div class="card-3d reveal" data-tilt>
                 <div class="card-icon" style="background: rgba(88,86,214,0.08);">🤝</div>
                 <h3>Trabalho em Equipe</h3>
                 <p>Experiência em ambientes colaborativos de alto volume de operações.</p>
             </div>
-            <div class="card reveal">
+            <div class="card-3d reveal" data-tilt>
                 <div class="card-icon" style="background: rgba(191,90,242,0.08);">📚</div>
                 <h3>Aprendizado Contínuo</h3>
                 <p>7 certificações em áreas diversas, sempre buscando evoluir.</p>
             </div>
-            <div class="card reveal">
+            <div class="card-3d reveal" data-tilt>
                 <div class="card-icon" style="background: rgba(255,149,0,0.08);">🔍</div>
                 <h3>Atenção aos Detalhes</h3>
                 <p>Conferência rigorosa para garantir integridade do inventário.</p>
             </div>
-            <div class="card reveal">
+            <div class="card-3d reveal" data-tilt>
                 <div class="card-icon" style="background: rgba(52,199,89,0.08);">⏰</div>
                 <h3>Pontualidade</h3>
                 <p>Responsabilidade com prazos e compromissos profissionais.</p>
             </div>
-            <div class="card reveal">
+            <div class="card-3d reveal" data-tilt>
                 <div class="card-icon" style="background: rgba(255,59,48,0.08);">💪</div>
                 <h3>Resiliência</h3>
                 <p>Capacidade de adaptação e superação de desafios.</p>
@@ -696,21 +821,21 @@
 
 <hr class="section-divider">
 
-<!-- Experiência -->
+<!-- Experiência 3D -->
 <div class="content">
     <section class="feature" id="exp">
         <div class="feature-eyebrow reveal">Experiência</div>
         <h2 class="reveal">Trajetória profissional.</h2>
-        <p class="feature-sub reveal">Experiência em operações de logística em empresa de grande porte.</p>
-        <div class="timeline">
-            <div class="timeline-item reveal">
+        <p class="feature-sub reveal">Experiência em operações de logística.</p>
+        <div class="timeline-3d">
+            <div class="timeline-item-3d reveal" data-tilt>
                 <div class="timeline-top">
                     <div class="timeline-title">Auxiliar de Depósito</div>
                     <div class="timeline-date">2022 — 2023</div>
                 </div>
                 <div class="timeline-company">Ferreira Costa — Recife, PE</div>
                 <div class="timeline-desc">
-                    Responsável por atividades de expedição, recebimento, entrega e reposição de mercadorias. Realização de conferência rigorosa para garantia de integridade do inventário. Atuação em equipe em ambiente de alto volume de operações.
+                    Responsável por atividades de expedição, recebimento, entrega e reposição de mercadorias. Conferência rigorosa para garantia de integridade do inventário.
                 </div>
             </div>
         </div>
@@ -724,8 +849,8 @@
     <section class="feature" id="edu">
         <div class="feature-eyebrow reveal">Formação</div>
         <h2 class="reveal">Educação.</h2>
-        <div class="timeline" style="margin-top: 2rem;">
-            <div class="timeline-item reveal">
+        <div class="timeline-3d" style="margin-top: 2rem;">
+            <div class="timeline-item-3d reveal" data-tilt>
                 <div class="timeline-top">
                     <div class="timeline-title">Ensino Médio Completo</div>
                     <div class="timeline-date">2021</div>
@@ -738,78 +863,39 @@
 
 <hr class="section-divider">
 
-<!-- Certificações -->
+<!-- Certificações 3D -->
 <div class="content">
     <section class="feature" id="certs">
         <div class="feature-eyebrow reveal">Certificações</div>
         <h2 class="reveal">Cursos e certificados.</h2>
-        <p class="feature-sub reveal">Formação complementar em diversas áreas do conhecimento.</p>
-        <div class="cert-list reveal">
-            <div class="cert-row">
-                <div class="cert-icon">🏗️</div>
-                <div>
-                    <div class="cert-name">Operador de Empilhadeira</div>
-                    <div class="cert-org">ESTTJ · 2024</div>
-                </div>
+        <div class="cert-list-3d reveal">
+            <div class="cert-row-3d" data-tilt>
+                <div class="cert-icon-3d">🏗️</div>
+                <div><div class="cert-name">Operador de Empilhadeira</div><div class="cert-org">ESTTJ · 2024</div></div>
             </div>
-            <div class="cert-row">
-                <div class="cert-icon">📦</div>
-                <div>
-                    <div class="cert-name">Curso de Logística</div>
-                    <div class="cert-org">EDUCAWEB · 2024</div>
-                </div>
+            <div class="cert-row-3d" data-tilt>
+                <div class="cert-icon-3d">📦</div>
+                <div><div class="cert-name">Curso de Logística</div><div class="cert-org">EDUCAWEB · 2024</div></div>
             </div>
-            <div class="cert-row">
-                <div class="cert-icon">📊</div>
-                <div>
-                    <div class="cert-name">Power BI Intensivo</div>
-                    <div class="cert-org">Hashtag Treinamentos · 2024</div>
-                </div>
+            <div class="cert-row-3d" data-tilt>
+                <div class="cert-icon-3d">📊</div>
+                <div><div class="cert-name">Power BI Intensivo</div><div class="cert-org">Hashtag Treinamentos · 2024</div></div>
             </div>
-            <div class="cert-row">
-                <div class="cert-icon">☕</div>
-                <div>
-                    <div class="cert-name">Java Básico</div>
-                    <div class="cert-org">Fundação Bradesco · 2023</div>
-                </div>
+            <div class="cert-row-3d" data-tilt>
+                <div class="cert-icon-3d">☕</div>
+                <div><div class="cert-name">Java Básico</div><div class="cert-org">Fundação Bradesco · 2023</div></div>
             </div>
-            <div class="cert-row">
-                <div class="cert-icon">🌐</div>
-                <div>
-                    <div class="cert-name">Criação de Site (HTML, CSS, JS)</div>
-                    <div class="cert-org">Fundação Bradesco · 2023</div>
-                </div>
+            <div class="cert-row-3d" data-tilt>
+                <div class="cert-icon-3d">🌐</div>
+                <div><div class="cert-name">Criação de Site (HTML, CSS, JS)</div><div class="cert-org">Fundação Bradesco · 2023</div></div>
             </div>
-            <div class="cert-row">
-                <div class="cert-icon">📄</div>
-                <div>
-                    <div class="cert-name">HTML Avançado</div>
-                    <div class="cert-org">2023</div>
-                </div>
+            <div class="cert-row-3d" data-tilt>
+                <div class="cert-icon-3d">📄</div>
+                <div><div class="cert-name">HTML Avançado</div><div class="cert-org">2023</div></div>
             </div>
-            <div class="cert-row">
-                <div class="cert-icon">🖥️</div>
-                <div>
-                    <div class="cert-name">Informática Básica</div>
-                    <div class="cert-org">2017</div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-
-<hr class="section-divider">
-
-<!-- Idiomas -->
-<div class="content">
-    <section class="feature" id="lang">
-        <div class="feature-eyebrow reveal">Idiomas</div>
-        <h2 class="reveal">Idiomas.</h2>
-        <div class="card-grid" style="margin-top: 2rem; max-width: 400px;">
-            <div class="card reveal">
-                <h3>Português</h3>
-                <p>Nativo</p>
-                <div class="skill-bar" style="margin-top: 0.8rem;"><div class="skill-fill" data-width="100"></div></div>
+            <div class="cert-row-3d" data-tilt>
+                <div class="cert-icon-3d">🖥️</div>
+                <div><div class="cert-name">Informática Básica</div><div class="cert-org">2017</div></div>
             </div>
         </div>
     </section>
@@ -827,29 +913,29 @@
     </div>
 </section>
 
-<!-- Contato -->
+<!-- Contato 3D -->
 <div class="content">
     <section class="feature" id="contato">
         <div class="feature-eyebrow reveal">Contato</div>
         <h2 class="reveal">Onde me encontrar.</h2>
-        <div class="contact-grid" style="margin-top: 2rem;">
-            <a href="tel:+5581989501999" class="contact-card reveal">
-                <div class="contact-icon">📱</div>
+        <div class="contact-grid-3d" style="margin-top: 2rem;">
+            <a href="tel:+5581989501999" class="contact-card-3d reveal" data-tilt>
+                <div class="contact-icon-3d">📱</div>
                 <div class="contact-label">Telefone</div>
                 <div class="contact-value">+55 81 98950-1999</div>
             </a>
-            <a href="mailto:rubensfernandes2112@gmail.com" class="contact-card reveal">
-                <div class="contact-icon">✉️</div>
+            <a href="mailto:rubensfernandes2112@gmail.com" class="contact-card-3d reveal" data-tilt>
+                <div class="contact-icon-3d">✉️</div>
                 <div class="contact-label">Email</div>
                 <div class="contact-value">rubensfernandes2112@gmail.com</div>
             </a>
-            <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="contact-card reveal">
-                <div class="contact-icon">🔗</div>
+            <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="contact-card-3d reveal" data-tilt>
+                <div class="contact-icon-3d">🔗</div>
                 <div class="contact-label">LinkedIn</div>
                 <div class="contact-value">/in/rubens-fernandes</div>
             </a>
-            <div class="contact-card reveal">
-                <div class="contact-icon">📍</div>
+            <div class="contact-card-3d reveal" data-tilt>
+                <div class="contact-icon-3d">📍</div>
                 <div class="contact-label">Localização</div>
                 <div class="contact-value">Limoeiro, PE — Brasil</div>
             </div>
@@ -866,7 +952,28 @@
 </footer>
 
 <script>
-// Reveal on scroll
+// ===== 3D TILT EFFECT =====
+const tiltElements = document.querySelectorAll('[data-tilt]');
+
+tiltElements.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / centerY * -8;
+        const rotateY = (x - centerX) / centerX * 8;
+        
+        el.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+    });
+    
+    el.addEventListener('mouseleave', () => {
+        el.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateZ(0)';
+    });
+});
+
+// ===== REVEAL ON SCROLL =====
 const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
         if (e.isIntersecting) {
@@ -880,12 +987,21 @@ const obs = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// Smooth scroll
+// ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
         e.preventDefault();
         const t = document.querySelector(a.getAttribute('href'));
         if (t) t.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+// ===== PARALLAX FLOATING SHAPES =====
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    document.querySelectorAll('.shape').forEach((shape, i) => {
+        const speed = (i + 1) * 0.05;
+        shape.style.transform = `translateY(${scrollY * speed}px) translateZ(${20 + i * 10}px) rotateX(${scrollY * 0.02}deg)`;
     });
 });
 </script>
