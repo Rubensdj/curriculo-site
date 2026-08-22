@@ -89,6 +89,34 @@
             border-bottom: 1px solid var(--border);
             position: relative;
             overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-bg-photo {
+            position: absolute;
+            bottom: 0;
+            right: 10%;
+            width: 320px;
+            height: auto;
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 0;
+            transition: opacity 0.5s;
+        }
+
+        .hero-bg-img {
+            width: 100%;
+            height: auto;
+            filter: grayscale(0.3);
+        }
+
+        .hero:hover .hero-bg-photo { opacity: 0.18; }
+
+        @media (max-width: 768px) {
+            .hero-bg-photo { width: 200px; right: 5%; opacity: 0.08; }
         }
 
         .hero::before {
@@ -657,8 +685,10 @@
 
 <!-- Hero -->
 <section class="hero">
+    <div class="hero-bg-photo">
+        <img src="foto-sem-fundo.png" alt="Rubens Pereira Fernandes" class="hero-bg-img">
+    </div>
     <div class="hero-content">
-        <img src="foto-avatar.webp" alt="Rubens Pereira Fernandes" class="hero-avatar">
         <div class="hero-badge">Disponível para oportunidades</div>
         <h1><span class="gradient">Rubens</span><br>Pereira Fernandes</h1>
         <div class="hero-role">Logística & Tecnologia</div>
