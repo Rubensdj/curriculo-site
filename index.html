@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubens Pereira Fernandes — Portfólio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #050510;
+            --bg-2: #0a0a1a;
+            --bg-card: rgba(255,255,255,0.03);
+            --border: rgba(255,255,255,0.06);
+            --border-glow: rgba(0,200,255,0.15);
+            --text: #e4e4ef;
+            --text-dim: #6b6b8a;
+            --accent: #00c8ff;
+            --accent-2: #7c3aed;
+            --accent-3: #f43f5e;
+            --accent-4: #10b981;
+            --glow: 0 0 60px rgba(0,200,255,0.08);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* ===== CUSTOM CURSOR ===== */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease, background 0.15s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-dot {
+            width: 5px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .cursor.hover { transform: scale(2.5); background: rgba(0,200,255,0.1); }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+        /* ===== BACKGROUND GRID ===== */
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bg-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-glow-1 { top: -200px; left: -200px; background: var(--accent); }
+        .bg-glow-2 { bottom: -200px; right: -200px; background: var(--accent-2); }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5,5,16,0.6);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: var(--text-dim); }
+
+        .nav-links { display: flex; gap: 2rem; }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--text); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-left { flex: 1; max-width: 650px; }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(0,200,255,0.06);
+            border: 1px solid rgba(0,200,255,0.15);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-tag .blink {
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -3px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .line-2 {
+            display: block;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+        .btn-glow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.85rem 1.8rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: none;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-glow.primary {
+            background: linear-gradient(135deg, var(--accent), #0090cc);
+            color: #000;
+            box-shadow: 0 0 40px rgba(0,200,255,0.25);
+        }
+
+        .btn-glow.primary:hover {
+            box-shadow: 0 0 60px rgba(0,200,255,0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-glow.secondary {
+            background: var(--bg-card);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-glow.secondary:hover {
+            border-color: var(--accent);
+            background: rgba(0,200,255,0.05);
+        }
+
+        /* Hero Right — Stats */
+        .hero-right {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            min-width: 140px;
+            text-align: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: var(--glow);
+            transform: translateY(-4px);
+        }
+
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-top: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== SECTION ===== */
+        .content { position: relative; z-index: 1; }
+
+        section {
+            padding: 6rem 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 3rem;
+        }
+
+        /* ===== ABOUT TERMINAL ===== */
+        .terminal {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1rem;
+            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.r { background: #ff5f57; }
+        .terminal-dot.y { background: #febc2e; }
+        .terminal-dot.g { background: #28c840; }
+
+        .terminal-title {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-left: 0.5rem;
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: var(--text-dim);
+        }
+
+        .terminal-body .line { margin-bottom: 0.3rem; }
+        .terminal-body .prompt { color: var(--accent); }
+        .terminal-body .comment { color: #555; }
+        .terminal-body .string { color: var(--accent-4); }
+        .terminal-body .key { color: var(--accent-3); }
+
+        /* ===== SKILLS ===== */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.8rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .skill-block:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-4px);
+            box-shadow: var(--glow);
+        }
+
+        .skill-block:hover::before { opacity: 1; }
+
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-desc {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .skill-bar-track {
+            height: 4px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 2px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            width: 0;
+            transition: width 1.5s ease;
+        }
+
+        /* ===== EXPERIENCE ===== */
+        .exp-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 2rem;
+            transition: all 0.3s;
+        }
+
+        .exp-card:hover {
+            border-color: var(--border-glow);
+            transform: translateX(8px);
+        }
+
+        .exp-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(0,200,255,0.08);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            height: fit-content;
+            white-space: nowrap;
+        }
+
+        .exp-content { flex: 1; }
+
+        .exp-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .exp-company {
+            font-size: 0.9rem;
+            color: var(--accent-2);
+            margin-bottom: 0.8rem;
+        }
+
+        .exp-desc {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.7;
+        }
+
+        /* ===== CERTS ===== */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1rem;
+        }
+
+        .cert-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+
+        .cert-card:hover {
+            border-color: var(--accent-3);
+            transform: translateY(-2px);
+        }
+
+        .cert-emoji {
+            font-size: 1.5rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: rgba(244,63,94,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .cert-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .cert-org {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .contact-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0,200,255,0.1);
+        }
+
+        .contact-emoji {
+            font-size: 1.3rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(0,200,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-value {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-line {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            margin: 0 auto 1.5rem;
+        }
+
+        footer p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        footer a { color: var(--accent); text-decoration: none; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { gap: 1rem; }
+            .nav-links a { font-size: 0.75rem; }
+            .hero { flex-direction: column; padding: 6rem 1.5rem 3rem; }
+            .hero-right { justify-content: flex-start; }
+            section { padding: 4rem 1.5rem; }
+            .section-title { font-size: 1.8rem; }
+            .skills-container { grid-template-columns: 1fr; }
+            .certs-grid { grid-template-columns: 1fr; }
+            .contact-row { grid-template-columns: 1fr; }
+            .exp-card { flex-direction: column; gap: 1rem; }
+            .cursor, .cursor-dot { display: none; }
+            body { cursor: auto; }
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+    </style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- Background -->
+<div class="bg-grid"></div>
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<!-- Nav -->
+<nav>
+    <div class="logo"><span>const</span> RPF <span>=</span> <span>{</span></div>
+    <div class="nav-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#skills">Skills</a>
+        <a href="#exp">Experiência</a>
+        <a href="#certs">Certificações</a>
+        <a href="#contato">Contato</a>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-left">
+        <div class="hero-tag">
+            <span>●</span> Disponível para novas oportunidades <span class="blink">_</span>
+        </div>
+        <h1>
+            Rubens
+            <span class="line-2">Pereira Fernandes</span>
+        </h1>
+        <p class="hero-desc">
+            Profissional de logística e operação de empilhadeira com experiência em depósitos de grande porte. Apaixonado por tecnologia e sempre em busca de novos desafios.
+        </p>
+        <div class="hero-btns">
+            <a href="#contato" class="btn-glow primary">✉️ Fale comigo</a>
+            <a href="#sobre" class="btn-glow secondary">↓ Explorar</a>
+        </div>
+    </div>
+    <div class="hero-right">
+        <div class="stat-card reveal">
+            <div class="stat-num">7</div>
+            <div class="stat-label">Certificados</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-1">
+            <div class="stat-num">1+</div>
+            <div class="stat-label">Ano Exp.</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+            <div class="stat-num">5</div>
+            <div class="stat-label">Skills</div>
+        </div>
+    </div>
+</section>
+
+<!-- Content -->
+<div class="content">
+
+    <!-- Sobre -->
+    <section id="sobre">
+        <div class="section-label reveal">// sobre_mim</div>
+        <h2 class="section-title reveal">Quem sou eu</h2>
+        <div class="terminal reveal">
+            <div class="terminal-bar">
+                <div class="terminal-dot r"></div>
+                <div class="terminal-dot y"></div>
+                <div class="terminal-dot g"></div>
+                <span class="terminal-title">rubens@portfolio:~</span>
+            </div>
+            <div class="terminal-body">
+                <div class="line"><span class="prompt">$</span> cat sobre_mim.txt</div>
+                <div class="line"><br></div>
+                <div class="line"><span class="comment">// Dados pessoais</span></div>
+                <div class="line"><span class="key">nome:</span> <span class="string">"Rubens Pereira Fernandes"</span>,</div>
+                <div class="line"><span class="key">nascimento:</span> <span class="string">"19/05/2000"</span>,</div>
+                <div class="line"><span class="key">local:</span> <span class="string">"Limoeiro, PE — Brasil"</span>,</div>
+                <div class="line"><br></div>
+                <div class="line"><span class="comment">// Objetivo profissional</span></div>
+                <div class="line"><span class="key">perfil:</span> <span class="string">"Busco realização pessoal e profissional</span></div>
+                <div class="line"><span class="string">  por meio da dedicação, responsabilidade</span></div>
+                <div class="line"><span class="string">  e busca constante por conhecimento."</span>,</div>
+                <div class="line"><br></div>
+                <div class="line"><span class="comment">// Valores</span></div>
+                <div class="line"><span class="key">valores:</span> [</div>
+                <div class="line">  <span class="string">"Dedicação"</span>,</div>
+                <div class="line">  <span class="string">"Responsabilidade"</span>,</div>
+                <div class="line">  <span class="string">"Superação"</span>,</div>
+                <div class="line">  <span class="string">"Crescimento contínuo"</span></div>
+                <div class="line">]</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="section-label reveal">// habilidades</div>
+        <h2 class="section-title reveal">O que sei fazer</h2>
+        <div class="skills-container">
+            <div class="skill-block reveal">
+                <div class="skill-icon">🏗️</div>
+                <div class="skill-name">Operação de Empilhadeira</div>
+                <div class="skill-desc">Experiência comprovada em operação e manuseio de equipamentos de movimentação de cargas em ambiente de depósito.</div>
+                <div class="skill-bar-track">
+                    <div class="skill-bar-fill" data-width="90"></div>
+                </div>
+            </div>
+            <div class="skill-block reveal reveal-delay-1">
+                <div class="skill-icon">📦</div>
+                <div class="skill-name">Logística de Depósito</div>
+                <div class="skill-desc">Controle rigoroso de inventário, expedição, recebimento, entrega e reposição de mercadorias.</div>
+                <div class="skill-bar-track">
+                    <div class="skill-bar-fill" data-width="85"></div>
+                </div>
+            </div>
+            <div class="skill-block reveal reveal-delay-2">
+                <div class="skill-icon">💻</div>
+                <div class="skill-name">Informática</div>
+                <div class="skill-desc">Domínio de ferramentas Office, sistemas computacionais e produtividade digital.</div>
+                <div class="skill-bar-track">
+                    <div class="skill-bar-fill" data-width="75"></div>
+                </div>
+            </div>
+            <div class="skill-block reveal reveal-delay-3">
+                <div class="skill-icon">☕</div>
+                <div class="skill-name">Java</div>
+                <div class="skill-desc">Conhecimentos em programação orientada a objetos com Java.</div>
+                <div class="skill-bar-track">
+                    <div class="skill-bar-fill" data-width="45"></div>
+                </div>
+            </div>
+            <div class="skill-block reveal reveal-delay-4">
+                <div class="skill-icon">🌐</div>
+                <div class="skill-name">HTML / CSS</div>
+                <div class="skill-desc">Criação de páginas web responsivas com HTML5 e CSS3 moderno.</div>
+                <div class="skill-bar-track">
+                    <div class="skill-bar-fill" data-width="60"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiência -->
+    <section id="exp">
+        <div class="section-label reveal">// experiência</div>
+        <h2 class="section-title reveal">Trajetória profissional</h2>
+        <div class="exp-card reveal">
+            <div class="exp-year">2022 — 2023</div>
+            <div class="exp-content">
+                <div class="exp-title">Auxiliar de Depósito</div>
+                <div class="exp-company">Ferreira Costa — Recife, PE</div>
+                <div class="exp-desc">
+                    Atividades de expedição, recebimento, entrega e reposição de mercadorias. Conferência rigorosa para garantia de integridade do inventário. Trabalho em equipe em ambiente de alto volume de operações.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificações -->
+    <section id="certs">
+        <div class="section-label reveal">// certificações</div>
+        <h2 class="section-title reveal">Cursos & Certificados</h2>
+        <div class="certs-grid">
+            <div class="cert-card reveal">
+                <div class="cert-emoji">🏗️</div>
+                <div>
+                    <div class="cert-name">Operador de Empilhadeira</div>
+                    <div class="cert-org">ESTTJ · 2024</div>
+                </div>
+            </div>
+            <div class="cert-card reveal reveal-delay-1">
+                <div class="cert-emoji">📦</div>
+                <div>
+                    <div class="cert-name">Curso de Logística</div>
+                    <div class="cert-org">EDUCAWEB · 2024</div>
+                </div>
+            </div>
+            <div class="cert-card reveal reveal-delay-2">
+                <div class="cert-emoji">📊</div>
+                <div>
+                    <div class="cert-name">Power BI Intensivo</div>
+                    <div class="cert-org">Hashtag Treinamentos · 2024</div>
+                </div>
+            </div>
+            <div class="cert-card reveal reveal-delay-3">
+                <div class="cert-emoji">☕</div>
+                <div>
+                    <div class="cert-name">Java Básico</div>
+                    <div class="cert-org">Fundação Bradesco · 2023</div>
+                </div>
+            </div>
+            <div class="cert-card reveal reveal-delay-4">
+                <div class="cert-emoji">🌐</div>
+                <div>
+                    <div class="cert-name">Criação de Site (HTML, CSS, JS)</div>
+                    <div class="cert-org">Fundação Bradesco · 2023</div>
+                </div>
+            </div>
+            <div class="cert-card reveal">
+                <div class="cert-emoji">📄</div>
+                <div>
+                    <div class="cert-name">HTML Avançado</div>
+                    <div class="cert-org">2023</div>
+                </div>
+            </div>
+            <div class="cert-card reveal reveal-delay-1">
+                <div class="cert-emoji">🖥️</div>
+                <div>
+                    <div class="cert-name">Informática Básica</div>
+                    <div class="cert-org">2017</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato">
+        <div class="section-label reveal">// contato</div>
+        <h2 class="section-title reveal">Vamos conversar?</h2>
+        <div class="contact-row">
+            <a href="tel:+5581989501999" class="contact-item reveal">
+                <div class="contact-emoji">📱</div>
+                <div>
+                    <div class="contact-label">Telefone</div>
+                    <div class="contact-value">+55 81 98950-1999</div>
+                </div>
+            </a>
+            <a href="mailto:rubensfernandes2112@gmail.com" class="contact-item reveal reveal-delay-1">
+                <div class="contact-emoji">✉️</div>
+                <div>
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">rubensfernandes2112@gmail.com</div>
+                </div>
+            </a>
+            <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="contact-item reveal reveal-delay-2">
+                <div class="contact-emoji">🔗</div>
+                <div>
+                    <div class="contact-label">LinkedIn</div>
+                    <div class="contact-value">/in/rubens-fernandes</div>
+                </div>
+            </a>
+            <div class="contact-item reveal reveal-delay-3">
+                <div class="contact-emoji">📍</div>
+                <div>
+                    <div class="contact-label">Localização</div>
+                    <div class="contact-value">Limoeiro, PE — Brasil</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-line"></div>
+    <p>© 2026 Rubens Pereira Fernandes · Feito com 💙</p>
+</footer>
+
+<script>
+    // Custom Cursor
+    const cursor = document.getElementById('cursor');
+    const cursorDot = document.getElementById('cursorDot');
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursorDot.style.left = mouseX - 2.5 + 'px';
+        cursorDot.style.top = mouseY - 2.5 + 'px';
+    });
+
+    function animateCursor() {
+        cursorX += (mouseX - cursorX) * 0.15;
+        cursorY += (mouseY - cursorY) * 0.15;
+        cursor.style.left = cursorX - 10 + 'px';
+        cursor.style.top = cursorY - 10 + 'px';
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Hover effect on interactive elements
+    document.querySelectorAll('a, button, .skill-block, .cert-card, .contact-item, .stat-card, .exp-card').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+
+    // Scroll Reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+
+                // Animate skill bars
+                const bar = entry.target.querySelector('.skill-bar-fill');
+                if (bar) {
+                    bar.style.width = bar.dataset.width + '%';
+                }
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Smooth nav background on scroll
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.style.background = 'rgba(5,5,16,0.95)';
+        } else {
+            nav.style.background = 'rgba(5,5,16,0.6)';
+        }
+    });
+</script>
+
+</body>
+</html>
