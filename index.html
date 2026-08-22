@@ -3,134 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rubens Pereira Fernandes — Currículo</title>
-    <meta name="description" content="Currículo profissional de Rubens Pereira Fernandes — Logística, Operação de Empilhadeira, Desenvolvimento Web.">
-    <meta property="og:title" content="Rubens Pereira Fernandes — Currículo">
-    <meta property="og:description" content="Profissional de Logística e Tecnologia. Veja minha trajetória.">
+    <title>Rubens Pereira Fernandes — Currículo Profissional</title>
+    <meta name="description" content="Currículo profissional de Rubens Pereira Fernandes — Profissional de Logística e Tecnologia com experiência em operações de depósito.">
+    <meta property="og:title" content="Rubens Pereira Fernandes — Currículo Profissional">
+    <meta property="og:description" content="Profissional de Logística e Tecnologia. 26 anos de experiência em operações de depósito e desenvolvimento web.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* ===== RESET ===== */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg: #fafafa;
-            --bg-white: #ffffff;
-            --bg-light: #f5f5f5;
-            --border: #e5e5e5;
-            --border-light: #f0f0f0;
-            --text: #1a1a1a;
-            --text-secondary: #555;
-            --text-muted: #888;
-            --accent: #2563eb;
-            --accent-light: #eff6ff;
-            --accent-dark: #1d4ed8;
-            --success: #16a34a;
-            --success-light: #f0fdf4;
-            --danger: #dc2626;
-            --warning: #f59e0b;
-            --radius: 12px;
-            --radius-lg: 16px;
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-            --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
-            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --text: #0f172a;
+            --text-2: #334155;
+            --text-3: #64748b;
+            --text-4: #94a3b8;
+            --blue: #2563eb;
+            --blue-light: #eff6ff;
+            --blue-dark: #1d4ed8;
+            --green: #16a34a;
+            --green-light: #f0fdf4;
+            --red: #dc2626;
+            --red-light: #fef2f2;
+            --orange: #ea580c;
+            --orange-light: #fff7ed;
+            --purple: #7c3aed;
+            --purple-light: #f5f3ff;
+            --radius: 10px;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
         }
 
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'DM Sans', -apple-system, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ===== LAYOUT ===== */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* ===== HEADER / NAV ===== */
-        header {
-            background: var(--bg-white);
+        /* ===== NAV ===== */
+        nav {
+            background: var(--white);
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        .header-inner {
+        .nav-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0.9rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
         }
 
-        .header-name {
-            font-size: 1rem;
+        .nav-name {
             font-weight: 700;
+            font-size: 0.95rem;
             color: var(--text);
         }
 
-        .header-nav { display: flex; gap: 2rem; align-items: center; }
+        .nav-links { display: flex; gap: 1.8rem; align-items: center; }
 
-        .header-nav a {
-            color: var(--text-secondary);
+        .nav-links a {
+            color: var(--text-3);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             transition: color 0.2s;
         }
 
-        .header-nav a:hover { color: var(--accent); }
+        .nav-links a:hover { color: var(--blue); }
 
-        .header-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.5rem 1rem;
-            background: var(--accent);
-            color: #fff;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
+        .nav-cv {
+            background: var(--blue);
+            color: #fff !important;
+            padding: 0.45rem 1rem;
+            border-radius: 6px;
+            font-weight: 600 !important;
+            font-size: 0.8rem !important;
             transition: background 0.2s;
         }
 
-        .header-btn:hover { background: var(--accent-dark); }
+        .nav-cv:hover { background: var(--blue-dark); }
+
+        /* ===== MAIN ===== */
+        .main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
         /* ===== HERO ===== */
         .hero {
-            background: var(--bg-white);
-            border-bottom: 1px solid var(--border);
-            padding: 4rem 0;
-        }
-
-        .hero-inner {
+            padding: 3rem 0;
             display: flex;
-            gap: 3rem;
-            align-items: center;
+            gap: 2.5rem;
+            align-items: flex-start;
         }
 
         .hero-photo {
-            width: 160px;
-            height: 160px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), #7c3aed);
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: #fff;
             flex-shrink: 0;
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 8px 24px rgba(37,99,235,0.2);
         }
 
         .hero-info { flex: 1; }
@@ -139,77 +130,71 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            background: var(--success-light);
-            color: var(--success);
-            padding: 0.3rem 0.8rem;
+            background: var(--green-light);
+            color: var(--green);
+            padding: 0.3rem 0.7rem;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
         .hero-badge::before {
             content: '';
             width: 6px;
             height: 6px;
-            background: var(--success);
+            background: var(--green);
             border-radius: 50%;
         }
 
         .hero h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 800;
             letter-spacing: -0.5px;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
 
         .hero-role {
-            font-size: 1.1rem;
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
         }
 
         .hero-desc {
             font-size: 0.95rem;
-            color: var(--text-secondary);
-            max-width: 500px;
+            color: var(--text-2);
             line-height: 1.7;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
+            max-width: 550px;
         }
 
         .hero-meta {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
+            margin-bottom: 1.2rem;
         }
 
-        .meta-item {
+        .meta {
+            font-size: 0.85rem;
+            color: var(--text-3);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            color: var(--text-muted);
+            gap: 0.4rem;
         }
 
-        .meta-item strong {
-            color: var(--text-secondary);
-            font-weight: 600;
-        }
+        .meta strong { color: var(--text-2); }
 
-        .hero-actions {
-            display: flex;
-            gap: 0.8rem;
-            margin-top: 1.5rem;
-        }
+        .hero-btns { display: flex; gap: 0.7rem; flex-wrap: wrap; }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.7rem 1.4rem;
+            gap: 0.4rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 8px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.2s;
@@ -218,37 +203,24 @@
             font-family: inherit;
         }
 
-        .btn-primary {
-            background: var(--accent);
-            color: #fff;
+        .btn-blue { background: var(--blue); color: #fff; }
+        .btn-blue:hover { background: var(--blue-dark); box-shadow: var(--shadow-md); }
+        .btn-outline { background: var(--white); color: var(--text); border: 1px solid var(--border); }
+        .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+        /* ===== DIVIDER ===== */
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 0;
         }
 
-        .btn-primary:hover {
-            background: var(--accent-dark);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-outline {
-            background: var(--bg-white);
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        /* ===== SECTIONS ===== */
+        /* ===== SECTION ===== */
         .section {
-            padding: 3rem 0;
+            padding: 2.5rem 0;
         }
 
-        .section + .section {
-            border-top: 1px solid var(--border-light);
-        }
-
-        .section-header {
+        .section-head {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -256,40 +228,70 @@
         }
 
         .section-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.5rem;
         }
 
-        .section-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
+        .section-title .icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* ===== SUMMARY ===== */
+        .summary {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+        }
+
+        .summary p {
+            font-size: 0.95rem;
+            color: var(--text-2);
+            line-height: 1.8;
+        }
+
+        .summary-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: var(--blue-light);
+            color: var(--blue);
+            padding: 0.25rem 0.7rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
         }
 
         /* ===== SKILLS ===== */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 1rem;
         }
 
-        .skill-item {
-            background: var(--bg-white);
+        .skill-card {
+            background: var(--white);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 1.2rem;
             transition: all 0.2s;
         }
 
-        .skill-item:hover {
-            border-color: var(--accent);
+        .skill-card:hover {
+            border-color: var(--blue);
             box-shadow: var(--shadow);
         }
 
@@ -301,68 +303,61 @@
         }
 
         .skill-name {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
-        .skill-percent {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--accent);
+        .skill-pct {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--blue);
             font-weight: 500;
         }
 
         .skill-bar {
-            height: 6px;
-            background: var(--bg-light);
+            height: 5px;
+            background: var(--border-light);
             border-radius: 3px;
             overflow: hidden;
         }
 
         .skill-fill {
             height: 100%;
-            background: var(--accent);
+            background: var(--blue);
             border-radius: 3px;
             width: 0;
-            transition: width 1.2s ease;
-        }
-
-        .skill-desc {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
+            transition: width 1s ease;
         }
 
         /* ===== EXPERIENCE ===== */
-        .exp-list { display: flex; flex-direction: column; gap: 1rem; }
-
         .exp-card {
-            background: var(--bg-white);
+            background: var(--white);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 1.5rem;
             display: flex;
-            gap: 1.5rem;
+            gap: 1.2rem;
+            margin-bottom: 1rem;
             transition: all 0.2s;
         }
 
         .exp-card:hover {
-            border-color: var(--accent);
+            border-color: var(--blue);
             box-shadow: var(--shadow);
         }
 
         .exp-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: var(--accent-light);
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: var(--blue-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             flex-shrink: 0;
         }
 
@@ -372,148 +367,121 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
             flex-wrap: wrap;
             gap: 0.5rem;
         }
 
-        .exp-title { font-size: 1.05rem; font-weight: 700; }
+        .exp-title { font-size: 1rem; font-weight: 700; }
 
         .exp-date {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--accent);
-            background: var(--accent-light);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--blue);
+            background: var(--blue-light);
             padding: 0.2rem 0.6rem;
-            border-radius: 6px;
+            border-radius: 5px;
         }
 
-        .exp-company {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
+        .exp-company { font-size: 0.85rem; color: var(--text-3); margin-bottom: 0.5rem; }
 
-        .exp-desc {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
+        .exp-desc { font-size: 0.88rem; color: var(--text-2); line-height: 1.7; }
 
         /* ===== EDUCATION ===== */
         .edu-card {
-            background: var(--bg-white);
+            background: var(--white);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 1.5rem;
+            padding: 1.3rem;
             display: flex;
             align-items: center;
-            gap: 1.2rem;
+            gap: 1rem;
         }
 
         .edu-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: var(--success-light);
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: var(--green-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             flex-shrink: 0;
         }
 
-        .edu-title { font-size: 1rem; font-weight: 700; }
-        .edu-school { font-size: 0.9rem; color: var(--text-secondary); }
-        .edu-year { font-size: 0.8rem; color: var(--text-muted); }
+        .edu-title { font-size: 0.95rem; font-weight: 700; }
+        .edu-school { font-size: 0.85rem; color: var(--text-3); }
+        .edu-year { font-size: 0.8rem; color: var(--text-4); }
 
         /* ===== CERTS ===== */
         .certs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 0.8rem;
         }
 
         .cert-item {
-            background: var(--bg-white);
+            background: var(--white);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 1rem 1.2rem;
+            padding: 0.9rem 1.1rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
             transition: all 0.2s;
         }
 
-        .cert-item:hover {
-            border-color: var(--accent);
-            box-shadow: var(--shadow-sm);
-        }
+        .cert-item:hover { border-color: var(--blue); }
 
         .cert-badge {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1rem;
             flex-shrink: 0;
         }
 
-        .cert-name { font-size: 0.9rem; font-weight: 600; }
-        .cert-org { font-size: 0.8rem; color: var(--text-muted); }
+        .cert-name { font-size: 0.85rem; font-weight: 600; }
+        .cert-org { font-size: 0.75rem; color: var(--text-4); }
 
-        /* ===== LANGUAGES ===== */
-        .lang-grid {
+        /* ===== SOFT SKILLS ===== */
+        .soft-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
+            gap: 0.8rem;
         }
 
-        .lang-item {
-            background: var(--bg-white);
+        .soft-item {
+            background: var(--white);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 1.2rem;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.2s;
         }
 
-        .lang-name {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
+        .soft-item:hover { border-color: var(--blue); }
 
-        .lang-level {
-            font-size: 0.8rem;
-            color: var(--accent);
+        .soft-icon {
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
 
-        .lang-bar {
-            height: 4px;
-            background: var(--bg-light);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .lang-fill {
-            height: 100%;
-            background: var(--accent);
-            border-radius: 2px;
-            width: 0;
-            transition: width 1s ease;
-        }
+        .soft-name { font-size: 0.85rem; font-weight: 600; }
 
         /* ===== CONTACT ===== */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.8rem;
         }
 
         .contact-item {
-            background: var(--bg-white);
+            background: var(--white);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 1.2rem;
@@ -522,100 +490,95 @@
             transition: all 0.2s;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
         }
 
         .contact-item:hover {
-            border-color: var(--accent);
+            border-color: var(--blue);
             box-shadow: var(--shadow);
         }
 
         .contact-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             flex-shrink: 0;
         }
 
         .contact-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
+            font-size: 0.7rem;
+            color: var(--text-4);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .contact-value {
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
+        .contact-value { font-size: 0.85rem; font-weight: 600; }
 
-        /* ===== ABOUT ===== */
-        .about-text {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            max-width: 700px;
-        }
-
-        .about-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
-        .about-tag {
-            background: var(--bg-light);
+        /* ===== LANGUAGES ===== */
+        .lang-card {
+            background: var(--white);
             border: 1px solid var(--border);
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
+            border-radius: var(--radius);
+            padding: 1.2rem;
+            max-width: 300px;
+        }
+
+        .lang-name { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; }
+        .lang-level { font-size: 0.8rem; color: var(--blue); margin-bottom: 0.5rem; }
+
+        .lang-bar {
+            height: 4px;
+            background: var(--border-light);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .lang-fill {
+            height: 100%;
+            background: var(--blue);
+            border-radius: 2px;
+            width: 0;
+            transition: width 1s ease;
         }
 
         /* ===== FOOTER ===== */
         footer {
-            background: var(--bg-white);
+            background: var(--white);
             border-top: 1px solid var(--border);
             padding: 2rem 0;
             text-align: center;
             margin-top: 2rem;
         }
 
-        footer p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        footer a { color: var(--accent); text-decoration: none; }
+        footer p { font-size: 0.85rem; color: var(--text-4); }
+        footer a { color: var(--blue); text-decoration: none; }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .header-nav { display: none; }
-            .hero-inner { flex-direction: column; text-align: center; }
+            .nav-links { display: none; }
+            .hero { flex-direction: column; align-items: center; text-align: center; }
+            .hero-desc { margin: 0 auto 1.2rem; }
+            .hero-btns { justify-content: center; }
             .hero-meta { justify-content: center; }
-            .hero-actions { justify-content: center; }
-            .hero-desc { margin: 0 auto 1.5rem; }
             .skills-grid { grid-template-columns: 1fr; }
             .certs-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
-            .lang-grid { grid-template-columns: 1fr; }
+            .soft-grid { grid-template-columns: repeat(2, 1fr); }
             .exp-card { flex-direction: column; }
-            .section-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
         }
 
         /* ===== ANIMATIONS ===== */
-        .fade-up {
+        .fade {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
+            transform: translateY(15px);
+            transition: all 0.5s ease;
         }
 
-        .fade-up.visible {
+        .fade.show {
             opacity: 1;
             transform: translateY(0);
         }
@@ -623,167 +586,217 @@
 </head>
 <body>
 
-<!-- Header -->
-<header>
-    <div class="header-inner">
-        <div class="header-name">Rubens Pereira Fernandes</div>
-        <div class="header-nav">
+<!-- Nav -->
+<nav>
+    <div class="nav-inner">
+        <div class="nav-name">Rubens Pereira Fernandes</div>
+        <div class="nav-links">
             <a href="#sobre">Sobre</a>
             <a href="#skills">Skills</a>
             <a href="#exp">Experiência</a>
             <a href="#certs">Certificações</a>
             <a href="#contato">Contato</a>
-            <a href="#contato" class="header-btn">✉️ Contatar</a>
+            <a href="#contato" class="nav-cv">✉️ Contatar</a>
         </div>
     </div>
-</header>
+</nav>
 
-<!-- Hero -->
-<section class="hero">
-    <div class="container">
-        <div class="hero-inner">
-            <div class="hero-photo">👨‍💻</div>
-            <div class="hero-info">
-                <div class="hero-badge">Disponível para oportunidades</div>
-                <h1>Rubens Pereira Fernandes</h1>
-                <div class="hero-role">Profissional de Logística & Tecnologia</div>
-                <p class="hero-desc">
-                    Busco realização pessoal e profissional por meio da dedicação, responsabilidade e busca constante por conhecimento. Comprometido com a superação de expectativas e com o crescimento da empresa.
-                </p>
-                <div class="hero-meta">
-                    <div class="meta-item">📍 <strong>Limoeiro, PE</strong></div>
-                    <div class="meta-item">🎂 <strong>19 anos</strong></div>
-                    <div class="meta-item">📞 <strong>+55 81 98950-1999</strong></div>
-                </div>
-                <div class="hero-actions">
-                    <a href="mailto:rubensfernandes2112@gmail.com" class="btn btn-primary">✉️ Enviar email</a>
-                    <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="btn btn-outline">🔗 LinkedIn</a>
-                </div>
+<div class="main">
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-photo">👨‍💻</div>
+        <div class="hero-info">
+            <div class="hero-badge">Disponível para oportunidades</div>
+            <h1>Rubens Pereira Fernandes</h1>
+            <div class="hero-role">Profissional de Logística & Tecnologia</div>
+            <p class="hero-desc">
+                Profissional dedicado e proativo com experiência em operações de depósito e logística. Busco constantemente novos conhecimentos e desafios que contribuam para meu desenvolvimento pessoal e profissional.
+            </p>
+            <div class="hero-meta">
+                <div class="meta">📍 <strong>Limoeiro, PE</strong></div>
+                <div class="meta">🎂 <strong>26 anos</strong></div>
+                <div class="meta">📅 <strong>19/05/2000</strong></div>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- Main Content -->
-<main class="container">
-
-    <!-- Sobre -->
-    <section class="section" id="sobre">
-        <div class="section-header">
-            <div class="section-title">
-                <div class="section-icon" style="background: var(--accent-light);">👤</div>
-                Sobre mim
+            <div class="hero-meta">
+                <div class="meta">📞 <strong>+55 81 98950-1999</strong></div>
+                <div class="meta">✉️ <strong>rubensfernandes2112@gmail.com</strong></div>
             </div>
-        </div>
-        <p class="about-text">
-            Profissional dedicado e proativo, com experiência em operações de depósito e logística. Busco constantemente novos conhecimentos e desafios que contribuam para meu desenvolvimento pessoal e profissional. Acredito que a dedicação e a responsabilidade são a chave para o sucesso.
-        </p>
-        <div class="about-tags">
-            <span class="about-tag">Logística</span>
-            <span class="about-tag">Empilhadeira</span>
-            <span class="about-tag">Java</span>
-            <span class="about-tag">HTML/CSS</span>
-            <span class="about-tag">Power BI</span>
-            <span class="about-tag">Informática</span>
+            <div class="hero-btns">
+                <a href="mailto:rubensfernandes2112@gmail.com" class="btn btn-blue">✉️ Enviar email</a>
+                <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="btn btn-outline">🔗 LinkedIn</a>
+            </div>
         </div>
     </section>
 
+    <div class="divider"></div>
+
+    <!-- Sobre -->
+    <section class="section" id="sobre">
+        <div class="section-head">
+            <div class="section-title">
+                <span class="icon" style="background: var(--blue-light);">👤</span>
+                Resumo Profissional
+            </div>
+        </div>
+        <div class="summary">
+            <p>
+                Profissional com experiência em operações de logística e depósito, atuando em empresas de grande porte. Possuo habilidades em operação de empilhadeira, controle de inventário e expedição de mercadorias. Paralelamente, desenvolvo conhecimentos em tecnologia, incluindo programação (Java, HTML, CSS) e ferramentas de análise de dados (Power BI). Busco sempre evoluir profissionalmente e contribuir para o crescimento da organização.
+            </p>
+            <div class="summary-tags">
+                <span class="tag">Logística</span>
+                <span class="tag">Empilhadeira</span>
+                <span class="tag">Power BI</span>
+                <span class="tag">Java</span>
+                <span class="tag">HTML/CSS</span>
+                <span class="tag">Office</span>
+                <span class="tag">Inventário</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
     <!-- Skills -->
     <section class="section" id="skills">
-        <div class="section-header">
+        <div class="section-head">
             <div class="section-title">
-                <div class="section-icon" style="background: var(--accent-light);">💡</div>
-                Habilidades
+                <span class="icon" style="background: var(--blue-light);">💡</span>
+                Habilidades Técnicas
             </div>
         </div>
         <div class="skills-grid">
-            <div class="skill-item fade-up">
+            <div class="skill-card fade">
                 <div class="skill-top">
                     <div class="skill-name">🏗️ Operação de Empilhadeira</div>
-                    <div class="skill-percent">90%</div>
+                    <div class="skill-pct">90%</div>
                 </div>
                 <div class="skill-bar">
                     <div class="skill-fill" data-width="90"></div>
                 </div>
-                <div class="skill-desc">Experiência comprovada em operação e manuseio de equipamentos</div>
             </div>
-            <div class="skill-item fade-up">
+            <div class="skill-card fade">
                 <div class="skill-top">
                     <div class="skill-name">📦 Logística de Depósito</div>
-                    <div class="skill-percent">85%</div>
+                    <div class="skill-pct">85%</div>
                 </div>
                 <div class="skill-bar">
                     <div class="skill-fill" data-width="85"></div>
                 </div>
-                <div class="skill-desc">Controle de inventário, expedição, recebimento e reposição</div>
             </div>
-            <div class="skill-item fade-up">
+            <div class="skill-card fade">
+                <div class="skill-top">
+                    <div class="skill-name">📊 Power BI</div>
+                    <div class="skill-pct">70%</div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" data-width="70"></div>
+                </div>
+            </div>
+            <div class="skill-card fade">
                 <div class="skill-top">
                     <div class="skill-name">💻 Informática</div>
-                    <div class="skill-percent">75%</div>
+                    <div class="skill-pct">75%</div>
                 </div>
                 <div class="skill-bar">
                     <div class="skill-fill" data-width="75"></div>
                 </div>
-                <div class="skill-desc">Ferramentas Office e sistemas computacionais</div>
             </div>
-            <div class="skill-item fade-up">
+            <div class="skill-card fade">
                 <div class="skill-top">
                     <div class="skill-name">☕ Java</div>
-                    <div class="skill-percent">45%</div>
+                    <div class="skill-pct">45%</div>
                 </div>
                 <div class="skill-bar">
                     <div class="skill-fill" data-width="45"></div>
                 </div>
-                <div class="skill-desc">Programação orientada a objetos</div>
             </div>
-            <div class="skill-item fade-up">
+            <div class="skill-card fade">
                 <div class="skill-top">
                     <div class="skill-name">🌐 HTML / CSS</div>
-                    <div class="skill-percent">60%</div>
+                    <div class="skill-pct">60%</div>
                 </div>
                 <div class="skill-bar">
                     <div class="skill-fill" data-width="60"></div>
                 </div>
-                <div class="skill-desc">Criação de páginas web responsivas</div>
             </div>
         </div>
     </section>
 
+    <div class="divider"></div>
+
+    <!-- Soft Skills -->
+    <section class="section">
+        <div class="section-head">
+            <div class="section-title">
+                <span class="icon" style="background: var(--purple-light);">🧠</span>
+                Competências Comportamentais
+            </div>
+        </div>
+        <div class="soft-grid">
+            <div class="soft-item fade">
+                <div class="soft-icon">🎯</div>
+                <div class="soft-name">Foco em Resultados</div>
+            </div>
+            <div class="soft-item fade">
+                <div class="soft-icon">🤝</div>
+                <div class="soft-name">Trabalho em Equipe</div>
+            </div>
+            <div class="soft-item fade">
+                <div class="soft-icon">⏰</div>
+                <div class="soft-name">Pontualidade</div>
+            </div>
+            <div class="soft-item fade">
+                <div class="soft-icon">📚</div>
+                <div class="soft-name">Aprendizado Contínuo</div>
+            </div>
+            <div class="soft-item fade">
+                <div class="soft-icon">🔍</div>
+                <div class="soft-name">Atenção aos Detalhes</div>
+            </div>
+            <div class="soft-item fade">
+                <div class="soft-icon">💪</div>
+                <div class="soft-name">Resiliência</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
     <!-- Experiência -->
     <section class="section" id="exp">
-        <div class="section-header">
+        <div class="section-head">
             <div class="section-title">
-                <div class="section-icon" style="background: var(--accent-light);">💼</div>
+                <span class="icon" style="background: var(--blue-light);">💼</span>
                 Experiência Profissional
             </div>
         </div>
-        <div class="exp-list">
-            <div class="exp-card fade-up">
-                <div class="exp-icon">📦</div>
-                <div class="exp-content">
-                    <div class="exp-top">
-                        <div class="exp-title">Auxiliar de Depósito</div>
-                        <div class="exp-date">2022 — 2023</div>
-                    </div>
-                    <div class="exp-company">Ferreira Costa — Recife, PE</div>
-                    <div class="exp-desc">
-                        Atividades de expedição, recebimento, entrega e reposição de mercadorias. Conferência rigorosa para garantia de integridade do inventário. Trabalho em equipe em ambiente de alto volume de operações.
-                    </div>
+        <div class="exp-card fade">
+            <div class="exp-icon">📦</div>
+            <div class="exp-content">
+                <div class="exp-top">
+                    <div class="exp-title">Auxiliar de Depósito</div>
+                    <div class="exp-date">2022 — 2023</div>
+                </div>
+                <div class="exp-company">Ferreira Costa — Recife, PE</div>
+                <div class="exp-desc">
+                    Responsável por atividades de expedição, recebimento, entrega e reposição de mercadorias. Realização de conferência rigorosa para garantia de integridade do inventário. Atuação em equipe em ambiente de alto volume de operações, garantindo eficiência e qualidade no processo logístico.
                 </div>
             </div>
         </div>
     </section>
 
+    <div class="divider"></div>
+
     <!-- Educação -->
     <section class="section" id="edu">
-        <div class="section-header">
+        <div class="section-head">
             <div class="section-title">
-                <div class="section-icon" style="background: var(--success-light);">🎓</div>
+                <span class="icon" style="background: var(--green-light);">🎓</span>
                 Formação Acadêmica
             </div>
         </div>
-        <div class="edu-card fade-up">
+        <div class="edu-card fade">
             <div class="edu-icon">📚</div>
             <div>
                 <div class="edu-title">Ensino Médio Completo</div>
@@ -793,59 +806,61 @@
         </div>
     </section>
 
+    <div class="divider"></div>
+
     <!-- Certificações -->
     <section class="section" id="certs">
-        <div class="section-header">
+        <div class="section-head">
             <div class="section-title">
-                <div class="section-icon" style="background: #fef3c7;">🏆</div>
+                <span class="icon" style="background: var(--orange-light);">🏆</span>
                 Certificações
             </div>
         </div>
         <div class="certs-grid">
-            <div class="cert-item fade-up">
-                <div class="cert-badge" style="background: var(--accent-light);">🏗️</div>
+            <div class="cert-item fade">
+                <div class="cert-badge" style="background: var(--blue-light);">🏗️</div>
                 <div>
                     <div class="cert-name">Operador de Empilhadeira</div>
                     <div class="cert-org">ESTTJ · 2024</div>
                 </div>
             </div>
-            <div class="cert-item fade-up">
-                <div class="cert-badge" style="background: #f0fdf4;">📦</div>
+            <div class="cert-item fade">
+                <div class="cert-badge" style="background: var(--green-light);">📦</div>
                 <div>
                     <div class="cert-name">Curso de Logística</div>
                     <div class="cert-org">EDUCAWEB · 2024</div>
                 </div>
             </div>
-            <div class="cert-item fade-up">
-                <div class="cert-badge" style="background: #fef3c7;">📊</div>
+            <div class="cert-item fade">
+                <div class="cert-badge" style="background: var(--orange-light);">📊</div>
                 <div>
                     <div class="cert-name">Power BI Intensivo</div>
                     <div class="cert-org">Hashtag Treinamentos · 2024</div>
                 </div>
             </div>
-            <div class="cert-item fade-up">
-                <div class="cert-badge" style="background: #fee2e2;">☕</div>
+            <div class="cert-item fade">
+                <div class="cert-badge" style="background: var(--red-light);">☕</div>
                 <div>
                     <div class="cert-name">Java Básico</div>
                     <div class="cert-org">Fundação Bradesco · 2023</div>
                 </div>
             </div>
-            <div class="cert-item fade-up">
-                <div class="cert-badge" style="background: var(--accent-light);">🌐</div>
+            <div class="cert-item fade">
+                <div class="cert-badge" style="background: var(--blue-light);">🌐</div>
                 <div>
                     <div class="cert-name">Criação de Site (HTML, CSS, JS)</div>
                     <div class="cert-org">Fundação Bradesco · 2023</div>
                 </div>
             </div>
-            <div class="cert-item fade-up">
-                <div class="cert-badge" style="background: #f0fdf4;">📄</div>
+            <div class="cert-item fade">
+                <div class="cert-badge" style="background: var(--green-light);">📄</div>
                 <div>
                     <div class="cert-name">HTML Avançado</div>
                     <div class="cert-org">2023</div>
                 </div>
             </div>
-            <div class="cert-item fade-up">
-                <div class="cert-badge" style="background: #f3e8ff;">🖥️</div>
+            <div class="cert-item fade">
+                <div class="cert-badge" style="background: var(--purple-light);">🖥️</div>
                 <div>
                     <div class="cert-name">Informática Básica</div>
                     <div class="cert-org">2017</div>
@@ -854,57 +869,59 @@
         </div>
     </section>
 
+    <div class="divider"></div>
+
     <!-- Idiomas -->
     <section class="section" id="lang">
-        <div class="section-header">
+        <div class="section-head">
             <div class="section-title">
-                <div class="section-icon" style="background: #f3e8ff;">🌍</div>
+                <span class="icon" style="background: var(--purple-light);">🌍</span>
                 Idiomas
             </div>
         </div>
-        <div class="lang-grid">
-            <div class="lang-item fade-up">
-                <div class="lang-name">Português</div>
-                <div class="lang-level">Nativo</div>
-                <div class="lang-bar">
-                    <div class="lang-fill" data-width="100"></div>
-                </div>
+        <div class="lang-card fade">
+            <div class="lang-name">Português</div>
+            <div class="lang-level">Nativo</div>
+            <div class="lang-bar">
+                <div class="lang-fill" data-width="100"></div>
             </div>
         </div>
     </section>
 
+    <div class="divider"></div>
+
     <!-- Contato -->
     <section class="section" id="contato">
-        <div class="section-header">
+        <div class="section-head">
             <div class="section-title">
-                <div class="section-icon" style="background: var(--accent-light);">📬</div>
+                <span class="icon" style="background: var(--blue-light);">📬</span>
                 Contato
             </div>
         </div>
         <div class="contact-grid">
-            <a href="tel:+5581989501999" class="contact-item fade-up">
-                <div class="contact-icon" style="background: var(--success-light);">📱</div>
+            <a href="tel:+5581989501999" class="contact-item fade">
+                <div class="contact-icon" style="background: var(--green-light);">📱</div>
                 <div>
                     <div class="contact-label">Telefone</div>
                     <div class="contact-value">+55 81 98950-1999</div>
                 </div>
             </a>
-            <a href="mailto:rubensfernandes2112@gmail.com" class="contact-item fade-up">
-                <div class="contact-icon" style="background: var(--accent-light);">✉️</div>
+            <a href="mailto:rubensfernandes2112@gmail.com" class="contact-item fade">
+                <div class="contact-icon" style="background: var(--blue-light);">✉️</div>
                 <div>
                     <div class="contact-label">Email</div>
                     <div class="contact-value">rubensfernandes2112@gmail.com</div>
                 </div>
             </a>
-            <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="contact-item fade-up">
+            <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="contact-item fade">
                 <div class="contact-icon" style="background: #dbeafe;">🔗</div>
                 <div>
                     <div class="contact-label">LinkedIn</div>
                     <div class="contact-value">/in/rubens-fernandes</div>
                 </div>
             </a>
-            <div class="contact-item fade-up">
-                <div class="contact-icon" style="background: #fee2e2;">📍</div>
+            <div class="contact-item fade">
+                <div class="contact-icon" style="background: var(--red-light);">📍</div>
                 <div>
                     <div class="contact-label">Localização</div>
                     <div class="contact-value">Limoeiro, PE — Brasil</div>
@@ -913,35 +930,35 @@
         </div>
     </section>
 
-</main>
+</div>
 
 <!-- Footer -->
 <footer>
-    <div class="container">
+    <div class="main">
         <p>© 2026 Rubens Pereira Fernandes · <a href="mailto:rubensfernandes2112@gmail.com">rubensfernandes2112@gmail.com</a></p>
     </div>
 </footer>
 
 <script>
 // Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            const bar = entry.target.querySelector('.skill-fill, .lang-fill');
+const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('show');
+            const bar = e.target.querySelector('.skill-fill, .lang-fill');
             if (bar) bar.style.width = bar.dataset.width + '%';
         }
     });
 }, { threshold: 0.2 });
 
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
         e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 });
 </script>
