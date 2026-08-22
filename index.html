@@ -37,6 +37,63 @@
             overflow-x: hidden;
         }
 
+        /* ===== LOADER ===== */
+.loader {
+    position: fixed;
+            inset: 0;
+            background: var(--bg);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s, visibility 0.6s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content { text-align: center; }
+
+        .loader-name {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            animation: loaderPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes loaderPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.7; }
+        }
+
+        .loader-bar {
+            width: 120px;
+            height: 3px;
+            background: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .loader-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--blue), var(--purple));
+            width: 0;
+            border-radius: 2px;
+            animation: loaderFill 1.5s ease forwards;
+        }
+
+        @keyframes loaderFill {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
         /* ===== NAV ===== */
         .nav {
             background: rgba(255,255,255,0.82);
@@ -93,6 +150,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .hero-enter > * {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-enter.animate > * {
+            animation: heroReveal 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .hero-enter.animate > *:nth-child(1) { animation-delay: 0.1s; }
+        .hero-enter.animate > *:nth-child(2) { animation-delay: 0.2s; }
+        .hero-enter.animate > *:nth-child(3) { animation-delay: 0.3s; }
+        .hero-enter.animate > *:nth-child(4) { animation-delay: 0.4s; }
+        .hero-enter.animate > *:nth-child(5) { animation-delay: 0.5s; }
+        .hero-enter.animate > *:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes heroReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-bg-photo {
@@ -720,6 +800,16 @@
 </head>
 <body>
 
+<!-- Loading Screen -->
+<div class="loader" id="loader">
+    <div class="loader-content">
+        <div class="loader-name">RPF</div>
+        <div class="loader-bar">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+</div>
+
 <!-- Nav -->
 <div class="nav" id="nav">
     <div class="nav-inner">
@@ -740,7 +830,7 @@
     <div class="hero-bg-photo">
         <img src="foto-sem-fundo.png" alt="Rubens Pereira Fernandes" class="hero-bg-img">
     </div>
-    <div class="hero-content">
+    <div class="hero-content hero-enter">
         <div class="hero-badge">Disponível para oportunidades</div>
         <div class="hero-name-parallax" id="parallaxName">
             <div class="name-layer name-layer-1" data-speed="0.02">Rubens</div>
@@ -958,6 +1048,14 @@ const obs = new IntersectionObserver(entries => {
     });
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Loader
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+        document.querySelector('.hero-enter').classList.add('animate');
+    }, 1800);
+});
 
 // Parallax name effect
 const parallaxName = document.getElementById('parallaxName');
