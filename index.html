@@ -191,6 +191,58 @@
             letter-spacing: -0.04em;
             line-height: 1.05;
             margin-bottom: 0.6rem;
+            display: none;
+        }
+
+        .hero-name-3d {
+            margin-bottom: 0.8rem;
+            perspective: 800px;
+        }
+
+        .name-3d {
+            display: block;
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            color: var(--text);
+            text-shadow: 
+                0 1px 0 #c9c9c9,
+                0 2px 0 #b9b9b9,
+                0 3px 0 #aaa,
+                0 4px 0 #9a9a9a,
+                0 5px 0 #8a8a8a,
+                0 6px 1px rgba(0,0,0,.1),
+                0 0 5px rgba(0,0,0,.1),
+                0 1px 3px rgba(0,0,0,.3),
+                0 3px 5px rgba(0,0,0,.2),
+                0 5px 10px rgba(0,0,0,.25),
+                0 10px 10px rgba(0,0,0,.2),
+                0 20px 20px rgba(0,0,0,.15);
+            transform: rotateX(15deg) rotateY(-2deg);
+            transform-origin: center bottom;
+            transition: transform 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99);
+            animation: name3d 6s ease-in-out infinite;
+        }
+
+        .name-3d:hover {
+            transform: rotateX(5deg) rotateY(0deg) scale(1.02);
+        }
+
+        .name-3d.sub {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+            margin-top: 0.2rem;
+        }
+
+        @keyframes name3d {
+            0%, 100% { transform: rotateX(15deg) rotateY(-2deg); }
+            25% { transform: rotateX(10deg) rotateY(2deg); }
+            50% { transform: rotateX(12deg) rotateY(-1deg); }
+            75% { transform: rotateX(8deg) rotateY(1deg); }
         }
 
         .hero h1 .gradient {
@@ -690,7 +742,10 @@
     </div>
     <div class="hero-content">
         <div class="hero-badge">Disponível para oportunidades</div>
-        <h1><span class="gradient">Rubens</span><br>Pereira Fernandes</h1>
+        <div class="hero-name-3d">
+            <span class="name-3d" data-text="Rubens">Rubens</span>
+            <span class="name-3d sub" data-text="Pereira Fernandes">Pereira Fernandes</span>
+        </div>
         <div class="hero-role">Logística & Tecnologia</div>
         <div class="hero-meta">
             <div>📍 <strong>Limoeiro, PE</strong></div>
