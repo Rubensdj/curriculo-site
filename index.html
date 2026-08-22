@@ -3,406 +3,384 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rubens Pereira Fernandes — Currículo Profissional</title>
-    <meta name="description" content="Currículo profissional de Rubens Pereira Fernandes — Profissional de Logística e Tecnologia com experiência em operações de depósito.">
-    <meta property="og:title" content="Rubens Pereira Fernandes — Currículo Profissional">
-    <meta property="og:description" content="Profissional de Logística e Tecnologia. 26 anos de experiência em operações de depósito e desenvolvimento web.">
+    <title>Rubens Pereira Fernandes — Currículo</title>
+    <meta name="description" content="Currículo profissional de Rubens Pereira Fernandes — Logística e Tecnologia.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg: #f8fafc;
+            --black: #1d1d1f;
+            --gray-1: #424245;
+            --gray-2: #6e6e73;
+            --gray-3: #86868b;
+            --gray-4: #d2d2d7;
+            --gray-5: #f5f5f7;
             --white: #ffffff;
-            --border: #e2e8f0;
-            --border-light: #f1f5f9;
-            --text: #0f172a;
-            --text-2: #334155;
-            --text-3: #64748b;
-            --text-4: #94a3b8;
-            --blue: #2563eb;
-            --blue-light: #eff6ff;
-            --blue-dark: #1d4ed8;
-            --green: #16a34a;
-            --green-light: #f0fdf4;
-            --red: #dc2626;
-            --red-light: #fef2f2;
-            --orange: #ea580c;
-            --orange-light: #fff7ed;
-            --purple: #7c3aed;
-            --purple-light: #f5f3ff;
-            --radius: 10px;
-            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --blue: #0071e3;
+            --blue-hover: #0077ED;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            background: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
         }
+
+        /* ===== PROMO BANNER ===== */
+        .promo {
+            background: var(--gray-5);
+            text-align: center;
+            padding: 0.6rem 1rem;
+            font-size: 0.8rem;
+            color: var(--gray-2);
+            border-bottom: 1px solid var(--gray-4);
+        }
+
+        .promo a { color: var(--blue); text-decoration: none; }
 
         /* ===== NAV ===== */
         nav {
-            background: var(--white);
-            border-bottom: 1px solid var(--border);
+            background: rgba(255,255,255,0.82);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 999;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
         }
 
         .nav-inner {
-            max-width: 900px;
+            max-width: 980px;
             margin: 0 auto;
-            padding: 0.9rem 2rem;
+            padding: 0 22px;
+            height: 44px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .nav-name {
+        .nav-logo {
+            font-size: 1.1rem;
             font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--text);
+            color: var(--black);
+            text-decoration: none;
         }
 
         .nav-links { display: flex; gap: 1.8rem; align-items: center; }
 
         .nav-links a {
-            color: var(--text-3);
+            font-size: 0.82rem;
+            color: var(--gray-1);
             text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: color 0.2s;
+            transition: color 0.3s;
         }
 
-        .nav-links a:hover { color: var(--blue); }
+        .nav-links a:hover { color: var(--black); }
 
-        .nav-cv {
-            background: var(--blue);
+        .nav-cta {
+            background: var(--blue) !important;
             color: #fff !important;
-            padding: 0.45rem 1rem;
-            border-radius: 6px;
-            font-weight: 600 !important;
-            font-size: 0.8rem !important;
-            transition: background 0.2s;
+            padding: 0.4rem 1rem !important;
+            border-radius: 980px;
+            font-weight: 500 !important;
+            transition: background 0.3s !important;
         }
 
-        .nav-cv:hover { background: var(--blue-dark); }
-
-        /* ===== MAIN ===== */
-        .main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+        .nav-cta:hover { background: var(--blue-hover) !important; }
 
         /* ===== HERO ===== */
         .hero {
-            padding: 3rem 0;
-            display: flex;
-            gap: 2.5rem;
-            align-items: flex-start;
+            text-align: center;
+            padding: 5rem 1.5rem 4rem;
+            background: var(--gray-5);
+            border-bottom: 1px solid var(--gray-4);
         }
 
-        .hero-photo {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            color: #fff;
-            flex-shrink: 0;
-            box-shadow: 0 8px 24px rgba(37,99,235,0.2);
-        }
-
-        .hero-info { flex: 1; }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: var(--green-light);
-            color: var(--green);
-            padding: 0.3rem 0.7rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
+        .hero-eyebrow {
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .hero-badge::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--green);
-            border-radius: 50%;
+            color: var(--gray-3);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
         }
 
         .hero h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.2rem;
-        }
-
-        .hero-role {
-            font-size: 1.05rem;
-            color: var(--blue);
-            font-weight: 600;
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
             margin-bottom: 0.8rem;
         }
 
-        .hero-desc {
+        .hero h1 .gradient {
+            background: linear-gradient(90deg, #0071e3, #5856d6, #bf5af2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-sub {
+            font-size: 1.3rem;
+            color: var(--gray-2);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .hero-note {
             font-size: 0.95rem;
-            color: var(--text-2);
-            line-height: 1.7;
-            margin-bottom: 1.2rem;
-            max-width: 550px;
+            color: var(--gray-3);
+            margin-bottom: 2rem;
         }
 
-        .hero-meta {
+        .hero-actions {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
+            justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 1.2rem;
         }
 
-        .meta {
-            font-size: 0.85rem;
-            color: var(--text-3);
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .meta strong { color: var(--text-2); }
-
-        .hero-btns { display: flex; gap: 0.7rem; flex-wrap: wrap; }
-
-        .btn {
+        .hero-btn {
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
+            padding: 0.7rem 1.4rem;
+            border-radius: 980px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .hero-btn.primary {
+            background: var(--blue);
+            color: #fff;
+        }
+
+        .hero-btn.primary:hover {
+            background: var(--blue-hover);
+        }
+
+        .hero-btn.secondary {
+            color: var(--blue);
+        }
+
+        .hero-btn.secondary:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        /* ===== FEATURE SECTION ===== */
+        .feature {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .feature-eyebrow {
             font-size: 0.85rem;
             font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
-            font-family: inherit;
-        }
-
-        .btn-blue { background: var(--blue); color: #fff; }
-        .btn-blue:hover { background: var(--blue-dark); box-shadow: var(--shadow-md); }
-        .btn-outline { background: var(--white); color: var(--text); border: 1px solid var(--border); }
-        .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
-
-        /* ===== DIVIDER ===== */
-        .divider {
-            height: 1px;
-            background: var(--border);
-            margin: 0;
-        }
-
-        /* ===== SECTION ===== */
-        .section {
-            padding: 2.5rem 0;
-        }
-
-        .section-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .section-title .icon {
-            width: 28px;
-            height: 28px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-
-        /* ===== SUMMARY ===== */
-        .summary {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-        }
-
-        .summary p {
-            font-size: 0.95rem;
-            color: var(--text-2);
-            line-height: 1.8;
-        }
-
-        .summary-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
-        .tag {
-            background: var(--blue-light);
             color: var(--blue);
-            padding: 0.25rem 0.7rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.3rem;
         }
 
-        /* ===== SKILLS ===== */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 1rem;
-        }
-
-        .skill-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.2rem;
-            transition: all 0.2s;
-        }
-
-        .skill-card:hover {
-            border-color: var(--blue);
-            box-shadow: var(--shadow);
-        }
-
-        .skill-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .feature h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
             margin-bottom: 0.5rem;
         }
 
-        .skill-name {
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
+        .feature-sub {
+            font-size: 1.1rem;
+            color: var(--gray-2);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .skill-pct {
-            font-family: 'JetBrains Mono', monospace;
+        /* ===== CARD GRID ===== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 12px;
+        }
+
+        .card {
+            background: var(--gray-5);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--gray-2);
+            line-height: 1.5;
+        }
+
+        .card-badge {
+            display: inline-block;
+            margin-top: 0.8rem;
             font-size: 0.75rem;
+            font-weight: 600;
             color: var(--blue);
-            font-weight: 500;
+            background: rgba(0,113,227,0.08);
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+        }
+
+        /* ===== SKILL BARS ===== */
+        .skill-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-4);
+        }
+
+        .skill-row:last-child { border-bottom: none; }
+
+        .skill-icon {
+            font-size: 1.3rem;
+            width: 40px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .skill-info { flex: 1; }
+
+        .skill-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
         }
 
         .skill-bar {
-            height: 5px;
-            background: var(--border-light);
+            height: 6px;
+            background: var(--gray-4);
             border-radius: 3px;
             overflow: hidden;
         }
 
         .skill-fill {
             height: 100%;
-            background: var(--blue);
+            background: linear-gradient(90deg, var(--blue), #5856d6);
             border-radius: 3px;
             width: 0;
-            transition: width 1s ease;
+            transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* ===== EXPERIENCE ===== */
-        .exp-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            display: flex;
-            gap: 1.2rem;
-            margin-bottom: 1rem;
-            transition: all 0.2s;
+        .skill-pct {
+            font-size: 0.8rem;
+            color: var(--gray-3);
+            font-weight: 500;
+            min-width: 35px;
+            text-align: right;
         }
 
-        .exp-card:hover {
-            border-color: var(--blue);
-            box-shadow: var(--shadow);
+        /* ===== TIMELINE ===== */
+        .timeline { text-align: left; }
+
+        .timeline-item {
+            background: var(--gray-5);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 12px;
         }
 
-        .exp-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            background: var(--blue-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .exp-content { flex: 1; }
-
-        .exp-top {
+        .timeline-top {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.5rem;
             flex-wrap: wrap;
             gap: 0.5rem;
         }
 
-        .exp-title { font-size: 1rem; font-weight: 700; }
-
-        .exp-date {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--blue);
-            background: var(--blue-light);
-            padding: 0.2rem 0.6rem;
-            border-radius: 5px;
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 700;
         }
 
-        .exp-company { font-size: 0.85rem; color: var(--text-3); margin-bottom: 0.5rem; }
+        .timeline-date {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--blue);
+            background: rgba(0,113,227,0.08);
+            padding: 0.2rem 0.7rem;
+            border-radius: 50px;
+        }
 
-        .exp-desc { font-size: 0.88rem; color: var(--text-2); line-height: 1.7; }
+        .timeline-company {
+            font-size: 0.95rem;
+            color: var(--gray-2);
+            margin-bottom: 0.8rem;
+        }
 
-        /* ===== EDUCATION ===== */
-        .edu-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.3rem;
+        .timeline-desc {
+            font-size: 0.95rem;
+            color: var(--gray-1);
+            line-height: 1.6;
+        }
+
+        /* ===== CERTS LIST ===== */
+        .cert-list { text-align: left; }
+
+        .cert-row {
             display: flex;
             align-items: center;
             gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-4);
         }
 
-        .edu-icon {
+        .cert-row:last-child { border-bottom: none; }
+
+        .cert-icon {
             width: 44px;
             height: 44px;
-            border-radius: 10px;
-            background: var(--green-light);
+            border-radius: 12px;
+            background: var(--gray-5);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -410,457 +388,407 @@
             flex-shrink: 0;
         }
 
-        .edu-title { font-size: 0.95rem; font-weight: 700; }
-        .edu-school { font-size: 0.85rem; color: var(--text-3); }
-        .edu-year { font-size: 0.8rem; color: var(--text-4); }
+        .cert-name { font-size: 0.95rem; font-weight: 600; }
+        .cert-org { font-size: 0.8rem; color: var(--gray-3); }
 
-        /* ===== CERTS ===== */
-        .certs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 0.8rem;
-        }
-
-        .cert-item {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 0.9rem 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            transition: all 0.2s;
-        }
-
-        .cert-item:hover { border-color: var(--blue); }
-
-        .cert-badge {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-
-        .cert-name { font-size: 0.85rem; font-weight: 600; }
-        .cert-org { font-size: 0.75rem; color: var(--text-4); }
-
-        /* ===== SOFT SKILLS ===== */
-        .soft-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 0.8rem;
-        }
-
-        .soft-item {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1rem;
-            text-align: center;
-            transition: all 0.2s;
-        }
-
-        .soft-item:hover { border-color: var(--blue); }
-
-        .soft-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .soft-name { font-size: 0.85rem; font-weight: 600; }
-
-        /* ===== CONTACT ===== */
+        /* ===== CONTACT SECTION ===== */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 0.8rem;
+            gap: 12px;
+            text-align: left;
         }
 
-        .contact-item {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.2rem;
+        .contact-card {
+            background: var(--gray-5);
+            border-radius: 20px;
+            padding: 1.5rem;
             text-decoration: none;
-            color: var(--text);
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
+            color: var(--black);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .contact-item:hover {
-            border-color: var(--blue);
-            box-shadow: var(--shadow);
+        .contact-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
         }
 
         .contact-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            flex-shrink: 0;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .contact-label {
-            font-size: 0.7rem;
-            color: var(--text-4);
+            font-size: 0.75rem;
+            color: var(--gray-3);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.2rem;
         }
 
-        .contact-value { font-size: 0.85rem; font-weight: 600; }
+        .contact-value { font-size: 0.9rem; font-weight: 600; }
 
-        /* ===== LANGUAGES ===== */
-        .lang-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.2rem;
-            max-width: 300px;
+        /* ===== STAT ROW ===== */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 3rem;
         }
 
-        .lang-name { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; }
-        .lang-level { font-size: 0.8rem; color: var(--blue); margin-bottom: 0.5rem; }
-
-        .lang-bar {
-            height: 4px;
-            background: var(--border-light);
-            border-radius: 2px;
-            overflow: hidden;
+        .stat-card {
+            background: var(--gray-5);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
         }
 
-        .lang-fill {
-            height: 100%;
-            background: var(--blue);
-            border-radius: 2px;
-            width: 0;
-            transition: width 1s ease;
+        .stat-num {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            background: linear-gradient(90deg, var(--blue), #5856d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-3);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-top: 0.3rem;
+        }
+
+        /* ===== PROMO SECTION ===== */
+        .promo-section {
+            background: var(--gray-5);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .promo-section h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+        }
+
+        .promo-section p {
+            font-size: 1rem;
+            color: var(--gray-2);
+            margin-bottom: 1.5rem;
         }
 
         /* ===== FOOTER ===== */
         footer {
-            background: var(--white);
-            border-top: 1px solid var(--border);
-            padding: 2rem 0;
+            padding: 1.5rem 0;
             text-align: center;
-            margin-top: 2rem;
+            border-top: 1px solid var(--gray-4);
         }
 
-        footer p { font-size: 0.85rem; color: var(--text-4); }
+        footer p {
+            font-size: 0.75rem;
+            color: var(--gray-3);
+        }
+
         footer a { color: var(--blue); text-decoration: none; }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero { flex-direction: column; align-items: center; text-align: center; }
-            .hero-desc { margin: 0 auto 1.2rem; }
-            .hero-btns { justify-content: center; }
-            .hero-meta { justify-content: center; }
-            .skills-grid { grid-template-columns: 1fr; }
-            .certs-grid { grid-template-columns: 1fr; }
+            .hero { padding: 4rem 1rem 3rem; }
+            .card-grid { grid-template-columns: 1fr; }
+            .stat-row { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
-            .soft-grid { grid-template-columns: repeat(2, 1fr); }
-            .exp-card { flex-direction: column; }
+            .timeline-top { flex-direction: column; }
         }
 
-        /* ===== ANIMATIONS ===== */
-        .fade {
+        /* ===== FADE IN ===== */
+        .reveal {
             opacity: 0;
-            transform: translateY(15px);
-            transition: all 0.5s ease;
+            transform: translateY(20px);
+            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .fade.show {
+        .reveal.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* ===== HORIZONTAL RULE ===== */
+        .section-divider {
+            max-width: 980px;
+            margin: 0 auto;
+            border: none;
+            border-top: 1px solid var(--gray-4);
         }
     </style>
 </head>
 <body>
 
+<!-- Promo -->
+<div class="promo">
+    Disponível para novas oportunidades · <a href="#contato">Entre em contato</a>
+</div>
+
 <!-- Nav -->
 <nav>
     <div class="nav-inner">
-        <div class="nav-name">Rubens Pereira Fernandes</div>
+        <a href="#" class="nav-logo">RPF</a>
         <div class="nav-links">
             <a href="#sobre">Sobre</a>
-            <a href="#skills">Skills</a>
+            <a href="#skills">Habilidades</a>
             <a href="#exp">Experiência</a>
             <a href="#certs">Certificações</a>
-            <a href="#contato">Contato</a>
-            <a href="#contato" class="nav-cv">✉️ Contatar</a>
+            <a href="#contato" class="nav-cta">Contato</a>
         </div>
     </div>
 </nav>
 
-<div class="main">
+<!-- Hero -->
+<section class="hero">
+    <div class="content">
+        <div class="hero-eyebrow">Currículo Profissional</div>
+        <h1><span class="gradient">Rubens</span><br>Pereira Fernandes</h1>
+        <div class="hero-sub">Logística & Tecnologia</div>
+        <div class="hero-note">26 anos · Limoeiro, PE · Disponível para oportunidades</div>
+        <div class="hero-actions">
+            <a href="mailto:rubensfernandes2112@gmail.com" class="hero-btn primary">✉️ Enviar email</a>
+            <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="hero-btn secondary">LinkedIn →</a>
+        </div>
+    </div>
+</section>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-photo">👨‍💻</div>
-        <div class="hero-info">
-            <div class="hero-badge">Disponível para oportunidades</div>
-            <h1>Rubens Pereira Fernandes</h1>
-            <div class="hero-role">Profissional de Logística & Tecnologia</div>
-            <p class="hero-desc">
-                Profissional dedicado e proativo com experiência em operações de depósito e logística. Busco constantemente novos conhecimentos e desafios que contribuam para meu desenvolvimento pessoal e profissional.
-            </p>
-            <div class="hero-meta">
-                <div class="meta">📍 <strong>Limoeiro, PE</strong></div>
-                <div class="meta">🎂 <strong>26 anos</strong></div>
-                <div class="meta">📅 <strong>19/05/2000</strong></div>
+<!-- Stats -->
+<div class="content">
+    <div class="stat-row reveal">
+        <div class="stat-card">
+            <div class="stat-num">7</div>
+            <div class="stat-label">Certificações</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num">1+</div>
+            <div class="stat-label">Ano de Experiência</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num">6</div>
+            <div class="stat-label">Habilidades</div>
+        </div>
+    </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- Sobre -->
+<div class="content">
+    <section class="feature" id="sobre">
+        <div class="feature-eyebrow reveal">Sobre mim</div>
+        <h2 class="reveal">Profissional dedicado<br>em constante evolução.</h2>
+        <p class="feature-sub reveal">
+            Com experiência em operações de logística e depósito, atuo em empresas de grande porte. Paralelamente, desenvolvo conhecimentos em tecnologia, incluindo programação e análise de dados. Busco sempre evoluir profissionalmente.
+        </p>
+    </section>
+</div>
+
+<hr class="section-divider">
+
+<!-- Skills -->
+<div class="content">
+    <section class="feature" id="skills">
+        <div class="feature-eyebrow reveal">Habilidades</div>
+        <h2 class="reveal">O que sei fazer.</h2>
+        <p class="feature-sub reveal">Habilidades técnicas desenvolvidas ao longo da carreira e em cursos complementares.</p>
+        <div class="reveal">
+            <div class="skill-row">
+                <div class="skill-icon">🏗️</div>
+                <div class="skill-info">
+                    <div class="skill-name">Operação de Empilhadeira</div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+                </div>
+                <div class="skill-pct">90%</div>
             </div>
-            <div class="hero-meta">
-                <div class="meta">📞 <strong>+55 81 98950-1999</strong></div>
-                <div class="meta">✉️ <strong>rubensfernandes2112@gmail.com</strong></div>
+            <div class="skill-row">
+                <div class="skill-icon">📦</div>
+                <div class="skill-info">
+                    <div class="skill-name">Logística de Depósito</div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                </div>
+                <div class="skill-pct">85%</div>
             </div>
-            <div class="hero-btns">
-                <a href="mailto:rubensfernandes2112@gmail.com" class="btn btn-blue">✉️ Enviar email</a>
-                <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="btn btn-outline">🔗 LinkedIn</a>
+            <div class="skill-row">
+                <div class="skill-icon">📊</div>
+                <div class="skill-info">
+                    <div class="skill-name">Power BI</div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+                </div>
+                <div class="skill-pct">70%</div>
+            </div>
+            <div class="skill-row">
+                <div class="skill-icon">💻</div>
+                <div class="skill-info">
+                    <div class="skill-name">Informática</div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+                </div>
+                <div class="skill-pct">75%</div>
+            </div>
+            <div class="skill-row">
+                <div class="skill-icon">🌐</div>
+                <div class="skill-info">
+                    <div class="skill-name">HTML / CSS</div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
+                </div>
+                <div class="skill-pct">60%</div>
+            </div>
+            <div class="skill-row">
+                <div class="skill-icon">☕</div>
+                <div class="skill-info">
+                    <div class="skill-name">Java</div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="45"></div></div>
+                </div>
+                <div class="skill-pct">45%</div>
             </div>
         </div>
     </section>
+</div>
 
-    <div class="divider"></div>
+<hr class="section-divider">
 
-    <!-- Sobre -->
-    <section class="section" id="sobre">
-        <div class="section-head">
-            <div class="section-title">
-                <span class="icon" style="background: var(--blue-light);">👤</span>
-                Resumo Profissional
+<!-- Soft Skills -->
+<div class="content">
+    <section class="feature">
+        <div class="feature-eyebrow reveal">Competências</div>
+        <h2 class="reveal">Qualidades que me<br>definem como profissional.</h2>
+        <div class="card-grid" style="margin-top: 2rem;">
+            <div class="card reveal">
+                <div class="card-icon" style="background: rgba(0,113,227,0.08);">🎯</div>
+                <h3>Foco em Resultados</h3>
+                <p>Comprometido com a superação de expectativas e metas da organização.</p>
             </div>
-        </div>
-        <div class="summary">
-            <p>
-                Profissional com experiência em operações de logística e depósito, atuando em empresas de grande porte. Possuo habilidades em operação de empilhadeira, controle de inventário e expedição de mercadorias. Paralelamente, desenvolvo conhecimentos em tecnologia, incluindo programação (Java, HTML, CSS) e ferramentas de análise de dados (Power BI). Busco sempre evoluir profissionalmente e contribuir para o crescimento da organização.
-            </p>
-            <div class="summary-tags">
-                <span class="tag">Logística</span>
-                <span class="tag">Empilhadeira</span>
-                <span class="tag">Power BI</span>
-                <span class="tag">Java</span>
-                <span class="tag">HTML/CSS</span>
-                <span class="tag">Office</span>
-                <span class="tag">Inventário</span>
+            <div class="card reveal">
+                <div class="card-icon" style="background: rgba(88,86,214,0.08);">🤝</div>
+                <h3>Trabalho em Equipe</h3>
+                <p>Experiência em ambientes colaborativos de alto volume de operações.</p>
             </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Skills -->
-    <section class="section" id="skills">
-        <div class="section-head">
-            <div class="section-title">
-                <span class="icon" style="background: var(--blue-light);">💡</span>
-                Habilidades Técnicas
+            <div class="card reveal">
+                <div class="card-icon" style="background: rgba(191,90,242,0.08);">📚</div>
+                <h3>Aprendizado Contínuo</h3>
+                <p>7 certificações em áreas diversas, sempre buscando evoluir.</p>
             </div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card fade">
-                <div class="skill-top">
-                    <div class="skill-name">🏗️ Operação de Empilhadeira</div>
-                    <div class="skill-pct">90%</div>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-fill" data-width="90"></div>
-                </div>
+            <div class="card reveal">
+                <div class="card-icon" style="background: rgba(255,149,0,0.08);">🔍</div>
+                <h3>Atenção aos Detalhes</h3>
+                <p>Conferência rigorosa para garantir integridade do inventário.</p>
             </div>
-            <div class="skill-card fade">
-                <div class="skill-top">
-                    <div class="skill-name">📦 Logística de Depósito</div>
-                    <div class="skill-pct">85%</div>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-fill" data-width="85"></div>
-                </div>
+            <div class="card reveal">
+                <div class="card-icon" style="background: rgba(52,199,89,0.08);">⏰</div>
+                <h3>Pontualidade</h3>
+                <p>Responsabilidade com prazos e compromissos profissionais.</p>
             </div>
-            <div class="skill-card fade">
-                <div class="skill-top">
-                    <div class="skill-name">📊 Power BI</div>
-                    <div class="skill-pct">70%</div>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-fill" data-width="70"></div>
-                </div>
-            </div>
-            <div class="skill-card fade">
-                <div class="skill-top">
-                    <div class="skill-name">💻 Informática</div>
-                    <div class="skill-pct">75%</div>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-fill" data-width="75"></div>
-                </div>
-            </div>
-            <div class="skill-card fade">
-                <div class="skill-top">
-                    <div class="skill-name">☕ Java</div>
-                    <div class="skill-pct">45%</div>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-fill" data-width="45"></div>
-                </div>
-            </div>
-            <div class="skill-card fade">
-                <div class="skill-top">
-                    <div class="skill-name">🌐 HTML / CSS</div>
-                    <div class="skill-pct">60%</div>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-fill" data-width="60"></div>
-                </div>
+            <div class="card reveal">
+                <div class="card-icon" style="background: rgba(255,59,48,0.08);">💪</div>
+                <h3>Resiliência</h3>
+                <p>Capacidade de adaptação e superação de desafios.</p>
             </div>
         </div>
     </section>
+</div>
 
-    <div class="divider"></div>
+<hr class="section-divider">
 
-    <!-- Soft Skills -->
-    <section class="section">
-        <div class="section-head">
-            <div class="section-title">
-                <span class="icon" style="background: var(--purple-light);">🧠</span>
-                Competências Comportamentais
-            </div>
-        </div>
-        <div class="soft-grid">
-            <div class="soft-item fade">
-                <div class="soft-icon">🎯</div>
-                <div class="soft-name">Foco em Resultados</div>
-            </div>
-            <div class="soft-item fade">
-                <div class="soft-icon">🤝</div>
-                <div class="soft-name">Trabalho em Equipe</div>
-            </div>
-            <div class="soft-item fade">
-                <div class="soft-icon">⏰</div>
-                <div class="soft-name">Pontualidade</div>
-            </div>
-            <div class="soft-item fade">
-                <div class="soft-icon">📚</div>
-                <div class="soft-name">Aprendizado Contínuo</div>
-            </div>
-            <div class="soft-item fade">
-                <div class="soft-icon">🔍</div>
-                <div class="soft-name">Atenção aos Detalhes</div>
-            </div>
-            <div class="soft-item fade">
-                <div class="soft-icon">💪</div>
-                <div class="soft-name">Resiliência</div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Experiência -->
-    <section class="section" id="exp">
-        <div class="section-head">
-            <div class="section-title">
-                <span class="icon" style="background: var(--blue-light);">💼</span>
-                Experiência Profissional
-            </div>
-        </div>
-        <div class="exp-card fade">
-            <div class="exp-icon">📦</div>
-            <div class="exp-content">
-                <div class="exp-top">
-                    <div class="exp-title">Auxiliar de Depósito</div>
-                    <div class="exp-date">2022 — 2023</div>
+<!-- Experiência -->
+<div class="content">
+    <section class="feature" id="exp">
+        <div class="feature-eyebrow reveal">Experiência</div>
+        <h2 class="reveal">Trajetória profissional.</h2>
+        <p class="feature-sub reveal">Experiência em operações de logística em empresa de grande porte.</p>
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-top">
+                    <div class="timeline-title">Auxiliar de Depósito</div>
+                    <div class="timeline-date">2022 — 2023</div>
                 </div>
-                <div class="exp-company">Ferreira Costa — Recife, PE</div>
-                <div class="exp-desc">
-                    Responsável por atividades de expedição, recebimento, entrega e reposição de mercadorias. Realização de conferência rigorosa para garantia de integridade do inventário. Atuação em equipe em ambiente de alto volume de operações, garantindo eficiência e qualidade no processo logístico.
+                <div class="timeline-company">Ferreira Costa — Recife, PE</div>
+                <div class="timeline-desc">
+                    Responsável por atividades de expedição, recebimento, entrega e reposição de mercadorias. Realização de conferência rigorosa para garantia de integridade do inventário. Atuação em equipe em ambiente de alto volume de operações.
                 </div>
             </div>
         </div>
     </section>
+</div>
 
-    <div class="divider"></div>
+<hr class="section-divider">
 
-    <!-- Educação -->
-    <section class="section" id="edu">
-        <div class="section-head">
-            <div class="section-title">
-                <span class="icon" style="background: var(--green-light);">🎓</span>
-                Formação Acadêmica
-            </div>
-        </div>
-        <div class="edu-card fade">
-            <div class="edu-icon">📚</div>
-            <div>
-                <div class="edu-title">Ensino Médio Completo</div>
-                <div class="edu-school">Escola Seráfico Ricardo — Limoeiro, PE</div>
-                <div class="edu-year">Concluído em 2021</div>
+<!-- Educação -->
+<div class="content">
+    <section class="feature" id="edu">
+        <div class="feature-eyebrow reveal">Formação</div>
+        <h2 class="reveal">Educação.</h2>
+        <div class="timeline" style="margin-top: 2rem;">
+            <div class="timeline-item reveal">
+                <div class="timeline-top">
+                    <div class="timeline-title">Ensino Médio Completo</div>
+                    <div class="timeline-date">2021</div>
+                </div>
+                <div class="timeline-company">Escola Seráfico Ricardo — Limoeiro, PE</div>
             </div>
         </div>
     </section>
+</div>
 
-    <div class="divider"></div>
+<hr class="section-divider">
 
-    <!-- Certificações -->
-    <section class="section" id="certs">
-        <div class="section-head">
-            <div class="section-title">
-                <span class="icon" style="background: var(--orange-light);">🏆</span>
-                Certificações
-            </div>
-        </div>
-        <div class="certs-grid">
-            <div class="cert-item fade">
-                <div class="cert-badge" style="background: var(--blue-light);">🏗️</div>
+<!-- Certificações -->
+<div class="content">
+    <section class="feature" id="certs">
+        <div class="feature-eyebrow reveal">Certificações</div>
+        <h2 class="reveal">Cursos e certificados.</h2>
+        <p class="feature-sub reveal">Formação complementar em diversas áreas do conhecimento.</p>
+        <div class="cert-list reveal">
+            <div class="cert-row">
+                <div class="cert-icon">🏗️</div>
                 <div>
                     <div class="cert-name">Operador de Empilhadeira</div>
                     <div class="cert-org">ESTTJ · 2024</div>
                 </div>
             </div>
-            <div class="cert-item fade">
-                <div class="cert-badge" style="background: var(--green-light);">📦</div>
+            <div class="cert-row">
+                <div class="cert-icon">📦</div>
                 <div>
                     <div class="cert-name">Curso de Logística</div>
                     <div class="cert-org">EDUCAWEB · 2024</div>
                 </div>
             </div>
-            <div class="cert-item fade">
-                <div class="cert-badge" style="background: var(--orange-light);">📊</div>
+            <div class="cert-row">
+                <div class="cert-icon">📊</div>
                 <div>
                     <div class="cert-name">Power BI Intensivo</div>
                     <div class="cert-org">Hashtag Treinamentos · 2024</div>
                 </div>
             </div>
-            <div class="cert-item fade">
-                <div class="cert-badge" style="background: var(--red-light);">☕</div>
+            <div class="cert-row">
+                <div class="cert-icon">☕</div>
                 <div>
                     <div class="cert-name">Java Básico</div>
                     <div class="cert-org">Fundação Bradesco · 2023</div>
                 </div>
             </div>
-            <div class="cert-item fade">
-                <div class="cert-badge" style="background: var(--blue-light);">🌐</div>
+            <div class="cert-row">
+                <div class="cert-icon">🌐</div>
                 <div>
                     <div class="cert-name">Criação de Site (HTML, CSS, JS)</div>
                     <div class="cert-org">Fundação Bradesco · 2023</div>
                 </div>
             </div>
-            <div class="cert-item fade">
-                <div class="cert-badge" style="background: var(--green-light);">📄</div>
+            <div class="cert-row">
+                <div class="cert-icon">📄</div>
                 <div>
                     <div class="cert-name">HTML Avançado</div>
                     <div class="cert-org">2023</div>
                 </div>
             </div>
-            <div class="cert-item fade">
-                <div class="cert-badge" style="background: var(--purple-light);">🖥️</div>
+            <div class="cert-row">
+                <div class="cert-icon">🖥️</div>
                 <div>
                     <div class="cert-name">Informática Básica</div>
                     <div class="cert-org">2017</div>
@@ -868,97 +796,96 @@
             </div>
         </div>
     </section>
+</div>
 
-    <div class="divider"></div>
+<hr class="section-divider">
 
-    <!-- Idiomas -->
-    <section class="section" id="lang">
-        <div class="section-head">
-            <div class="section-title">
-                <span class="icon" style="background: var(--purple-light);">🌍</span>
-                Idiomas
-            </div>
-        </div>
-        <div class="lang-card fade">
-            <div class="lang-name">Português</div>
-            <div class="lang-level">Nativo</div>
-            <div class="lang-bar">
-                <div class="lang-fill" data-width="100"></div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Contato -->
-    <section class="section" id="contato">
-        <div class="section-head">
-            <div class="section-title">
-                <span class="icon" style="background: var(--blue-light);">📬</span>
-                Contato
-            </div>
-        </div>
-        <div class="contact-grid">
-            <a href="tel:+5581989501999" class="contact-item fade">
-                <div class="contact-icon" style="background: var(--green-light);">📱</div>
-                <div>
-                    <div class="contact-label">Telefone</div>
-                    <div class="contact-value">+55 81 98950-1999</div>
-                </div>
-            </a>
-            <a href="mailto:rubensfernandes2112@gmail.com" class="contact-item fade">
-                <div class="contact-icon" style="background: var(--blue-light);">✉️</div>
-                <div>
-                    <div class="contact-label">Email</div>
-                    <div class="contact-value">rubensfernandes2112@gmail.com</div>
-                </div>
-            </a>
-            <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="contact-item fade">
-                <div class="contact-icon" style="background: #dbeafe;">🔗</div>
-                <div>
-                    <div class="contact-label">LinkedIn</div>
-                    <div class="contact-value">/in/rubens-fernandes</div>
-                </div>
-            </a>
-            <div class="contact-item fade">
-                <div class="contact-icon" style="background: var(--red-light);">📍</div>
-                <div>
-                    <div class="contact-label">Localização</div>
-                    <div class="contact-value">Limoeiro, PE — Brasil</div>
-                </div>
+<!-- Idiomas -->
+<div class="content">
+    <section class="feature" id="lang">
+        <div class="feature-eyebrow reveal">Idiomas</div>
+        <h2 class="reveal">Idiomas.</h2>
+        <div class="card-grid" style="margin-top: 2rem; max-width: 400px;">
+            <div class="card reveal">
+                <h3>Português</h3>
+                <p>Nativo</p>
+                <div class="skill-bar" style="margin-top: 0.8rem;"><div class="skill-fill" data-width="100"></div></div>
             </div>
         </div>
     </section>
+</div>
 
+<!-- CTA -->
+<section class="promo-section">
+    <div class="content">
+        <h2 class="reveal">Vamos conversar?</h2>
+        <p class="reveal">Estou disponível para novas oportunidades.</p>
+        <div class="hero-actions reveal">
+            <a href="mailto:rubensfernandes2112@gmail.com" class="hero-btn primary">✉️ Enviar email</a>
+            <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="hero-btn secondary">LinkedIn →</a>
+        </div>
+    </div>
+</section>
+
+<!-- Contato -->
+<div class="content">
+    <section class="feature" id="contato">
+        <div class="feature-eyebrow reveal">Contato</div>
+        <h2 class="reveal">Onde me encontrar.</h2>
+        <div class="contact-grid" style="margin-top: 2rem;">
+            <a href="tel:+5581989501999" class="contact-card reveal">
+                <div class="contact-icon">📱</div>
+                <div class="contact-label">Telefone</div>
+                <div class="contact-value">+55 81 98950-1999</div>
+            </a>
+            <a href="mailto:rubensfernandes2112@gmail.com" class="contact-card reveal">
+                <div class="contact-icon">✉️</div>
+                <div class="contact-label">Email</div>
+                <div class="contact-value">rubensfernandes2112@gmail.com</div>
+            </a>
+            <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="contact-card reveal">
+                <div class="contact-icon">🔗</div>
+                <div class="contact-label">LinkedIn</div>
+                <div class="contact-value">/in/rubens-fernandes</div>
+            </a>
+            <div class="contact-card reveal">
+                <div class="contact-icon">📍</div>
+                <div class="contact-label">Localização</div>
+                <div class="contact-value">Limoeiro, PE — Brasil</div>
+            </div>
+        </div>
+    </section>
 </div>
 
 <!-- Footer -->
 <footer>
-    <div class="main">
-        <p>© 2026 Rubens Pereira Fernandes · <a href="mailto:rubensfernandes2112@gmail.com">rubensfernandes2112@gmail.com</a></p>
+    <div class="content">
+        <p>Copyright © 2026 Rubens Pereira Fernandes. Todos os direitos reservados.</p>
+        <p style="margin-top: 0.3rem;"><a href="mailto:rubensfernandes2112@gmail.com">rubensfernandes2112@gmail.com</a></p>
     </div>
 </footer>
 
 <script>
-// Scroll reveal
+// Reveal on scroll
 const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
         if (e.isIntersecting) {
-            e.target.classList.add('show');
-            const bar = e.target.querySelector('.skill-fill, .lang-fill');
-            if (bar) bar.style.width = bar.dataset.width + '%';
+            e.target.classList.add('visible');
+            e.target.querySelectorAll('.skill-fill').forEach(bar => {
+                bar.style.width = bar.dataset.width + '%';
+            });
         }
     });
-}, { threshold: 0.2 });
+}, { threshold: 0.15 });
 
-document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
         e.preventDefault();
         const t = document.querySelector(a.getAttribute('href'));
-        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (t) t.scrollIntoView({ behavior: 'smooth' });
     });
 });
 </script>
