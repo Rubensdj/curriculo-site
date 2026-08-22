@@ -1187,23 +1187,21 @@ class Cube {
             [0,4], [1,5], [2,6], [3,7]
         ];
         
-        // Rotate vertices
         const projected = vertices.map(v => {
-            let [x, y, z] = v.map(c => c * this.size);
+            let x = v[0] * this.size;
+            let y = v[1] * this.size;
+            let z = v[2] * this.size;
             
-            // Rotate X
             let y1 = y * Math.cos(this.rotX) - z * Math.sin(this.rotX);
             let z1 = y * Math.sin(this.rotX) + z * Math.cos(this.rotX);
             y = y1; z = z1;
             
-            // Rotate Y
             let x1 = x * Math.cos(this.rotY) + z * Math.sin(this.rotY);
-            z2 = -x * Math.sin(this.rotY) + z * Math.cos(this.rotY);
-            x = x1; z = z2;
+            z = -x * Math.sin(this.rotY) + z * Math.cos(this.rotY);
+            x = x1;
             
-            // Project
             const scale = 500 / (500 + z);
-            return [this.x + x * scale, this.y + y * scale, scale];
+            return [this.x + x * scale, this.y + y * scale];
         });
         
         ctx.strokeStyle = this.color;
