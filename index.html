@@ -12,15 +12,20 @@
         :root {
             --bg: #ffffff;
             --bg-2: #f5f5f7;
+            --bg-3: #e8e8ed;
             --border: #d2d2d7;
             --text: #1d1d1f;
             --text-2: #6e6e73;
             --text-3: #86868b;
             --blue: #0071e3;
             --blue-hover: #0077ED;
+            --blue-dim: #eff6ff;
             --purple: #5856d6;
             --pink: #bf5af2;
             --green: #34c759;
+            --green-dim: #f0fdf4;
+            --red: #ff3b30;
+            --orange: #ff9500;
         }
 
         html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
@@ -40,7 +45,10 @@
             top: 0;
             z-index: 999;
             border-bottom: 1px solid var(--border);
+            transition: box-shadow 0.3s;
         }
+
+        .nav.scrolled { box-shadow: 0 1px 10px rgba(0,0,0,0.06); }
 
         .nav-inner {
             max-width: 980px;
@@ -76,37 +84,69 @@
         /* ===== HERO ===== */
         .hero {
             text-align: center;
-            padding: 4rem 1.5rem 3rem;
+            padding: 5rem 1.5rem 4rem;
             background: var(--bg-2);
             border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
         }
 
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0,113,227,0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
         .hero-avatar {
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
             object-position: center top;
-            margin: 0 auto 1.2rem;
+            margin: 0 auto 1.5rem;
             display: block;
             border: 3px solid var(--border);
-            transition: transform 0.4s;
+            transition: all 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99);
+            animation: avatarFloat 6s ease-in-out infinite;
         }
 
-        .hero-avatar:hover { transform: scale(1.05); }
+        @keyframes avatarFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .hero-avatar:hover {
+            transform: scale(1.08);
+            border-color: var(--blue);
+            box-shadow: 0 15px 40px rgba(0,113,227,0.2);
+        }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            background: #f0fdf4;
+            background: var(--green-dim);
             color: var(--green);
             padding: 0.3rem 0.7rem;
             border-radius: 50px;
             font-size: 0.75rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             border: 1px solid #bbf7d0;
+            animation: badgePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
         }
 
         .hero-badge::before {
@@ -118,21 +158,28 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-size: clamp(2.8rem, 6vw, 4rem);
             font-weight: 900;
             letter-spacing: -0.04em;
             line-height: 1.05;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
         }
 
         .hero h1 .gradient {
             background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 4s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .hero-role {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--text-2);
             margin-bottom: 0.8rem;
         }
@@ -142,7 +189,7 @@
             justify-content: center;
             gap: 1.5rem;
             flex-wrap: wrap;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
             font-size: 0.88rem;
             color: var(--text-2);
         }
@@ -155,7 +202,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            padding: 0.6rem 1.2rem;
+            padding: 0.65rem 1.3rem;
             border-radius: 980px;
             font-size: 0.85rem;
             font-weight: 500;
@@ -164,16 +211,16 @@
         }
 
         .btn-primary { background: var(--blue); color: #fff; }
-        .btn-primary:hover { background: var(--blue-hover); }
-        .btn-outline { color: var(--blue); }
-        .btn-outline:hover { text-decoration: underline; }
+        .btn-primary:hover { background: var(--blue-hover); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,113,227,0.25); }
+        .btn-outline { color: var(--blue); border: 1px solid var(--border); background: var(--bg); }
+        .btn-outline:hover { border-color: var(--blue); transform: translateY(-2px); }
 
         /* ===== STATS ===== */
         .stats {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 12px;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
             padding: 3rem 22px;
         }
@@ -181,12 +228,19 @@
         .stat {
             background: var(--bg-2);
             border-radius: 16px;
-            padding: 1.8rem;
+            padding: 1.5rem;
             text-align: center;
+            transition: all 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99);
+            cursor: default;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
         }
 
         .stat-num {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 900;
             background: linear-gradient(90deg, var(--blue), var(--purple));
             -webkit-background-clip: text;
@@ -194,7 +248,7 @@
         }
 
         .stat-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-3);
             text-transform: uppercase;
             letter-spacing: 0.03em;
@@ -205,17 +259,17 @@
         .section {
             max-width: 980px;
             margin: 0 auto;
-            padding: 4.5rem 22px;
+            padding: 5rem 22px;
             text-align: center;
         }
 
         .section-label {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
             color: var(--blue);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.3rem;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.4rem;
         }
 
         .section-title {
@@ -229,9 +283,10 @@
             font-size: 1rem;
             color: var(--text-2);
             margin-bottom: 2.5rem;
-            max-width: 500px;
+            max-width: 520px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.7;
         }
 
         .section-divider {
@@ -258,22 +313,28 @@
             padding: 1rem 1.2rem;
             background: var(--bg-2);
             border-radius: 14px;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99);
         }
 
-        .skill:hover { background: #ebebed; }
+        .skill:hover {
+            transform: translateX(8px);
+            background: var(--bg-3);
+        }
 
         .skill-icon {
             font-size: 1.2rem;
-            width: 38px;
-            height: 38px;
+            width: 40px;
+            height: 40px;
             border-radius: 10px;
             background: var(--bg);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            transition: transform 0.3s;
         }
+
+        .skill:hover .skill-icon { transform: scale(1.1); }
 
         .skill-info { flex: 1; }
         .skill-name { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.3rem; }
@@ -308,25 +369,115 @@
             background: var(--bg-2);
             border-radius: 16px;
             padding: 1.5rem;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99);
         }
 
-        .card:hover { background: #ebebed; }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+        }
 
         .card-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
             background: var(--bg);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 0.8rem;
+            transition: transform 0.3s;
         }
+
+        .card:hover .card-icon { transform: scale(1.1); }
 
         .card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
         .card p { font-size: 0.85rem; color: var(--text-2); line-height: 1.5; }
+
+        /* ===== WHY ME ===== */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .why-item {
+            background: var(--bg-2);
+            padding: 2rem;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        .why-item:hover { background: var(--bg-3); }
+
+        .why-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .why-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .why-desc { font-size: 0.82rem; color: var(--text-2); line-height: 1.5; }
+
+        /* ===== VALUES ===== */
+        .values {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .value {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem;
+            background: var(--bg-2);
+            border-radius: 14px;
+            text-align: left;
+            transition: all 0.3s;
+        }
+
+        .value:hover { transform: translateX(5px); background: var(--bg-3); }
+
+        .value-icon { font-size: 1.5rem; }
+
+        .value-name { font-size: 0.9rem; font-weight: 600; }
+        .value-desc { font-size: 0.78rem; color: var(--text-2); }
+
+        /* ===== INTERESTS ===== */
+        .interests {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .interest {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--bg-2);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .interest:hover {
+            background: var(--blue-dim);
+            color: var(--blue);
+            transform: translateY(-2px);
+        }
 
         /* ===== TIMELINE ===== */
         .timeline { max-width: 600px; margin: 0 auto; text-align: left; }
@@ -335,19 +486,22 @@
             background: var(--bg-2);
             border-radius: 16px;
             padding: 1.5rem;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99);
         }
 
-        .timeline-card:hover { background: #ebebed; }
+        .timeline-card:hover {
+            transform: translateX(8px);
+            background: var(--bg-3);
+        }
 
         .timeline-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem; flex-wrap: wrap; gap: 0.5rem; }
         .timeline-title { font-size: 1.05rem; font-weight: 700; }
 
         .timeline-date {
-            font-size: 0.75rem;
+            font-size: 0.73rem;
             font-weight: 500;
             color: var(--blue);
-            background: #eff6ff;
+            background: var(--blue-dim);
             padding: 0.2rem 0.6rem;
             border-radius: 50px;
         }
@@ -369,27 +523,30 @@
             display: flex;
             align-items: center;
             gap: 0.8rem;
-            padding: 0.8rem 1rem;
+            padding: 0.85rem 1rem;
             background: var(--bg-2);
             border-radius: 12px;
             transition: all 0.3s;
         }
 
-        .cert:hover { background: #ebebed; }
+        .cert:hover { transform: translateX(5px); background: var(--bg-3); }
 
         .cert-badge {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
             background: var(--bg);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.95rem;
+            font-size: 1rem;
             flex-shrink: 0;
+            transition: transform 0.3s;
         }
 
-        .cert-name { font-size: 0.85rem; font-weight: 600; }
+        .cert:hover .cert-badge { transform: scale(1.1); }
+
+        .cert-name { font-size: 0.88rem; font-weight: 600; }
         .cert-org { font-size: 0.73rem; color: var(--text-3); }
 
         /* ===== CONTACT ===== */
@@ -408,12 +565,15 @@
             padding: 1.2rem;
             text-decoration: none;
             color: var(--text);
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99);
         }
 
-        .contact:hover { background: #ebebed; }
+        .contact:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.06);
+        }
 
-        .contact-icon { font-size: 1.2rem; margin-bottom: 0.6rem; }
+        .contact-icon { font-size: 1.3rem; margin-bottom: 0.6rem; }
 
         .contact-label {
             font-size: 0.7rem;
@@ -425,12 +585,27 @@
 
         .contact-value { font-size: 0.85rem; font-weight: 600; }
 
+        /* ===== CTA ===== */
+        .cta {
+            background: var(--bg-2);
+            padding: 4rem 22px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta p { font-size: 0.95rem; color: var(--text-2); margin-bottom: 1.5rem; }
+
         /* ===== FOOTER ===== */
         footer {
             text-align: center;
             padding: 2rem;
             border-top: 1px solid var(--border);
-            margin-top: 2rem;
         }
 
         footer p { font-size: 0.8rem; color: var(--text-3); }
@@ -439,9 +614,11 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero { padding: 3rem 1rem 2rem; }
+            .hero { padding: 4rem 1rem 3rem; }
             .hero-avatar { width: 110px; height: 110px; }
-            .stats { grid-template-columns: 1fr; padding: 2rem 1rem; }
+            .stats { grid-template-columns: repeat(2, 1fr); padding: 2rem 1rem; }
+            .why-grid { grid-template-columns: 1fr; }
+            .values { grid-template-columns: 1fr; }
             .cards { grid-template-columns: 1fr; }
             .contacts { grid-template-columns: 1fr; }
             .section { padding: 3rem 1rem; }
@@ -450,22 +627,27 @@
         /* ===== REVEAL ===== */
         .reveal {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: translateY(25px);
+            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
     </style>
 </head>
 <body>
 
 <!-- Nav -->
-<div class="nav">
+<div class="nav" id="nav">
     <div class="nav-inner">
         <a href="#" class="nav-logo">RPF</a>
         <div class="nav-links">
             <a href="#sobre">Sobre</a>
             <a href="#skills">Skills</a>
+            <a href="#porque">Por que me</a>
             <a href="#exp">Experiência</a>
             <a href="#certs">Certificações</a>
             <a href="#contato" class="nav-cta">Contato</a>
@@ -475,27 +657,30 @@
 
 <!-- Hero -->
 <section class="hero">
-    <img src="foto-avatar.webp" alt="Rubens Pereira Fernandes" class="hero-avatar">
-    <div class="hero-badge">Disponível para oportunidades</div>
-    <h1><span class="gradient">Rubens</span><br>Pereira Fernandes</h1>
-    <div class="hero-role">Logística & Tecnologia</div>
-    <div class="hero-meta">
-        <div>📍 <strong>Limoeiro, PE</strong></div>
-        <div>🎂 <strong>26 anos</strong></div>
-        <div>📞 <strong>+55 81 98950-1999</strong></div>
-    </div>
-    <div class="hero-actions">
-        <a href="mailto:rubensfernandes2112@gmail.com" class="btn btn-primary">✉️ Enviar email</a>
-        <a href="https://wa.me/5581989501999" target="_blank" class="btn btn-outline">💬 WhatsApp</a>
-        <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="btn btn-outline">🔗 LinkedIn</a>
+    <div class="hero-content">
+        <img src="foto-avatar.webp" alt="Rubens Pereira Fernandes" class="hero-avatar">
+        <div class="hero-badge">Disponível para oportunidades</div>
+        <h1><span class="gradient">Rubens</span><br>Pereira Fernandes</h1>
+        <div class="hero-role">Logística & Tecnologia</div>
+        <div class="hero-meta">
+            <div>📍 <strong>Limoeiro, PE</strong></div>
+            <div>🎂 <strong>26 anos</strong></div>
+            <div>📞 <strong>+55 81 98950-1999</strong></div>
+        </div>
+        <div class="hero-actions">
+            <a href="mailto:rubensfernandes2112@gmail.com" class="btn btn-primary">✉️ Enviar email</a>
+            <a href="https://wa.me/5581989501999" target="_blank" class="btn btn-outline">💬 WhatsApp</a>
+            <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="btn btn-outline">🔗 LinkedIn</a>
+        </div>
     </div>
 </section>
 
 <!-- Stats -->
-<div class="stats reveal">
-    <div class="stat"><div class="stat-num">7</div><div class="stat-label">Certificações</div></div>
-    <div class="stat"><div class="stat-num">1+</div><div class="stat-label">Ano Exp.</div></div>
-    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Skills</div></div>
+<div class="stats">
+    <div class="stat reveal"><div class="stat-num">7</div><div class="stat-label">Certificações</div></div>
+    <div class="stat reveal reveal-delay-1"><div class="stat-num">1+</div><div class="stat-label">Ano Exp.</div></div>
+    <div class="stat reveal reveal-delay-2"><div class="stat-num">6</div><div class="stat-label">Skills</div></div>
+    <div class="stat reveal reveal-delay-3"><div class="stat-num">3</div><div class="stat-label">Áreas</div></div>
 </div>
 
 <!-- Sobre -->
@@ -503,8 +688,33 @@
     <div class="section-label reveal">Sobre mim</div>
     <h2 class="section-title reveal">Profissional dedicado<br>em constante evolução.</h2>
     <p class="section-desc reveal">
-        Com experiência em operações de logística e depósito, atuo em empresas de grande porte. Paralelamente, desenvolvo conhecimentos em tecnologia.
+        Com experiência em operações de logística e depósito em empresas de grande porte, combino conhecimentos técnicos com habilidades interpessoais. Busco sempre evoluir e contribuir para o crescimento da organização.
     </p>
+</section>
+
+<hr class="section-divider">
+
+<!-- Por que me contratar -->
+<section class="section" id="porque">
+    <div class="section-label reveal">Por que me contratar</div>
+    <h2 class="section-title reveal">O que me destaca</h2>
+    <div class="why-grid reveal">
+        <div class="why-item">
+            <span class="why-icon">⚡</span>
+            <div class="why-title">Rápido aprendizado</div>
+            <div class="why-desc">Aprendo novas habilidades com facilidade e aplico no dia a dia.</div>
+        </div>
+        <div class="why-item">
+            <span class="why-icon">🎯</span>
+            <div class="why-title">Foco em resultados</div>
+            <div class="why-desc">Comprometido com metas e superação de expectativas.</div>
+        </div>
+        <div class="why-item">
+            <span class="why-icon">🤝</span>
+            <div class="why-title">Trabalho em equipe</div>
+            <div class="why-desc">Colaboro atingir objetivos em comum.</div>
+        </div>
+    </div>
 </section>
 
 <hr class="section-divider">
@@ -525,17 +735,48 @@
 
 <hr class="section-divider">
 
+<!-- Valores -->
+<section class="section">
+    <div class="section-label reveal">Valores</div>
+    <h2 class="section-title reveal">No que acredito</h2>
+    <div class="values reveal">
+        <div class="value"><div class="value-icon">🎯</div><div><div class="value-name">Dedicação</div><div class="value-desc">Entrego o máximo em tudo que faço</div></div></div>
+        <div class="value"><div class="value-icon">🔍</div><div><div class="value-name">Responsabilidade</div><div class="value-desc">Cumpro prazos e compromissos</div></div></div>
+        <div class="value"><div class="value-icon">📚</div><div><div class="value-name">Aprendizado</div><div class="value-desc">Busco sempre evoluir</div></div></div>
+        <div class="value"><div class="value-icon">💪</div><div><div class="value-name">Resiliência</div><div class="value-desc">Supero desafios com.Positive</div></div></div>
+    </div>
+</section>
+
+<hr class="section-divider">
+
 <!-- Soft Skills -->
 <section class="section">
     <div class="section-label reveal">Competências</div>
     <h2 class="section-title reveal">Qualidades</h2>
     <div class="cards reveal">
         <div class="card"><div class="card-icon">🎯</div><h3>Foco em Resultados</h3><p>Comprometido com a superação de expectativas.</p></div>
-        <div class="card"><div class="card-icon">🤝</div><h3>Trabalho em Equipe</h3><p>Experiência em ambientes colaborativos.</p></div>
+        <div class="card"><div class="card-icon">🤝</div><h3>Trabalho em Equipe</h3><p>Colaboro atingir objetivos em comum.</p></div>
         <div class="card"><div class="card-icon">📚</div><h3>Aprendizado Contínuo</h3><p>7 certificações em áreas diversas.</p></div>
         <div class="card"><div class="card-icon">🔍</div><h3>Atenção aos Detalhes</h3><p>Conferência rigorosa do inventário.</p></div>
         <div class="card"><div class="card-icon">⏰</div><h3>Pontualidade</h3><p>Responsabilidade com prazos.</p></div>
         <div class="card"><div class="card-icon">💪</div><h3>Resiliência</h3><p>Capacidade de adaptação.</p></div>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- Interesses -->
+<section class="section">
+    <div class="section-label reveal">Interesses</div>
+    <h2 class="section-title reveal">O que me motiva</h2>
+    <div class="interests reveal">
+        <div class="interest">🚚 Logística</div>
+        <div class="interest">💻 Tecnologia</div>
+        <div class="interest">📊 Dados</div>
+        <div class="interest">🎮 Games</div>
+        <div class="interest">🎵 Música</div>
+        <div class="interest">📷 Fotografia</div>
+        <div class="interest">🏃 Exercícios</div>
     </div>
 </section>
 
@@ -552,7 +793,7 @@
                 <div class="timeline-date">2022 — 2023</div>
             </div>
             <div class="timeline-company">Ferreira Costa — Recife, PE</div>
-            <div class="timeline-desc">Expedição, recebimento, entrega e reposição de mercadorias. Conferência rigorosa do inventário.</div>
+            <div class="timeline-desc">Expedição, recebimento, entrega e reposição de mercadorias. Conferência rigorosa para garantia de integridade do inventário. Trabalho em equipe em ambiente de alto volume.</div>
         </div>
     </div>
 </section>
@@ -589,12 +830,20 @@
     </div>
 </section>
 
-<hr class="section-divider">
+<!-- CTA -->
+<section class="cta">
+    <h2 class="reveal">Vamos conversar?</h2>
+    <p class="reveal">Estou disponível para novas oportunidades.</p>
+    <div class="hero-actions reveal" style="justify-content: center;">
+        <a href="mailto:rubensfernandes2112@gmail.com" class="btn btn-primary">✉️ Enviar email</a>
+        <a href="https://wa.me/5581989501999" target="_blank" class="btn btn-outline">💬 WhatsApp</a>
+    </div>
+</section>
 
 <!-- Contato -->
 <section class="section" id="contato">
     <div class="section-label reveal">Contato</div>
-    <h2 class="section-title reveal">Vamos conversar?</h2>
+    <h2 class="section-title reveal">Onde me encontrar</h2>
     <div class="contacts reveal">
         <a href="https://wa.me/5581989501999" target="_blank" class="contact"><div class="contact-icon">💬</div><div class="contact-label">WhatsApp</div><div class="contact-value">+55 81 98950-1999</div></a>
         <a href="mailto:rubensfernandes2112@gmail.com" class="contact"><div class="contact-icon">✉️</div><div class="contact-label">Email</div><div class="contact-value">rubensfernandes2112@gmail.com</div></a>
@@ -609,6 +858,12 @@
 </footer>
 
 <script>
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Reveal on scroll
 const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
         if (e.isIntersecting) {
@@ -619,6 +874,7 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
         e.preventDefault();
@@ -626,6 +882,33 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
         if (t) t.scrollIntoView({ behavior: 'smooth' });
     });
 });
+
+// Counter animation
+const counters = document.querySelectorAll('.stat-num');
+const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            const el = e.target;
+            const text = el.textContent;
+            const num = parseInt(text);
+            if (!isNaN(num)) {
+                let current = 0;
+                const step = Math.ceil(num / 20);
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= num) {
+                        el.textContent = text;
+                        clearInterval(timer);
+                    } else {
+                        el.textContent = current;
+                    }
+                }, 40);
+            }
+            counterObs.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObs.observe(c));
 </script>
 
 </body>
