@@ -194,55 +194,55 @@
             display: none;
         }
 
-        .hero-name-3d {
+        .hero-name-parallax {
             margin-bottom: 0.8rem;
-            perspective: 800px;
+            perspective: 1000px;
+            position: relative;
         }
 
-        .name-3d {
-            display: block;
-            font-size: clamp(3rem, 7vw, 5rem);
+        .name-layer {
             font-weight: 900;
             letter-spacing: -0.04em;
-            line-height: 1;
+            line-height: 1.05;
+            transition: transform 0.1s ease-out;
+            will-change: transform;
+        }
+
+        .name-layer-1 {
+            font-size: clamp(3.5rem, 8vw, 6rem);
             color: var(--text);
             text-shadow: 
-                0 1px 0 #c9c9c9,
-                0 2px 0 #b9b9b9,
-                0 3px 0 #aaa,
-                0 4px 0 #9a9a9a,
-                0 5px 0 #8a8a8a,
-                0 6px 1px rgba(0,0,0,.1),
-                0 0 5px rgba(0,0,0,.1),
-                0 1px 3px rgba(0,0,0,.3),
-                0 3px 5px rgba(0,0,0,.2),
-                0 5px 10px rgba(0,0,0,.25),
-                0 10px 10px rgba(0,0,0,.2),
-                0 20px 20px rgba(0,0,0,.15);
-            transform: rotateX(15deg) rotateY(-2deg);
-            transform-origin: center bottom;
-            transition: transform 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99);
-            animation: name3d 6s ease-in-out infinite;
+                1px 1px 0 #d1d1d1,
+                2px 2px 0 #c2c2c2,
+                3px 3px 0 #b3b3b3,
+                4px 4px 0 #a4a4a4,
+                5px 5px 0 #959595,
+                6px 6px 0 #868686,
+                7px 7px 15px rgba(0,0,0,0.2),
+                7px 7px 30px rgba(0,0,0,0.1);
+            transform: translateZ(0px);
         }
 
-        .name-3d:hover {
-            transform: rotateX(5deg) rotateY(0deg) scale(1.02);
-        }
-
-        .name-3d.sub {
+        .name-layer-2 {
             font-size: clamp(1.8rem, 4vw, 3rem);
             background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: none;
-            margin-top: 0.2rem;
+            margin-top: 0.3rem;
+            transform: translateZ(0px);
         }
 
-        @keyframes name3d {
-            0%, 100% { transform: rotateX(15deg) rotateY(-2deg); }
-            25% { transform: rotateX(10deg) rotateY(2deg); }
-            50% { transform: rotateX(12deg) rotateY(-1deg); }
-            75% { transform: rotateX(8deg) rotateY(1deg); }
+        .hero-name-parallax:hover .name-layer-1 {
+            text-shadow: 
+                1px 1px 0 #d1d1d1,
+                2px 2px 0 #c2c2c2,
+                3px 3px 0 #b3b3b3,
+                4px 4px 0 #a4a4a4,
+                5px 5px 0 #959595,
+                6px 6px 0 #868686,
+                7px 7px 0 #777,
+                8px 8px 15px rgba(0,0,0,0.25),
+                8px 8px 30px rgba(0,0,0,0.15);
         }
 
         .hero h1 .gradient {
@@ -742,9 +742,9 @@
     </div>
     <div class="hero-content">
         <div class="hero-badge">Disponível para oportunidades</div>
-        <div class="hero-name-3d">
-            <span class="name-3d" data-text="Rubens">Rubens</span>
-            <span class="name-3d sub" data-text="Pereira Fernandes">Pereira Fernandes</span>
+        <div class="hero-name-parallax" id="parallaxName">
+            <div class="name-layer name-layer-1" data-speed="0.02">Rubens</div>
+            <div class="name-layer name-layer-2" data-speed="0.04">Pereira Fernandes</div>
         </div>
         <div class="hero-role">Logística & Tecnologia</div>
         <div class="hero-meta">
@@ -958,6 +958,26 @@ const obs = new IntersectionObserver(entries => {
     });
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Parallax name effect
+const parallaxName = document.getElementById('parallaxName');
+if (parallaxName) {
+    const layers = parallaxName.querySelectorAll('.name-layer');
+    
+    document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+        
+        layers.forEach(layer => {
+            const speed = parseFloat(layer.dataset.speed);
+            const moveX = x * speed * 100;
+            const moveY = y * speed * 50;
+            const rotateY = x * speed * 15;
+            const rotateX = -y * speed * 10;
+            layer.style.transform = `translateX(${moveX}px) translateY(${moveY}px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+        });
+    });
+}
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
