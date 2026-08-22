@@ -3,34 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rubens Pereira Fernandes — Portfólio</title>
+    <title>Rubens Pereira Fernandes — Currículo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg: #09090b;
-            --bg-2: #18181b;
-            --bg-3: #27272a;
-            --border: #3f3f46;
-            --text: #fafafa;
-            --text-2: #a1a1aa;
-            --text-3: #71717a;
-            --blue: #3b82f6;
-            --blue-dim: rgba(59,130,246,0.12);
-            --purple: #8b5cf6;
-            --green: #22c55e;
-            --green-dim: rgba(34,197,94,0.12);
-            --red: #ef4444;
-            --orange: #f97316;
-            --radius: 16px;
+            --bg: #ffffff;
+            --bg-2: #f5f5f7;
+            --border: #d2d2d7;
+            --text: #1d1d1f;
+            --text-2: #6e6e73;
+            --text-3: #86868b;
+            --blue: #0071e3;
+            --blue-hover: #0077ED;
+            --purple: #5856d6;
+            --pink: #bf5af2;
+            --green: #34c759;
         }
 
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
             background: var(--bg);
             color: var(--text);
             overflow-x: hidden;
@@ -38,103 +34,79 @@
 
         /* ===== NAV ===== */
         .nav {
-            position: fixed;
+            background: rgba(255,255,255,0.82);
+            backdrop-filter: saturate(180%) blur(20px);
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 0 2rem;
-            height: 56px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(9,9,11,0.8);
-            backdrop-filter: blur(20px);
+            z-index: 999;
             border-bottom: 1px solid var(--border);
         }
 
-        .nav-logo {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text);
-            letter-spacing: -0.02em;
+        .nav-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+            height: 44px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-logo { font-size: 1rem; font-weight: 700; color: var(--text); text-decoration: none; }
+
+        .nav-links { display: flex; gap: 1.8rem; align-items: center; }
 
         .nav-links a {
-            font-size: 0.82rem;
-            color: var(--text-3);
+            font-size: 0.8rem;
+            color: var(--text-2);
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .nav-links a:hover { color: var(--text); }
 
-        .nav-download {
-            background: var(--blue);
+        .nav-cta {
+            background: var(--blue) !important;
             color: #fff !important;
-            padding: 0.4rem 1rem;
-            border-radius: 8px;
-            font-weight: 600;
+            padding: 0.35rem 0.9rem !important;
+            border-radius: 980px;
+            font-weight: 500 !important;
         }
-
-        .nav-download:hover { opacity: 0.9; }
 
         /* ===== HERO ===== */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             text-align: center;
-            padding: 6rem 2rem 4rem;
-            position: relative;
+            padding: 4rem 1.5rem 3rem;
+            background: var(--bg-2);
+            border-bottom: 1px solid var(--border);
         }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-content { position: relative; z-index: 1; max-width: 700px; }
 
         .hero-avatar {
-            width: 140px;
-            height: 140px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             object-fit: cover;
             object-position: center top;
-            margin: 0 auto 2rem;
+            margin: 0 auto 1.2rem;
             display: block;
             border: 3px solid var(--border);
-            transition: transform 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99), border-color 0.3s;
+            transition: transform 0.4s;
         }
 
-        .hero-avatar:hover {
-            transform: scale(1.08);
-            border-color: var(--blue);
-        }
+        .hero-avatar:hover { transform: scale(1.05); }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            background: var(--green-dim);
+            gap: 0.4rem;
+            background: #f0fdf4;
             color: var(--green);
-            padding: 0.35rem 0.9rem;
+            padding: 0.3rem 0.7rem;
             border-radius: 50px;
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(34,197,94,0.2);
+            margin-bottom: 1rem;
+            border: 1px solid #bbf7d0;
         }
 
         .hero-badge::before {
@@ -143,92 +115,80 @@
             height: 6px;
             background: var(--green);
             border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
         }
 
         .hero h1 {
-            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 900;
             letter-spacing: -0.04em;
             line-height: 1.05;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
         }
 
         .hero h1 .gradient {
-            background: linear-gradient(135deg, var(--blue), var(--purple));
+            background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero-role {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--text-2);
-            margin-bottom: 1rem;
-            font-weight: 400;
+            margin-bottom: 0.8rem;
         }
 
-        .hero-desc {
-            font-size: 0.95rem;
-            color: var(--text-3);
-            line-height: 1.7;
-            max-width: 500px;
-            margin: 0 auto 2rem;
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            font-size: 0.88rem;
+            color: var(--text-2);
         }
 
-        .hero-actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+        .hero-meta strong { color: var(--text); }
+
+        .hero-actions { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.7rem 1.5rem;
-            border-radius: 10px;
-            font-size: 0.88rem;
-            font-weight: 600;
+            gap: 0.4rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 980px;
+            font-size: 0.85rem;
+            font-weight: 500;
             text-decoration: none;
             transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-family: inherit;
         }
 
         .btn-primary { background: var(--blue); color: #fff; }
-        .btn-primary:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(59,130,246,0.3); }
-        .btn-outline { background: var(--bg-2); color: var(--text); border: 1px solid var(--border); }
-        .btn-outline:hover { border-color: var(--text-3); transform: translateY(-2px); }
+        .btn-primary:hover { background: var(--blue-hover); }
+        .btn-outline { color: var(--blue); }
+        .btn-outline:hover { text-decoration: underline; }
 
         /* ===== STATS ===== */
         .stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            overflow: hidden;
+            gap: 12px;
             max-width: 600px;
-            margin: 0 auto 4rem;
+            margin: 0 auto;
+            padding: 3rem 22px;
         }
 
         .stat {
             background: var(--bg-2);
+            border-radius: 16px;
             padding: 1.8rem;
             text-align: center;
-            transition: background 0.3s;
         }
-
-        .stat:hover { background: var(--bg-3); }
 
         .stat-num {
             font-size: 2rem;
             font-weight: 900;
-            letter-spacing: -0.03em;
-            background: linear-gradient(135deg, var(--blue), var(--purple));
+            background: linear-gradient(90deg, var(--blue), var(--purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -237,24 +197,25 @@
             font-size: 0.75rem;
             color: var(--text-3);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-top: 0.3rem;
+            letter-spacing: 0.03em;
+            margin-top: 0.2rem;
         }
 
         /* ===== SECTION ===== */
         .section {
-            max-width: 900px;
+            max-width: 980px;
             margin: 0 auto;
-            padding: 5rem 2rem;
+            padding: 4.5rem 22px;
+            text-align: center;
         }
 
         .section-label {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--blue);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.3rem;
         }
 
         .section-title {
@@ -269,17 +230,26 @@
             color: var(--text-2);
             margin-bottom: 2.5rem;
             max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .section-divider {
-            max-width: 900px;
+            max-width: 980px;
             margin: 0 auto;
             border: none;
             border-top: 1px solid var(--border);
         }
 
         /* ===== SKILLS ===== */
-        .skills { display: flex; flex-direction: column; gap: 8px; }
+        .skills {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-width: 650px;
+            margin: 0 auto;
+            text-align: left;
+        }
 
         .skill {
             display: flex;
@@ -287,23 +257,18 @@
             gap: 1rem;
             padding: 1rem 1.2rem;
             background: var(--bg-2);
-            border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 14px;
             transition: all 0.3s;
         }
 
-        .skill:hover {
-            border-color: var(--blue);
-            background: var(--bg-3);
-            transform: translateX(4px);
-        }
+        .skill:hover { background: #ebebed; }
 
         .skill-icon {
-            font-size: 1.3rem;
-            width: 40px;
-            height: 40px;
+            font-size: 1.2rem;
+            width: 38px;
+            height: 38px;
             border-radius: 10px;
-            background: var(--bg-3);
+            background: var(--bg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -311,14 +276,14 @@
         }
 
         .skill-info { flex: 1; }
-        .skill-name { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .skill-name { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.3rem; }
 
-        .skill-bar { height: 4px; background: var(--bg-3); border-radius: 2px; overflow: hidden; }
+        .skill-bar { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
 
         .skill-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--blue), var(--purple));
-            border-radius: 2px;
+            border-radius: 3px;
             width: 0;
             transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
@@ -331,163 +296,134 @@
             text-align: right;
         }
 
-        /* ===== CARDS GRID ===== */
+        /* ===== CARDS ===== */
         .cards {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 10px;
+            text-align: left;
         }
 
         .card {
             background: var(--bg-2);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
+            border-radius: 16px;
             padding: 1.5rem;
             transition: all 0.3s;
         }
 
-        .card:hover {
-            border-color: var(--blue);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
+        .card:hover { background: #ebebed; }
 
         .card-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: var(--bg);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
         }
 
-        .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
         .card p { font-size: 0.85rem; color: var(--text-2); line-height: 1.5; }
 
         /* ===== TIMELINE ===== */
-        .timeline { position: relative; padding-left: 24px; }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--blue), var(--purple), transparent);
-        }
-
-        .timeline-item { margin-bottom: 1.5rem; position: relative; }
-
-        .timeline-dot {
-            position: absolute;
-            left: -20px;
-            top: 6px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--bg);
-            border: 3px solid var(--blue);
-        }
+        .timeline { max-width: 600px; margin: 0 auto; text-align: left; }
 
         .timeline-card {
             background: var(--bg-2);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
+            border-radius: 16px;
             padding: 1.5rem;
             transition: all 0.3s;
         }
 
-        .timeline-card:hover {
-            border-color: var(--blue);
-            transform: translateX(4px);
-        }
+        .timeline-card:hover { background: #ebebed; }
 
         .timeline-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem; flex-wrap: wrap; gap: 0.5rem; }
-        .timeline-title { font-size: 1.1rem; font-weight: 700; }
+        .timeline-title { font-size: 1.05rem; font-weight: 700; }
 
         .timeline-date {
             font-size: 0.75rem;
-            font-weight: 600;
+            font-weight: 500;
             color: var(--blue);
-            background: var(--blue-dim);
+            background: #eff6ff;
             padding: 0.2rem 0.6rem;
             border-radius: 50px;
         }
 
-        .timeline-company { font-size: 0.9rem; color: var(--text-2); margin-bottom: 0.5rem; }
+        .timeline-company { font-size: 0.88rem; color: var(--text-2); margin-bottom: 0.5rem; }
         .timeline-desc { font-size: 0.88rem; color: var(--text-2); line-height: 1.6; }
 
         /* ===== CERTS ===== */
-        .certs { display: flex; flex-direction: column; gap: 6px; }
+        .certs {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
 
         .cert {
             display: flex;
             align-items: center;
             gap: 0.8rem;
-            padding: 0.9rem 1.2rem;
+            padding: 0.8rem 1rem;
             background: var(--bg-2);
-            border: 1px solid var(--border);
             border-radius: 12px;
             transition: all 0.3s;
         }
 
-        .cert:hover { border-color: var(--blue); transform: translateX(4px); }
+        .cert:hover { background: #ebebed; }
 
         .cert-badge {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: var(--bg-3);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: var(--bg);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 0.95rem;
             flex-shrink: 0;
         }
 
-        .cert-name { font-size: 0.88rem; font-weight: 600; }
-        .cert-org { font-size: 0.75rem; color: var(--text-3); }
+        .cert-name { font-size: 0.85rem; font-weight: 600; }
+        .cert-org { font-size: 0.73rem; color: var(--text-3); }
 
         /* ===== CONTACT ===== */
         .contacts {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 10px;
+            max-width: 850px;
+            margin: 0 auto;
+            text-align: left;
         }
 
         .contact {
             background: var(--bg-2);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.3rem;
+            border-radius: 14px;
+            padding: 1.2rem;
             text-decoration: none;
             color: var(--text);
             transition: all 0.3s;
         }
 
-        .contact:hover {
-            border-color: var(--blue);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
+        .contact:hover { background: #ebebed; }
 
-        .contact-icon {
-            font-size: 1.3rem;
-            margin-bottom: 0.7rem;
-        }
+        .contact-icon { font-size: 1.2rem; margin-bottom: 0.6rem; }
 
         .contact-label {
             font-size: 0.7rem;
             color: var(--text-3);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.15rem;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.1rem;
         }
 
-        .contact-value { font-size: 0.88rem; font-weight: 600; }
+        .contact-value { font-size: 0.85rem; font-weight: 600; }
 
         /* ===== FOOTER ===== */
         footer {
@@ -503,11 +439,12 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero { padding: 5rem 1.5rem 3rem; }
-            .stats { grid-template-columns: 1fr; }
+            .hero { padding: 3rem 1rem 2rem; }
+            .hero-avatar { width: 110px; height: 110px; }
+            .stats { grid-template-columns: 1fr; padding: 2rem 1rem; }
             .cards { grid-template-columns: 1fr; }
             .contacts { grid-template-columns: 1fr; }
-            .section { padding: 3rem 1.5rem; }
+            .section { padding: 3rem 1rem; }
         }
 
         /* ===== REVEAL ===== */
@@ -524,57 +461,49 @@
 
 <!-- Nav -->
 <div class="nav">
-    <div class="nav-logo">RPF</div>
-    <div class="nav-links">
-        <a href="#sobre">Sobre</a>
-        <a href="#skills">Skills</a>
-        <a href="#exp">Experiência</a>
-        <a href="#certs">Certificações</a>
-        <a href="#contato">Contato</a>
-        <a href="#contato" class="nav-download">✉️ Contatar</a>
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">RPF</a>
+        <div class="nav-links">
+            <a href="#sobre">Sobre</a>
+            <a href="#skills">Skills</a>
+            <a href="#exp">Experiência</a>
+            <a href="#certs">Certificações</a>
+            <a href="#contato" class="nav-cta">Contato</a>
+        </div>
     </div>
 </div>
 
 <!-- Hero -->
 <section class="hero">
-    <div class="hero-content">
-        <img src="foto-avatar.webp" alt="Rubens Pereira Fernandes" class="hero-avatar">
-        <div class="hero-badge">Disponível para oportunidades</div>
-        <h1><span class="gradient">Rubens</span><br>Pereira Fernandes</h1>
-        <div class="hero-role">Logística & Tecnologia</div>
-        <p class="hero-desc">
-            Profissional dedicado e proativo com experiência em operações de logística e depósito. Busco constantemente novos conhecimentos e desafios.
-        </p>
-        <div class="hero-actions">
-            <a href="mailto:rubensfernandes2112@gmail.com" class="btn btn-primary">✉️ Enviar email</a>
-            <a href="https://wa.me/5581989501999" target="_blank" class="btn btn-outline">💬 WhatsApp</a>
-            <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="btn btn-outline">🔗 LinkedIn</a>
-        </div>
+    <img src="foto-avatar.webp" alt="Rubens Pereira Fernandes" class="hero-avatar">
+    <div class="hero-badge">Disponível para oportunidades</div>
+    <h1><span class="gradient">Rubens</span><br>Pereira Fernandes</h1>
+    <div class="hero-role">Logística & Tecnologia</div>
+    <div class="hero-meta">
+        <div>📍 <strong>Limoeiro, PE</strong></div>
+        <div>🎂 <strong>26 anos</strong></div>
+        <div>📞 <strong>+55 81 98950-1999</strong></div>
+    </div>
+    <div class="hero-actions">
+        <a href="mailto:rubensfernandes2112@gmail.com" class="btn btn-primary">✉️ Enviar email</a>
+        <a href="https://wa.me/5581989501999" target="_blank" class="btn btn-outline">💬 WhatsApp</a>
+        <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="btn btn-outline">🔗 LinkedIn</a>
     </div>
 </section>
 
 <!-- Stats -->
 <div class="stats reveal">
-    <div class="stat">
-        <div class="stat-num">7</div>
-        <div class="stat-label">Certificações</div>
-    </div>
-    <div class="stat">
-        <div class="stat-num">1+</div>
-        <div class="stat-label">Ano Exp.</div>
-    </div>
-    <div class="stat">
-        <div class="stat-num">6</div>
-        <div class="stat-label">Skills</div>
-    </div>
+    <div class="stat"><div class="stat-num">7</div><div class="stat-label">Certificações</div></div>
+    <div class="stat"><div class="stat-num">1+</div><div class="stat-label">Ano Exp.</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Skills</div></div>
 </div>
 
 <!-- Sobre -->
 <section class="section" id="sobre">
-    <div class="section-label reveal">// Sobre mim</div>
-    <h2 class="section-title reveal">Quem sou eu</h2>
+    <div class="section-label reveal">Sobre mim</div>
+    <h2 class="section-title reveal">Profissional dedicado<br>em constante evolução.</h2>
     <p class="section-desc reveal">
-        Profissional com experiência em operações de logística e depósito, atuando em empresas de grande porte. Desenvolvo conhecimentos em tecnologia e busco sempre evoluir.
+        Com experiência em operações de logística e depósito, atuo em empresas de grande porte. Paralelamente, desenvolvo conhecimentos em tecnologia.
     </p>
 </section>
 
@@ -582,7 +511,7 @@
 
 <!-- Skills -->
 <section class="section" id="skills">
-    <div class="section-label reveal">// Habilidades</div>
+    <div class="section-label reveal">Habilidades</div>
     <h2 class="section-title reveal">O que sei fazer</h2>
     <div class="skills reveal">
         <div class="skill"><div class="skill-icon">🏗️</div><div class="skill-info"><div class="skill-name">Operação de Empilhadeira</div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div><div class="skill-pct">90%</div></div>
@@ -598,15 +527,15 @@
 
 <!-- Soft Skills -->
 <section class="section">
-    <div class="section-label reveal">// Competências</div>
+    <div class="section-label reveal">Competências</div>
     <h2 class="section-title reveal">Qualidades</h2>
     <div class="cards reveal">
-        <div class="card"><div class="card-icon" style="background: var(--blue-dim);">🎯</div><h3>Foco em Resultados</h3><p>Comprometido com a superação de expectativas.</p></div>
-        <div class="card"><div class="card-icon" style="background: rgba(139,92,246,0.12);">🤝</div><h3>Trabalho em Equipe</h3><p>Experiência em ambientes colaborativos.</p></div>
-        <div class="card"><div class="card-icon" style="background: rgba(249,115,22,0.12);">📚</div><h3>Aprendizado Contínuo</h3><p>7 certificações em áreas diversas.</p></div>
-        <div class="card"><div class="card-icon" style="background: rgba(34,197,94,0.12);">🔍</div><h3>Atenção aos Detalhes</h3><p>Conferência rigorosa do inventário.</p></div>
-        <div class="card"><div class="card-icon" style="background: rgba(239,68,68,0.12);">⏰</div><h3>Pontualidade</h3><p>Responsabilidade com prazos.</p></div>
-        <div class="card"><div class="card-icon" style="background: rgba(59,130,246,0.12);">💪</div><h3>Resiliência</h3><p>Capacidade de adaptação.</p></div>
+        <div class="card"><div class="card-icon">🎯</div><h3>Foco em Resultados</h3><p>Comprometido com a superação de expectativas.</p></div>
+        <div class="card"><div class="card-icon">🤝</div><h3>Trabalho em Equipe</h3><p>Experiência em ambientes colaborativos.</p></div>
+        <div class="card"><div class="card-icon">📚</div><h3>Aprendizado Contínuo</h3><p>7 certificações em áreas diversas.</p></div>
+        <div class="card"><div class="card-icon">🔍</div><h3>Atenção aos Detalhes</h3><p>Conferência rigorosa do inventário.</p></div>
+        <div class="card"><div class="card-icon">⏰</div><h3>Pontualidade</h3><p>Responsabilidade com prazos.</p></div>
+        <div class="card"><div class="card-icon">💪</div><h3>Resiliência</h3><p>Capacidade de adaptação.</p></div>
     </div>
 </section>
 
@@ -614,19 +543,16 @@
 
 <!-- Experiência -->
 <section class="section" id="exp">
-    <div class="section-label reveal">// Experiência</div>
+    <div class="section-label reveal">Experiência</div>
     <h2 class="section-title reveal">Trajetória</h2>
     <div class="timeline reveal">
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-                <div class="timeline-top">
-                    <div class="timeline-title">Auxiliar de Depósito</div>
-                    <div class="timeline-date">2022 — 2023</div>
-                </div>
-                <div class="timeline-company">Ferreira Costa — Recife, PE</div>
-                <div class="timeline-desc">Expedição, recebimento, entrega e reposição de mercadorias. Conferência rigorosa do inventário.</div>
+        <div class="timeline-card">
+            <div class="timeline-top">
+                <div class="timeline-title">Auxiliar de Depósito</div>
+                <div class="timeline-date">2022 — 2023</div>
             </div>
+            <div class="timeline-company">Ferreira Costa — Recife, PE</div>
+            <div class="timeline-desc">Expedição, recebimento, entrega e reposição de mercadorias. Conferência rigorosa do inventário.</div>
         </div>
     </div>
 </section>
@@ -635,9 +561,9 @@
 
 <!-- Educação -->
 <section class="section">
-    <div class="section-label reveal">// Formação</div>
+    <div class="section-label reveal">Formação</div>
     <h2 class="section-title reveal">Educação</h2>
-    <div class="timeline-card reveal" style="max-width: 500px;">
+    <div class="timeline-card reveal" style="max-width: 450px; margin: 0 auto; text-align: left;">
         <div class="timeline-top">
             <div class="timeline-title">Ensino Médio Completo</div>
             <div class="timeline-date">2021</div>
@@ -650,7 +576,7 @@
 
 <!-- Certificações -->
 <section class="section" id="certs">
-    <div class="section-label reveal">// Certificações</div>
+    <div class="section-label reveal">Certificações</div>
     <h2 class="section-title reveal">Cursos</h2>
     <div class="certs reveal">
         <div class="cert"><div class="cert-badge">🏗️</div><div><div class="cert-name">Operador de Empilhadeira</div><div class="cert-org">ESTTJ · 2024</div></div></div>
@@ -667,7 +593,7 @@
 
 <!-- Contato -->
 <section class="section" id="contato">
-    <div class="section-label reveal">// Contato</div>
+    <div class="section-label reveal">Contato</div>
     <h2 class="section-title reveal">Vamos conversar?</h2>
     <div class="contacts reveal">
         <a href="https://wa.me/5581989501999" target="_blank" class="contact"><div class="contact-icon">💬</div><div class="contact-label">WhatsApp</div><div class="contact-value">+55 81 98950-1999</div></a>
@@ -683,7 +609,6 @@
 </footer>
 
 <script>
-// Reveal
 const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
         if (e.isIntersecting) {
@@ -694,7 +619,6 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
         e.preventDefault();
