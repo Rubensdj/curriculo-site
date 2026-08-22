@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rubens Pereira Fernandes — Currículo</title>
-    <meta name="description" content="Currículo profissional de Rubens Pereira Fernandes — Logística e Tecnologia.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -31,7 +30,6 @@
             background: var(--white);
             color: var(--black);
             overflow-x: hidden;
-            perspective: 1000px;
         }
 
         /* ===== PROMO ===== */
@@ -56,7 +54,7 @@
         }
 
         .nav-inner {
-            max-width: 980px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 22px;
             height: 44px;
@@ -65,12 +63,7 @@
             align-items: center;
         }
 
-        .nav-logo {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--black);
-            text-decoration: none;
-        }
+        .nav-logo { font-size: 1.1rem; font-weight: 700; color: var(--black); text-decoration: none; }
 
         .nav-links { display: flex; gap: 1.8rem; align-items: center; }
 
@@ -93,56 +86,96 @@
 
         .nav-cta:hover { background: var(--blue-hover) !important; }
 
-        /* ===== HERO ===== */
-        .hero {
-            text-align: center;
-            padding: 5rem 1.5rem 4rem;
-            background: var(--gray-5);
-            border-bottom: 1px solid var(--gray-4);
+        /* ===== HERO SPLIT ===== */
+        .hero-split {
+            display: grid;
+            grid-template-columns: 45% 55%;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .hero-photo-side {
             position: relative;
             overflow: hidden;
         }
 
+        .hero-photo-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        .hero-photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,113,227,0.1), rgba(88,86,214,0.1));
+            pointer-events: none;
+        }
+
+        .hero-photo-border {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, var(--gray-4), transparent);
+        }
+
+        .hero-content-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 4rem 4rem 3rem;
+        }
+
+        .badge-3d {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--white);
+            border: 1px solid var(--gray-4);
+            padding: 0.4rem 0.8rem;
+            border-radius: 980px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--gray-1);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            width: fit-content;
+            transform: translateZ(50px) rotateX(5deg);
+            animation: badge3d 4s ease-in-out infinite;
+        }
+
+        .badge-3d::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #34c759;
+            border-radius: 50%;
+        }
+
+        @keyframes badge3d {
+            0%, 100% { transform: translateZ(50px) rotateX(5deg) rotateY(0deg); }
+            50% { transform: translateZ(70px) rotateX(-3deg) rotateY(5deg); }
+        }
+
         .hero-eyebrow {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--gray-3);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             margin-bottom: 0.5rem;
         }
 
-        .hero-photo-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-            border: 4px solid var(--white);
-            margin-bottom: 1.5rem;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            transition: transform 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.5s;
-            transform: translateZ(40px);
-            animation: photoFloat 6s ease-in-out infinite;
-        }
-
-        .hero-photo-img:hover {
-            transform: translateZ(80px) scale(1.08);
-            box-shadow: 0 20px 60px rgba(0,113,227,0.3);
-        }
-
-        @keyframes photoFloat {
-            0%, 100% { transform: translateZ(40px) translateY(0); }
-            50% { transform: translateZ(60px) translateY(-8px); }
-        }
-
         .hero h1 {
-            font-size: clamp(3rem, 7vw, 5rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 900;
             letter-spacing: -0.04em;
             line-height: 1.05;
             margin-bottom: 0.8rem;
-            transform: translateZ(60px);
         }
 
         .hero h1 .gradient {
@@ -152,25 +185,31 @@
         }
 
         .hero-sub {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--gray-2);
             margin-bottom: 1rem;
-            transform: translateZ(40px);
         }
 
-        .hero-note {
-            font-size: 0.95rem;
-            color: var(--gray-3);
-            margin-bottom: 2rem;
-            transform: translateZ(20px);
-        }
-
-        .hero-actions {
+        .hero-meta {
             display: flex;
-            gap: 1rem;
-            justify-content: center;
             flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray-2);
         }
+
+        .hero-meta strong { color: var(--gray-1); }
+
+        .hero-desc {
+            font-size: 0.95rem;
+            color: var(--gray-2);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            max-width: 450px;
+        }
+
+        .hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
 
         .hero-btn {
             display: inline-flex;
@@ -182,73 +221,68 @@
             font-weight: 500;
             text-decoration: none;
             transition: all 0.3s;
-            transform: translateZ(30px);
         }
 
         .hero-btn.primary { background: var(--blue); color: #fff; }
-        .hero-btn.primary:hover { background: var(--blue-hover); transform: translateZ(50px) scale(1.05); }
+        .hero-btn.primary:hover { background: var(--blue-hover); transform: scale(1.03); }
         .hero-btn.secondary { color: var(--blue); }
-        .hero-btn.secondary:hover { text-decoration: underline; transform: translateZ(50px); }
+        .hero-btn.secondary:hover { text-decoration: underline; }
 
-        /* ===== 3D FLOATING SHAPES ===== */
-        .float-shapes {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
+        /* ===== STATS ===== */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 22px;
+        }
+
+        .stat-card {
+            background: var(--gray-5);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.4s;
             transform-style: preserve-3d;
+            cursor: default;
         }
 
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.15;
-            animation: float3d 20s ease-in-out infinite;
-            transform-style: preserve-3d;
+        .stat-card:hover { box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
+
+        .stat-num {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            background: linear-gradient(90deg, var(--blue), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transform: translateZ(40px);
         }
 
-        .shape-1 {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, var(--blue), var(--purple));
-            top: -100px;
-            right: -100px;
-            animation-delay: 0s;
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-3);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-top: 0.3rem;
+            transform: translateZ(20px);
         }
 
-        .shape-2 {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            bottom: -50px;
-            left: -50px;
-            animation-delay: -7s;
-        }
-
-        .shape-3 {
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(135deg, var(--pink), var(--blue));
-            top: 50%;
-            left: 10%;
-            animation-delay: -14s;
-        }
-
-        @keyframes float3d {
-            0%, 100% { transform: translateZ(0) rotateX(0deg) rotateY(0deg); }
-            25% { transform: translateZ(40px) rotateX(15deg) rotateY(15deg); }
-            50% { transform: translateZ(20px) rotateX(-10deg) rotateY(-10deg); }
-            75% { transform: translateZ(60px) rotateX(5deg) rotateY(-5deg); }
-        }
-
-        /* ===== CONTENT ===== */
+        /* ===== SECTIONS ===== */
         .content {
-            max-width: 980px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 22px;
         }
 
-        /* ===== FEATURE ===== */
+        .section-divider {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: none;
+            border-top: 1px solid var(--gray-4);
+        }
+
         .feature {
             padding: 5rem 0;
             text-align: center;
@@ -280,12 +314,11 @@
             margin-right: auto;
         }
 
-        /* ===== 3D CARD GRID ===== */
+        /* ===== CARDS ===== */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
             gap: 12px;
-            perspective: 1000px;
         }
 
         .card-3d {
@@ -295,381 +328,151 @@
             text-align: left;
             transition: transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.4s;
             transform-style: preserve-3d;
-            transform: rotateX(0) rotateY(0) translateZ(0);
-            will-change: transform;
             cursor: default;
         }
 
-        .card-3d:hover {
-            box-shadow: 0 30px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.05);
-        }
+        .card-3d:hover { box-shadow: 0 30px 60px rgba(0,0,0,0.12); }
 
         .card-3d .card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
+            width: 48px; height: 48px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; margin-bottom: 1rem;
             transform: translateZ(30px);
         }
 
-        .card-3d h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-            transform: translateZ(20px);
-        }
+        .card-3d h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; transform: translateZ(20px); }
+        .card-3d p { font-size: 0.9rem; color: var(--gray-2); line-height: 1.5; transform: translateZ(10px); }
 
-        .card-3d p {
-            font-size: 0.9rem;
-            color: var(--gray-2);
-            line-height: 1.5;
-            transform: translateZ(10px);
-        }
-
-        /* ===== 3D SKILL BARS ===== */
-        .skills-container {
-            perspective: 1200px;
-        }
-
+        /* ===== SKILLS ===== */
         .skill-row-3d {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.2rem 1.5rem;
-            background: var(--gray-5);
-            border-radius: 16px;
+            display: flex; align-items: center; gap: 1rem;
+            padding: 1.2rem 1.5rem; background: var(--gray-5); border-radius: 16px;
             margin-bottom: 8px;
             transition: transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.4s;
-            transform-style: preserve-3d;
-            transform: rotateX(0) rotateY(0);
-            cursor: default;
+            transform-style: preserve-3d; cursor: default;
         }
 
-        .skill-row-3d:hover {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
+        .skill-row-3d:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
         .skill-row-3d .skill-icon {
-            font-size: 1.5rem;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transform: translateZ(40px);
+            font-size: 1.5rem; width: 44px; height: 44px; border-radius: 12px;
+            background: var(--white); display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; transform: translateZ(40px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         .skill-row-3d .skill-info { flex: 1; transform: translateZ(20px); }
+        .skill-name { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
 
-        .skill-name {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 0.4rem;
-        }
-
-        .skill-bar {
-            height: 6px;
-            background: var(--gray-4);
-            border-radius: 3px;
-            overflow: hidden;
-        }
+        .skill-bar { height: 6px; background: var(--gray-4); border-radius: 3px; overflow: hidden; }
 
         .skill-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--blue), var(--purple));
-            border-radius: 3px;
-            width: 0;
-            transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            height: 100%; background: linear-gradient(90deg, var(--blue), var(--purple));
+            border-radius: 3px; width: 0; transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .skill-pct {
-            font-size: 0.8rem;
-            color: var(--gray-3);
-            font-weight: 500;
-            min-width: 35px;
-            text-align: right;
-            transform: translateZ(30px);
+            font-size: 0.8rem; color: var(--gray-3); font-weight: 500;
+            min-width: 35px; text-align: right; transform: translateZ(30px);
         }
 
-        /* ===== 3D TIMELINE ===== */
-        .timeline-3d {
-            perspective: 1000px;
-        }
-
+        /* ===== TIMELINE ===== */
         .timeline-item-3d {
-            background: var(--gray-5);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 12px;
+            background: var(--gray-5); border-radius: 20px; padding: 2rem;
+            margin-bottom: 12px; text-align: left;
             transition: transform 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.5s;
             transform-style: preserve-3d;
-            transform: rotateX(0) rotateY(0);
         }
 
-        .timeline-item-3d:hover {
-            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
-        }
+        .timeline-item-3d:hover { box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
 
-        .timeline-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 0.5rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .timeline-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            transform: translateZ(30px);
-        }
+        .timeline-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem; }
+        .timeline-title { font-size: 1.2rem; font-weight: 700; transform: translateZ(30px); }
 
         .timeline-date {
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--blue);
-            background: rgba(0,113,227,0.08);
-            padding: 0.2rem 0.7rem;
-            border-radius: 50px;
+            font-size: 0.8rem; font-weight: 500; color: var(--blue);
+            background: rgba(0,113,227,0.08); padding: 0.2rem 0.7rem; border-radius: 50px;
             transform: translateZ(40px);
         }
 
-        .timeline-company {
-            font-size: 0.95rem;
-            color: var(--gray-2);
-            margin-bottom: 0.8rem;
-            transform: translateZ(15px);
-        }
+        .timeline-company { font-size: 0.95rem; color: var(--gray-2); margin-bottom: 0.8rem; transform: translateZ(15px); }
+        .timeline-desc { font-size: 0.95rem; color: var(--gray-1); line-height: 1.6; transform: translateZ(10px); }
 
-        .timeline-desc {
-            font-size: 0.95rem;
-            color: var(--gray-1);
-            line-height: 1.6;
-            transform: translateZ(10px);
-        }
-
-        /* ===== 3D CERT LIST ===== */
-        .cert-list-3d {
-            perspective: 1000px;
-        }
-
+        /* ===== CERTS ===== */
         .cert-row-3d {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 1.5rem;
-            background: var(--gray-5);
-            border-radius: 14px;
-            margin-bottom: 8px;
+            display: flex; align-items: center; gap: 1rem;
+            padding: 1rem 1.5rem; background: var(--gray-5); border-radius: 14px;
+            margin-bottom: 8px; text-align: left;
             transition: transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.4s;
             transform-style: preserve-3d;
         }
 
-        .cert-row-3d:hover {
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-        }
+        .cert-row-3d:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
 
         .cert-icon-3d {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-            transform: translateZ(30px);
+            width: 44px; height: 44px; border-radius: 12px; background: var(--white);
+            display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+            flex-shrink: 0; transform: translateZ(30px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.06);
         }
 
         .cert-name { font-size: 0.95rem; font-weight: 600; transform: translateZ(15px); }
         .cert-org { font-size: 0.8rem; color: var(--gray-3); }
 
-        /* ===== 3D CONTACT ===== */
+        /* ===== CONTACT ===== */
         .contact-grid-3d {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 12px;
-            perspective: 1000px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px;
         }
 
         .contact-card-3d {
-            background: var(--gray-5);
-            border-radius: 20px;
-            padding: 1.5rem;
-            text-decoration: none;
-            color: var(--black);
+            background: var(--gray-5); border-radius: 20px; padding: 1.5rem;
+            text-decoration: none; color: var(--black);
             transition: transform 0.4s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.4s;
-            transform-style: preserve-3d;
+            transform-style: preserve-3d; text-align: left;
         }
 
-        .contact-card-3d:hover {
-            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-        }
+        .contact-card-3d:hover { box-shadow: 0 25px 50px rgba(0,0,0,0.1); }
 
-        .contact-icon-3d {
-            font-size: 1.5rem;
-            margin-bottom: 0.8rem;
-            transform: translateZ(30px);
-            display: inline-block;
-        }
-
-        .contact-label {
-            font-size: 0.75rem;
-            color: var(--gray-3);
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            margin-bottom: 0.2rem;
-        }
-
-        .contact-value {
-            font-size: 0.9rem;
-            font-weight: 600;
-            transform: translateZ(15px);
-        }
-
-        /* ===== 3D STATS ===== */
-        .stat-row-3d {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 3rem;
-            perspective: 1200px;
-        }
-
-        .stat-card-3d {
-            background: var(--gray-5);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99), box-shadow 0.5s;
-            transform-style: preserve-3d;
-        }
-
-        .stat-card-3d:hover {
-            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
-        }
-
-        .stat-num {
-            font-size: 2.5rem;
-            font-weight: 900;
-            letter-spacing: -0.03em;
-            background: linear-gradient(90deg, var(--blue), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transform: translateZ(40px);
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--gray-3);
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            margin-top: 0.3rem;
-            transform: translateZ(20px);
-        }
-
-        /* ===== 3D FLOATING BADGE ===== */
-        .badge-3d {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: var(--white);
-            border: 1px solid var(--gray-4);
-            padding: 0.4rem 0.8rem;
-            border-radius: 980px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--gray-1);
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            transform: translateZ(50px) rotateX(5deg);
-            animation: badge3d 4s ease-in-out infinite;
-        }
-
-        .badge-3d::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: #34c759;
-            border-radius: 50%;
-        }
-
-        @keyframes badge3d {
-            0%, 100% { transform: translateZ(50px) rotateX(5deg) rotateY(0deg); }
-            50% { transform: translateZ(70px) rotateX(-3deg) rotateY(5deg); }
-        }
+        .contact-icon-3d { font-size: 1.5rem; margin-bottom: 0.8rem; transform: translateZ(30px); display: inline-block; }
+        .contact-label { font-size: 0.75rem; color: var(--gray-3); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 0.2rem; }
+        .contact-value { font-size: 0.9rem; font-weight: 600; transform: translateZ(15px); }
 
         /* ===== CTA ===== */
-        .promo-section {
-            background: var(--gray-5);
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .promo-section h2 {
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            margin-bottom: 0.5rem;
-        }
-
-        .promo-section p {
-            font-size: 1rem;
-            color: var(--gray-2);
-            margin-bottom: 1.5rem;
-        }
+        .promo-section { background: var(--gray-5); padding: 4rem 0; text-align: center; }
+        .promo-section h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+        .promo-section p { font-size: 1rem; color: var(--gray-2); margin-bottom: 1.5rem; }
 
         /* ===== FOOTER ===== */
-        footer {
-            padding: 1.5rem 0;
-            text-align: center;
-            border-top: 1px solid var(--gray-4);
-        }
-
+        footer { padding: 1.5rem 0; text-align: center; border-top: 1px solid var(--gray-4); }
         footer p { font-size: 0.75rem; color: var(--gray-3); }
         footer a { color: var(--blue); text-decoration: none; }
 
-        /* ===== HR ===== */
-        .section-divider {
-            max-width: 980px;
-            margin: 0 auto;
-            border: none;
-            border-top: 1px solid var(--gray-4);
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .hero-split { grid-template-columns: 1fr; min-height: auto; }
+            .hero-photo-side { height: 60vh; min-height: 300px; }
+            .hero-content-side { padding: 3rem 1.5rem; text-align: center; }
+            .hero-meta { justify-content: center; }
+            .hero-desc { margin: 0 auto 2rem; }
+            .hero-actions { justify-content: center; }
+            .card-grid { grid-template-columns: 1fr; }
+            .stat-row { grid-template-columns: 1fr; }
+            .contact-grid-3d { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero { padding: 4rem 1rem 3rem; }
-            .card-grid { grid-template-columns: 1fr; }
-            .stat-row-3d { grid-template-columns: 1fr; }
-            .contact-grid-3d { grid-template-columns: 1fr; }
-            .timeline-top { flex-direction: column; }
-            .float-shapes { display: none; }
+        @media (max-width: 600px) {
+            .hero-photo-side { height: 50vh; }
         }
 
         /* ===== REVEAL ===== */
         .reveal {
             opacity: 0;
-            transform: translateY(30px) translateZ(-20px);
+            transform: translateY(30px);
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0) translateZ(0);
-        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
@@ -691,20 +494,26 @@
     </div>
 </nav>
 
-<!-- Hero -->
-<section class="hero">
-    <div class="float-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
+<!-- Hero Split -->
+<section class="hero-split">
+    <div class="hero-photo-side">
+        <img src="foto.webp" alt="Rubens Pereira Fernandes">
+        <div class="hero-photo-overlay"></div>
+        <div class="hero-photo-border"></div>
     </div>
-    <div class="content" style="position: relative; z-index: 1;">
+    <div class="hero-content-side">
         <div class="badge-3d">● Disponível para oportunidades</div>
-        <img src="foto-avatar.webp" alt="Rubens Pereira Fernandes" class="hero-photo-img" data-tilt>
         <div class="hero-eyebrow">Currículo Profissional</div>
         <h1><span class="gradient">Rubens</span><br>Pereira Fernandes</h1>
         <div class="hero-sub">Logística & Tecnologia</div>
-        <div class="hero-note">26 anos · Limoeiro, PE · Disponível para oportunidades</div>
+        <div class="hero-meta">
+            <div>📍 <strong>Limoeiro, PE</strong></div>
+            <div>🎂 <strong>26 anos</strong></div>
+            <div>📅 <strong>19/05/2000</strong></div>
+        </div>
+        <p class="hero-desc">
+            Profissional dedicado e proativo com experiência em operações de logística e depósito. Busco constantemente novos conhecimentos e desafios que contribuam para meu desenvolvimento.
+        </p>
         <div class="hero-actions">
             <a href="mailto:rubensfernandes2112@gmail.com" class="hero-btn primary">✉️ Enviar email</a>
             <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="hero-btn secondary">LinkedIn →</a>
@@ -712,21 +521,19 @@
     </div>
 </section>
 
-<!-- Stats 3D -->
-<div class="content">
-    <div class="stat-row-3d reveal">
-        <div class="stat-card-3d" data-tilt>
-            <div class="stat-num">7</div>
-            <div class="stat-label">Certificações</div>
-        </div>
-        <div class="stat-card-3d" data-tilt>
-            <div class="stat-num">1+</div>
-            <div class="stat-label">Ano de Experiência</div>
-        </div>
-        <div class="stat-card-3d" data-tilt>
-            <div class="stat-num">6</div>
-            <div class="stat-label">Habilidades</div>
-        </div>
+<!-- Stats -->
+<div class="stat-row reveal">
+    <div class="stat-card" data-tilt>
+        <div class="stat-num">7</div>
+        <div class="stat-label">Certificações</div>
+    </div>
+    <div class="stat-card" data-tilt>
+        <div class="stat-num">1+</div>
+        <div class="stat-label">Ano de Experiência</div>
+    </div>
+    <div class="stat-card" data-tilt>
+        <div class="stat-num">6</div>
+        <div class="stat-label">Habilidades</div>
     </div>
 </div>
 
@@ -745,126 +552,56 @@
 
 <hr class="section-divider">
 
-<!-- Skills 3D -->
+<!-- Skills -->
 <div class="content">
     <section class="feature" id="skills">
         <div class="feature-eyebrow reveal">Habilidades</div>
         <h2 class="reveal">O que sei fazer.</h2>
         <p class="feature-sub reveal">Habilidades técnicas desenvolvidas ao longo da carreira.</p>
-        <div class="skills-container reveal">
-            <div class="skill-row-3d" data-tilt>
-                <div class="skill-icon">🏗️</div>
-                <div class="skill-info">
-                    <div class="skill-name">Operação de Empilhadeira</div>
-                    <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-                </div>
-                <div class="skill-pct">90%</div>
-            </div>
-            <div class="skill-row-3d" data-tilt>
-                <div class="skill-icon">📦</div>
-                <div class="skill-info">
-                    <div class="skill-name">Logística de Depósito</div>
-                    <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-                </div>
-                <div class="skill-pct">85%</div>
-            </div>
-            <div class="skill-row-3d" data-tilt>
-                <div class="skill-icon">📊</div>
-                <div class="skill-info">
-                    <div class="skill-name">Power BI</div>
-                    <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
-                </div>
-                <div class="skill-pct">70%</div>
-            </div>
-            <div class="skill-row-3d" data-tilt>
-                <div class="skill-icon">💻</div>
-                <div class="skill-info">
-                    <div class="skill-name">Informática</div>
-                    <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
-                </div>
-                <div class="skill-pct">75%</div>
-            </div>
-            <div class="skill-row-3d" data-tilt>
-                <div class="skill-icon">🌐</div>
-                <div class="skill-info">
-                    <div class="skill-name">HTML / CSS</div>
-                    <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
-                </div>
-                <div class="skill-pct">60%</div>
-            </div>
-            <div class="skill-row-3d" data-tilt>
-                <div class="skill-icon">☕</div>
-                <div class="skill-info">
-                    <div class="skill-name">Java</div>
-                    <div class="skill-bar"><div class="skill-fill" data-width="45"></div></div>
-                </div>
-                <div class="skill-pct">45%</div>
-            </div>
+        <div class="reveal">
+            <div class="skill-row-3d" data-tilt><div class="skill-icon">🏗️</div><div class="skill-info"><div class="skill-name">Operação de Empilhadeira</div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div><div class="skill-pct">90%</div></div>
+            <div class="skill-row-3d" data-tilt><div class="skill-icon">📦</div><div class="skill-info"><div class="skill-name">Logística de Depósito</div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div><div class="skill-pct">85%</div></div>
+            <div class="skill-row-3d" data-tilt><div class="skill-icon">📊</div><div class="skill-info"><div class="skill-name">Power BI</div><div class="skill-bar"><div class="skill-fill" data-width="70"></div></div></div><div class="skill-pct">70%</div></div>
+            <div class="skill-row-3d" data-tilt><div class="skill-icon">💻</div><div class="skill-info"><div class="skill-name">Informática</div><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div><div class="skill-pct">75%</div></div>
+            <div class="skill-row-3d" data-tilt><div class="skill-icon">🌐</div><div class="skill-info"><div class="skill-name">HTML / CSS</div><div class="skill-bar"><div class="skill-fill" data-width="60"></div></div></div><div class="skill-pct">60%</div></div>
+            <div class="skill-row-3d" data-tilt><div class="skill-icon">☕</div><div class="skill-info"><div class="skill-name">Java</div><div class="skill-bar"><div class="skill-fill" data-width="45"></div></div></div><div class="skill-pct">45%</div></div>
         </div>
     </section>
 </div>
 
 <hr class="section-divider">
 
-<!-- Soft Skills 3D -->
+<!-- Soft Skills -->
 <div class="content">
     <section class="feature">
         <div class="feature-eyebrow reveal">Competências</div>
         <h2 class="reveal">Qualidades que me<br>definem como profissional.</h2>
         <div class="card-grid" style="margin-top: 2rem;">
-            <div class="card-3d reveal" data-tilt>
-                <div class="card-icon" style="background: rgba(0,113,227,0.08);">🎯</div>
-                <h3>Foco em Resultados</h3>
-                <p>Comprometido com a superação de expectativas e metas da organização.</p>
-            </div>
-            <div class="card-3d reveal" data-tilt>
-                <div class="card-icon" style="background: rgba(88,86,214,0.08);">🤝</div>
-                <h3>Trabalho em Equipe</h3>
-                <p>Experiência em ambientes colaborativos de alto volume de operações.</p>
-            </div>
-            <div class="card-3d reveal" data-tilt>
-                <div class="card-icon" style="background: rgba(191,90,242,0.08);">📚</div>
-                <h3>Aprendizado Contínuo</h3>
-                <p>7 certificações em áreas diversas, sempre buscando evoluir.</p>
-            </div>
-            <div class="card-3d reveal" data-tilt>
-                <div class="card-icon" style="background: rgba(255,149,0,0.08);">🔍</div>
-                <h3>Atenção aos Detalhes</h3>
-                <p>Conferência rigorosa para garantir integridade do inventário.</p>
-            </div>
-            <div class="card-3d reveal" data-tilt>
-                <div class="card-icon" style="background: rgba(52,199,89,0.08);">⏰</div>
-                <h3>Pontualidade</h3>
-                <p>Responsabilidade com prazos e compromissos profissionais.</p>
-            </div>
-            <div class="card-3d reveal" data-tilt>
-                <div class="card-icon" style="background: rgba(255,59,48,0.08);">💪</div>
-                <h3>Resiliência</h3>
-                <p>Capacidade de adaptação e superação de desafios.</p>
-            </div>
+            <div class="card-3d reveal" data-tilt><div class="card-icon" style="background: rgba(0,113,227,0.08);">🎯</div><h3>Foco em Resultados</h3><p>Comprometido com a superação de expectativas e metas.</p></div>
+            <div class="card-3d reveal" data-tilt><div class="card-icon" style="background: rgba(88,86,214,0.08);">🤝</div><h3>Trabalho em Equipe</h3><p>Experiência em ambientes colaborativos de alto volume.</p></div>
+            <div class="card-3d reveal" data-tilt><div class="card-icon" style="background: rgba(191,90,242,0.08);">📚</div><h3>Aprendizado Contínuo</h3><p>7 certificações em áreas diversas.</p></div>
+            <div class="card-3d reveal" data-tilt><div class="card-icon" style="background: rgba(255,149,0,0.08);">🔍</div><h3>Atenção aos Detalhes</h3><p>Conferência rigorosa para garantir integridade.</p></div>
+            <div class="card-3d reveal" data-tilt><div class="card-icon" style="background: rgba(52,199,89,0.08);">⏰</div><h3>Pontualidade</h3><p>Responsabilidade com prazos e compromissos.</p></div>
+            <div class="card-3d reveal" data-tilt><div class="card-icon" style="background: rgba(255,59,48,0.08);">💪</div><h3>Resiliência</h3><p>Capacidade de adaptação e superação de desafios.</p></div>
         </div>
     </section>
 </div>
 
 <hr class="section-divider">
 
-<!-- Experiência 3D -->
+<!-- Experiência -->
 <div class="content">
     <section class="feature" id="exp">
         <div class="feature-eyebrow reveal">Experiência</div>
         <h2 class="reveal">Trajetória profissional.</h2>
         <p class="feature-sub reveal">Experiência em operações de logística.</p>
-        <div class="timeline-3d">
-            <div class="timeline-item-3d reveal" data-tilt>
-                <div class="timeline-top">
-                    <div class="timeline-title">Auxiliar de Depósito</div>
-                    <div class="timeline-date">2022 — 2023</div>
-                </div>
-                <div class="timeline-company">Ferreira Costa — Recife, PE</div>
-                <div class="timeline-desc">
-                    Responsável por atividades de expedição, recebimento, entrega e reposição de mercadorias. Conferência rigorosa para garantia de integridade do inventário.
-                </div>
+        <div class="timeline-item-3d reveal" data-tilt>
+            <div class="timeline-top">
+                <div class="timeline-title">Auxiliar de Depósito</div>
+                <div class="timeline-date">2022 — 2023</div>
             </div>
+            <div class="timeline-company">Ferreira Costa — Recife, PE</div>
+            <div class="timeline-desc">Responsável por atividades de expedição, recebimento, entrega e reposição de mercadorias. Conferência rigorosa para garantia de integridade do inventário.</div>
         </div>
     </section>
 </div>
@@ -876,54 +613,31 @@
     <section class="feature" id="edu">
         <div class="feature-eyebrow reveal">Formação</div>
         <h2 class="reveal">Educação.</h2>
-        <div class="timeline-3d" style="margin-top: 2rem;">
-            <div class="timeline-item-3d reveal" data-tilt>
-                <div class="timeline-top">
-                    <div class="timeline-title">Ensino Médio Completo</div>
-                    <div class="timeline-date">2021</div>
-                </div>
-                <div class="timeline-company">Escola Seráfico Ricardo — Limoeiro, PE</div>
+        <div class="timeline-item-3d reveal" data-tilt style="margin-top: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <div class="timeline-top">
+                <div class="timeline-title">Ensino Médio Completo</div>
+                <div class="timeline-date">2021</div>
             </div>
+            <div class="timeline-company">Escola Seráfico Ricardo — Limoeiro, PE</div>
         </div>
     </section>
 </div>
 
 <hr class="section-divider">
 
-<!-- Certificações 3D -->
+<!-- Certificações -->
 <div class="content">
     <section class="feature" id="certs">
         <div class="feature-eyebrow reveal">Certificações</div>
         <h2 class="reveal">Cursos e certificados.</h2>
-        <div class="cert-list-3d reveal">
-            <div class="cert-row-3d" data-tilt>
-                <div class="cert-icon-3d">🏗️</div>
-                <div><div class="cert-name">Operador de Empilhadeira</div><div class="cert-org">ESTTJ · 2024</div></div>
-            </div>
-            <div class="cert-row-3d" data-tilt>
-                <div class="cert-icon-3d">📦</div>
-                <div><div class="cert-name">Curso de Logística</div><div class="cert-org">EDUCAWEB · 2024</div></div>
-            </div>
-            <div class="cert-row-3d" data-tilt>
-                <div class="cert-icon-3d">📊</div>
-                <div><div class="cert-name">Power BI Intensivo</div><div class="cert-org">Hashtag Treinamentos · 2024</div></div>
-            </div>
-            <div class="cert-row-3d" data-tilt>
-                <div class="cert-icon-3d">☕</div>
-                <div><div class="cert-name">Java Básico</div><div class="cert-org">Fundação Bradesco · 2023</div></div>
-            </div>
-            <div class="cert-row-3d" data-tilt>
-                <div class="cert-icon-3d">🌐</div>
-                <div><div class="cert-name">Criação de Site (HTML, CSS, JS)</div><div class="cert-org">Fundação Bradesco · 2023</div></div>
-            </div>
-            <div class="cert-row-3d" data-tilt>
-                <div class="cert-icon-3d">📄</div>
-                <div><div class="cert-name">HTML Avançado</div><div class="cert-org">2023</div></div>
-            </div>
-            <div class="cert-row-3d" data-tilt>
-                <div class="cert-icon-3d">🖥️</div>
-                <div><div class="cert-name">Informática Básica</div><div class="cert-org">2017</div></div>
-            </div>
+        <div class="reveal" style="max-width: 700px; margin: 0 auto;">
+            <div class="cert-row-3d" data-tilt><div class="cert-icon-3d">🏗️</div><div><div class="cert-name">Operador de Empilhadeira</div><div class="cert-org">ESTTJ · 2024</div></div></div>
+            <div class="cert-row-3d" data-tilt><div class="cert-icon-3d">📦</div><div><div class="cert-name">Curso de Logística</div><div class="cert-org">EDUCAWEB · 2024</div></div></div>
+            <div class="cert-row-3d" data-tilt><div class="cert-icon-3d">📊</div><div><div class="cert-name">Power BI Intensivo</div><div class="cert-org">Hashtag Treinamentos · 2024</div></div></div>
+            <div class="cert-row-3d" data-tilt><div class="cert-icon-3d">☕</div><div><div class="cert-name">Java Básico</div><div class="cert-org">Fundação Bradesco · 2023</div></div></div>
+            <div class="cert-row-3d" data-tilt><div class="cert-icon-3d">🌐</div><div><div class="cert-name">Criação de Site (HTML, CSS, JS)</div><div class="cert-org">Fundação Bradesco · 2023</div></div></div>
+            <div class="cert-row-3d" data-tilt><div class="cert-icon-3d">📄</div><div><div class="cert-name">HTML Avançado</div><div class="cert-org">2023</div></div></div>
+            <div class="cert-row-3d" data-tilt><div class="cert-icon-3d">🖥️</div><div><div class="cert-name">Informática Básica</div><div class="cert-org">2017</div></div></div>
         </div>
     </section>
 </div>
@@ -933,39 +647,23 @@
     <div class="content">
         <h2 class="reveal">Vamos conversar?</h2>
         <p class="reveal">Estou disponível para novas oportunidades.</p>
-        <div class="hero-actions reveal">
+        <div class="hero-actions reveal" style="justify-content: center;">
             <a href="mailto:rubensfernandes2112@gmail.com" class="hero-btn primary">✉️ Enviar email</a>
             <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="hero-btn secondary">LinkedIn →</a>
         </div>
     </div>
 </section>
 
-<!-- Contato 3D -->
+<!-- Contato -->
 <div class="content">
     <section class="feature" id="contato">
         <div class="feature-eyebrow reveal">Contato</div>
         <h2 class="reveal">Onde me encontrar.</h2>
         <div class="contact-grid-3d" style="margin-top: 2rem;">
-            <a href="tel:+5581989501999" class="contact-card-3d reveal" data-tilt>
-                <div class="contact-icon-3d">📱</div>
-                <div class="contact-label">Telefone</div>
-                <div class="contact-value">+55 81 98950-1999</div>
-            </a>
-            <a href="mailto:rubensfernandes2112@gmail.com" class="contact-card-3d reveal" data-tilt>
-                <div class="contact-icon-3d">✉️</div>
-                <div class="contact-label">Email</div>
-                <div class="contact-value">rubensfernandes2112@gmail.com</div>
-            </a>
-            <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="contact-card-3d reveal" data-tilt>
-                <div class="contact-icon-3d">🔗</div>
-                <div class="contact-label">LinkedIn</div>
-                <div class="contact-value">/in/rubens-fernandes</div>
-            </a>
-            <div class="contact-card-3d reveal" data-tilt>
-                <div class="contact-icon-3d">📍</div>
-                <div class="contact-label">Localização</div>
-                <div class="contact-value">Limoeiro, PE — Brasil</div>
-            </div>
+            <a href="tel:+5581989501999" class="contact-card-3d reveal" data-tilt><div class="contact-icon-3d">📱</div><div class="contact-label">Telefone</div><div class="contact-value">+55 81 98950-1999</div></a>
+            <a href="mailto:rubensfernandes2112@gmail.com" class="contact-card-3d reveal" data-tilt><div class="contact-icon-3d">✉️</div><div class="contact-label">Email</div><div class="contact-value">rubensfernandes2112@gmail.com</div></a>
+            <a href="https://linkedin.com/in/rubens-fernandes-766390185" target="_blank" class="contact-card-3d reveal" data-tilt><div class="contact-icon-3d">🔗</div><div class="contact-label">LinkedIn</div><div class="contact-value">/in/rubens-fernandes</div></a>
+            <div class="contact-card-3d reveal" data-tilt><div class="contact-icon-3d">📍</div><div class="contact-label">Localização</div><div class="contact-value">Limoeiro, PE — Brasil</div></div>
         </div>
     </section>
 </div>
@@ -979,56 +677,37 @@
 </footer>
 
 <script>
-// ===== 3D TILT EFFECT =====
-const tiltElements = document.querySelectorAll('[data-tilt]');
-
-tiltElements.forEach(el => {
-    el.addEventListener('mousemove', (e) => {
-        const rect = el.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = (y - centerY) / centerY * -8;
-        const rotateY = (x - centerX) / centerX * 8;
-        
-        el.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+// 3D Tilt Effect
+document.querySelectorAll('[data-tilt]').forEach(el => {
+    el.addEventListener('mousemove', e => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform = `perspective(800px) rotateX(${-y*10}deg) rotateY(${x*10}deg) translateZ(10px)`;
     });
-    
     el.addEventListener('mouseleave', () => {
         el.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateZ(0)';
     });
 });
 
-// ===== REVEAL ON SCROLL =====
-const obs = new IntersectionObserver((entries) => {
+// Reveal
+const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
         if (e.isIntersecting) {
             e.target.classList.add('visible');
-            e.target.querySelectorAll('.skill-fill').forEach(bar => {
-                bar.style.width = bar.dataset.width + '%';
-            });
+            e.target.querySelectorAll('.skill-fill').forEach(b => b.style.width = b.dataset.width + '%');
         }
     });
 }, { threshold: 0.15 });
 
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// ===== SMOOTH SCROLL =====
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
         e.preventDefault();
         const t = document.querySelector(a.getAttribute('href'));
         if (t) t.scrollIntoView({ behavior: 'smooth' });
-    });
-});
-
-// ===== PARALLAX FLOATING SHAPES =====
-window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    document.querySelectorAll('.shape').forEach((shape, i) => {
-        const speed = (i + 1) * 0.05;
-        shape.style.transform = `translateY(${scrollY * speed}px) translateZ(${20 + i * 10}px) rotateX(${scrollY * 0.02}deg)`;
     });
 });
 </script>
